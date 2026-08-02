@@ -209,7 +209,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
 
   if (loading) {
     return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#AAAAAA', fontWeight: 600 }}>
+      <div style={{ padding: 60, textAlign: 'center', color: 'var(--text-secondary)', fontWeight: 600 }}>
         Loading Teambuilder...
       </div>
     );
@@ -222,29 +222,29 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
   return (
     <div className="container" style={{ padding: '20px 24px', maxWidth: 1280, margin: '0 auto' }}>
       
-      {/* ── Header (Monochrome) ────────────────────────────────────────── */}
+      {/* ── Header (Theme Responsive) ────────────────────────────────── */}
       <div
         style={{
           padding: '16px 20px',
           marginBottom: 20,
-          background: '#0D0D0D',
-          border: '1px solid rgba(255, 255, 255, 0.16)',
+          background: 'var(--card-bg)',
+          border: '1px solid var(--border)',
           borderRadius: 8,
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: 16,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
+          boxShadow: '0 4px 20px var(--shadow-color)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <FighterLogo id="shield" size={26} color="#FFFFFF" />
+          <FighterLogo id="shield" size={26} color="var(--text-primary)" />
           <div>
-            <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               ANIME TEAMBUILDER
             </h2>
-            <span style={{ fontSize: '0.8rem', color: '#A3A3A3' }}>Configure moves, held relics, and tactical order for up to 6 fighters.</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Configure moves, held relics, and tactical order for up to 6 fighters.</span>
           </div>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
@@ -253,7 +253,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
               setImportText(generateShowdownText());
               setShowImportExport(true);
             }}
-            style={{ height: 36, padding: '0 16px', fontSize: '0.82rem', fontWeight: 700, background: '#1A1A1A', border: '1px solid rgba(255,255,255,0.25)', color: '#FFF', borderRadius: 6, cursor: 'pointer', textTransform: 'uppercase' }}
+            style={{ height: 36, padding: '0 16px', fontSize: '0.82rem', fontWeight: 700, background: 'var(--panel-header)', border: '1px solid var(--border)', color: 'var(--text-primary)', borderRadius: 6, cursor: 'pointer', textTransform: 'uppercase' }}
           >
             Import / Export Text
           </button>
@@ -261,7 +261,8 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
             <button
               onClick={handleSaveTeam}
               disabled={slots.length === 0 || saving || !teamName.trim()}
-              style={{ height: 36, padding: '0 22px', fontSize: '0.82rem', fontWeight: 900, background: '#FFFFFF', border: 'none', color: '#000000', borderRadius: 6, cursor: slots.length === 0 ? 'not-allowed' : 'pointer', opacity: slots.length === 0 ? 0.5 : 1, textTransform: 'uppercase', boxShadow: '0 2px 10px rgba(255,255,255,0.2)' }}
+              className="btn btn-primary"
+              style={{ height: 36, padding: '0 22px', fontSize: '0.82rem', fontWeight: 900, borderRadius: 6, cursor: slots.length === 0 ? 'not-allowed' : 'pointer', opacity: slots.length === 0 ? 0.5 : 1, textTransform: 'uppercase' }}
             >
               {saving ? 'Saving...' : 'Save Team'}
             </button>
@@ -269,16 +270,16 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
         </div>
       </div>
 
-      {error && <div style={{ padding: '10px 14px', marginBottom: 16, background: '#1F1F1F', border: '1px solid #777777', borderRadius: 8, color: '#FFFFFF', fontSize: '0.85rem', fontWeight: 700 }}>⚠️ {error}</div>}
-      {success && <div style={{ padding: '10px 14px', marginBottom: 16, background: '#1C1C1C', border: '1px solid #FFFFFF', borderRadius: 8, color: '#FFFFFF', fontSize: '0.85rem', fontWeight: 700 }}>✔ {success}</div>}
+      {error && <div style={{ padding: '10px 14px', marginBottom: 16, background: 'var(--panel-bg)', border: '1px solid var(--text-muted)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.85rem', fontWeight: 700 }}>⚠️ {error}</div>}
+      {success && <div style={{ padding: '10px 14px', marginBottom: 16, background: 'var(--panel-bg)', border: '1px solid var(--border-strong)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.85rem', fontWeight: 700 }}>✔ {success}</div>}
 
       <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 20, alignItems: 'start' }}>
         
         {/* LEFT COLUMN: Roster Setup & Slots */}
         <div
           style={{
-            background: '#090909',
-            border: '1px solid rgba(255, 255, 255, 0.15)',
+            background: 'var(--panel-bg)',
+            border: '1px solid var(--border)',
             borderRadius: 8,
             padding: 16,
             display: 'flex',
@@ -287,7 +288,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
           }}
         >
           <div>
-            <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: '#888888', textTransform: 'uppercase', marginBottom: 4 }}>Team Name</label>
+            <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: 4 }}>Team Name</label>
             <input
               type="text"
               className="input"
@@ -295,17 +296,17 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
               onChange={(e) => setTeamName(e.target.value)}
               placeholder="Enter team name..."
               maxLength={40}
-              style={{ width: '100%', height: 36, fontSize: '0.88rem', padding: '0 10px', background: '#030303', color: '#FFF', border: '1px solid rgba(255,255,255,0.2)' }}
+              style={{ width: '100%', height: 36, fontSize: '0.88rem', padding: '0 10px', background: 'var(--input-bg)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
             />
           </div>
 
           <div>
-            <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: '#888888', textTransform: 'uppercase', marginBottom: 4 }}>Format</label>
+            <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: 4 }}>Format</label>
             <select
               className="input"
               value={teamFormat}
               onChange={(e) => setTeamFormat(e.target.value)}
-              style={{ width: '100%', height: 36, fontSize: '0.82rem', padding: '0 10px', background: '#030303', color: '#FFF', border: '1px solid rgba(255,255,255,0.2)' }}
+              style={{ width: '100%', height: 36, fontSize: '0.82rem', padding: '0 10px', background: 'var(--input-bg)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
             >
               <option value="ou_6v6">[OU] 6v6 Standard Roster</option>
               <option value="blitz_3v3">[Blitz] 3v3 Fast Combat</option>
@@ -315,13 +316,13 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
 
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                 Roster Slots ({slots.length}/6)
               </span>
               {slots.length > 0 && (
                 <button
                   onClick={() => { setSlots([]); setActiveSlotIdx(null); }}
-                  style={{ background: 'none', border: 'none', color: '#AAAAAA', fontSize: '0.75rem', cursor: 'pointer', fontWeight: 700, textDecoration: 'underline' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '0.75rem', cursor: 'pointer', fontWeight: 700, textDecoration: 'underline' }}
                 >
                   Clear All
                 </button>
@@ -330,7 +331,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minHeight: 140 }}>
               {slots.length === 0 ? (
-                <div style={{ padding: '28px 16px', textAlign: 'center', border: '1px dashed rgba(255,255,255,0.2)', borderRadius: 8, color: '#777777', fontSize: '0.8rem' }}>
+                <div style={{ padding: '28px 16px', textAlign: 'center', border: '1px dashed var(--border)', borderRadius: 8, color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                   No fighters equipped.<br/>Click a champion on the right to add to your roster.
                 </div>
               ) : (
@@ -349,26 +350,26 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
                         padding: '8px 10px',
                         borderRadius: 6,
                         cursor: 'pointer',
-                        background: isSel ? '#202020' : '#111111',
-                        border: isSel ? '1px solid #FFFFFF' : '1px solid rgba(255,255,255,0.12)',
+                        background: isSel ? 'var(--active-bg)' : 'var(--bg-surface-2)',
+                        border: isSel ? '1px solid var(--border-strong)' : '1px solid var(--border)',
                         transition: 'background 0.15s ease',
                       }}
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                         <FighterSprite id={slot.characterId} size="sm" active={isSel} />
                         <div>
-                          <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#FFF' }}>
+                          <div style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                             {c?.name || slot.characterId}
-                            {idx === 0 && <span style={{ marginLeft: 6, fontSize: '0.65rem', padding: '1px 6px', background: '#FFFFFF', color: '#000000', borderRadius: 4, fontWeight: 900 }}>LEAD</span>}
+                            {idx === 0 && <span style={{ marginLeft: 6, fontSize: '0.65rem', padding: '1px 6px', background: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)', borderRadius: 4, fontWeight: 900 }}>LEAD</span>}
                           </div>
-                          <div style={{ fontSize: '0.72rem', color: '#AAAAAA', marginTop: 2 }}>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 2 }}>
                             {r ? r.name : 'No Relic'} · {slot.moveIds.length}/4 Moves
                           </div>
                         </div>
                       </div>
                       <button
                         onClick={(e) => { e.stopPropagation(); removeSlot(idx); }}
-                        style={{ background: 'none', border: 'none', color: '#888888', fontSize: '1.2rem', cursor: 'pointer', padding: '0 4px', fontWeight: 700 }}
+                        style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '1.2rem', cursor: 'pointer', padding: '0 4px', fontWeight: 700 }}
                         title="Remove fighter"
                       >
                         ×
@@ -381,20 +382,20 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
           </div>
 
           {/* Cloud Saved Teams */}
-          <div style={{ paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-            <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 800, color: '#888888', textTransform: 'uppercase', marginBottom: 8 }}>Saved Cloud Teams</span>
+          <div style={{ paddingTop: 12, borderTop: '1px solid var(--border)' }}>
+            <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-secondary)', textTransform: 'uppercase', marginBottom: 8 }}>Saved Cloud Teams</span>
             {!token ? (
-              <span style={{ fontSize: '0.78rem', color: '#777777' }}>Login to sync rosters across devices.</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Login to sync rosters across devices.</span>
             ) : teams.length === 0 ? (
-              <span style={{ fontSize: '0.78rem', color: '#777777' }}>No saved teams yet.</span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>No saved teams yet.</span>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 160, overflowY: 'auto' }}>
                 {teams.map((t) => (
-                  <div key={t.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#141414', borderRadius: 6, border: '1px solid rgba(255,255,255,0.08)' }}>
-                    <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#FFF' }}>{t.name}</span>
+                  <div key={t.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: 'var(--bg-surface-2)', borderRadius: 6, border: '1px solid var(--border)' }}>
+                    <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)' }}>{t.name}</span>
                     <div style={{ display: 'flex', gap: 6 }}>
-                      <button onClick={() => handleLoadTeam(t)} style={{ padding: '2px 8px', fontSize: '0.72rem', background: '#222222', border: '1px solid rgba(255,255,255,0.2)', color: '#FFF', borderRadius: 4, cursor: 'pointer', fontWeight: 700 }}>Load</button>
-                      <button onClick={() => handleDeleteTeam(t.id)} style={{ padding: '2px 6px', fontSize: '0.72rem', background: 'none', border: 'none', color: '#888888', cursor: 'pointer', fontWeight: 700 }}>Del</button>
+                      <button onClick={() => handleLoadTeam(t)} style={{ padding: '2px 8px', fontSize: '0.72rem', background: 'var(--panel-header)', border: '1px solid var(--border)', color: 'var(--text-primary)', borderRadius: 4, cursor: 'pointer', fontWeight: 700 }}>Load</button>
+                      <button onClick={() => handleDeleteTeam(t.id)} style={{ padding: '2px 6px', fontSize: '0.72rem', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 700 }}>Del</button>
                     </div>
                   </div>
                 ))}
@@ -410,23 +411,23 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
           {activeSlot && activeChar ? (
             <div
               style={{
-                background: '#0D0D0D',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                background: 'var(--card-bg)',
+                border: '1px solid var(--border-strong)',
                 borderRadius: 8,
                 padding: 18,
-                boxShadow: '0 4px 20px rgba(0,0,0,0.8)',
+                boxShadow: '0 4px 20px var(--shadow-color)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, paddingBottom: 14, borderBottom: '1px solid rgba(255, 255, 255, 0.12)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, paddingBottom: 14, borderBottom: '1px solid var(--border)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <FighterSprite id={activeChar.id} size="lg" active={true} />
                   <div>
-                    <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#AAAAAA', fontWeight: 800 }}>
+                    <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-secondary)', fontWeight: 800 }}>
                       Configuring Slot #{activeSlotIdx! + 1}
                     </span>
-                    <h3 style={{ margin: '2px 0', fontSize: '1.4rem', fontWeight: 900, color: '#FFF', letterSpacing: '0.04em' }}>{activeChar.name}</h3>
-                    <div style={{ fontSize: '0.78rem', color: '#CCCCCC', marginBottom: 8 }}>{activeChar.title}</div>
-                    <div style={{ display: 'flex', gap: 12, fontSize: '0.75rem', color: '#FFF', background: '#050505', padding: '5px 12px', borderRadius: 6, border: '1px solid rgba(255,255,255,0.15)' }}>
+                    <h3 style={{ margin: '2px 0', fontSize: '1.4rem', fontWeight: 900, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>{activeChar.name}</h3>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 8 }}>{activeChar.title}</div>
+                    <div style={{ display: 'flex', gap: 12, fontSize: '0.75rem', color: 'var(--text-primary)', background: 'var(--input-bg)', padding: '5px 12px', borderRadius: 6, border: '1px solid var(--border)' }}>
                       <span><strong>HP:</strong> {activeChar.baseStats.maxHp}</span>
                       <span><strong>ATK:</strong> {activeChar.baseStats.attack}</span>
                       <span><strong>DEF:</strong> {activeChar.baseStats.defense}</span>
@@ -436,7 +437,8 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
                 </div>
                 <button
                   onClick={() => setActiveSlotIdx(null)}
-                  style={{ padding: '6px 16px', fontSize: '0.8rem', background: '#FFFFFF', border: 'none', color: '#000000', borderRadius: 6, cursor: 'pointer', fontWeight: 800, textTransform: 'uppercase' }}
+                  className="btn btn-primary"
+                  style={{ padding: '6px 16px', fontSize: '0.8rem', borderRadius: 6, cursor: 'pointer', fontWeight: 800, textTransform: 'uppercase' }}
                 >
                   Done Editing
                 </button>
@@ -444,7 +446,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
 
               {/* Relic Selection */}
               <div style={{ marginBottom: 18 }}>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 8 }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 8 }}>
                   Held Anime Relic (Item)
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10 }}>
@@ -458,15 +460,15 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
                           padding: '10px 12px',
                           borderRadius: 6,
                           cursor: 'pointer',
-                          background: isEq ? '#222222' : '#090909',
-                          border: isEq ? '1px solid #FFFFFF' : '1px solid rgba(255,255,255,0.12)',
+                          background: isEq ? 'var(--active-bg)' : 'var(--panel-bg)',
+                          border: isEq ? '1px solid var(--border-strong)' : '1px solid var(--border)',
                         }}
                       >
-                        <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#FFF', display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--text-primary)', display: 'flex', justifyContent: 'space-between' }}>
                           <span>{r.name}</span>
-                          {isEq && <span style={{ color: '#FFFFFF', fontWeight: 900 }}>✔</span>}
+                          {isEq && <span style={{ color: 'var(--text-primary)', fontWeight: 900 }}>✔</span>}
                         </div>
-                        <div style={{ fontSize: '0.72rem', color: '#AAAAAA', marginTop: 4, lineHeight: 1.3 }}>{r.description}</div>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.3 }}>{r.description}</div>
                       </div>
                     );
                   })}
@@ -475,7 +477,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
 
               {/* Move Selection */}
               <div>
-                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 8 }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 8 }}>
                   Select Moves (Choose up to 4 — currently {activeSlot.moveIds.length}/4)
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10 }}>
@@ -489,16 +491,16 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
                           padding: '10px 12px',
                           borderRadius: 6,
                           cursor: 'pointer',
-                          background: isSel ? '#202020' : '#090909',
-                          border: isSel ? '1px solid #FFFFFF' : '1px solid rgba(255,255,255,0.12)',
+                          background: isSel ? 'var(--active-bg)' : 'var(--panel-bg)',
+                          border: isSel ? '1px solid var(--border-strong)' : '1px solid var(--border)',
                         }}
                       >
-                        <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#FFF', display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--text-primary)', display: 'flex', justifyContent: 'space-between' }}>
                           <span>{m.name}</span>
-                          <span style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: '#CCCCCC', border: '1px solid rgba(255,255,255,0.2)', padding: '1px 6px', borderRadius: 4 }}>{m.type}</span>
+                          <span style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: 'var(--text-secondary)', border: '1px solid var(--border)', padding: '1px 6px', borderRadius: 4 }}>{m.type}</span>
                         </div>
-                        <div style={{ fontSize: '0.72rem', color: '#AAAAAA', marginTop: 4, lineHeight: 1.3 }}>{m.description}</div>
-                        <div style={{ fontSize: '0.7rem', color: '#888888', marginTop: 6, fontWeight: 700 }}>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.3 }}>{m.description}</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: 6, fontWeight: 700 }}>
                           Cost: {m.energyCost} ENG {m.power ? `· Pwr: ${m.power}` : ''}
                         </div>
                       </div>
@@ -511,7 +513,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
 
           {/* Roster Picker */}
           <div>
-            <h3 style={{ margin: '0 0 12px', fontSize: '1.1rem', fontWeight: 900, color: '#FFF', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+            <h3 style={{ margin: '0 0 12px', fontSize: '1.1rem', fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               Available Anime Champions
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 14 }}>
@@ -521,8 +523,8 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
                   onClick={() => addFighterToTeam(char.id)}
                   className="roster-card"
                   style={{
-                    background: '#0D0D0D',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    background: 'var(--card-bg)',
+                    border: '1px solid var(--border)',
                     borderRadius: 8,
                     padding: 12,
                     cursor: 'pointer',
@@ -535,9 +537,9 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
                 >
                   <FighterSprite id={char.id} size="md" />
                   <div style={{ marginTop: 10, width: '100%' }}>
-                    <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#FFF' }}>{char.name}</div>
-                    <div style={{ fontSize: '0.72rem', color: '#AAAAAA', fontWeight: 600 }}>{char.title}</div>
-                    <div style={{ marginTop: 8, fontSize: '0.75rem', fontWeight: 800, color: '#000000', background: '#FFFFFF', padding: '4px', borderRadius: 4, textTransform: 'uppercase' }}>
+                    <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-primary)' }}>{char.name}</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600 }}>{char.title}</div>
+                    <div style={{ marginTop: 8, fontSize: '0.75rem', fontWeight: 800, color: 'var(--btn-primary-text)', background: 'var(--btn-primary-bg)', padding: '4px', borderRadius: 4, textTransform: 'uppercase' }}>
                       + Add to Roster
                     </div>
                   </div>
@@ -548,13 +550,13 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
         </div>
       </div>
 
-      {/* Showdown Import/Export Modal (Monochrome) */}
+      {/* Showdown Import/Export Modal (Theme Responsive) */}
       {showImportExport && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0, 0, 0, 0.85)', backdropFilter: 'blur(5px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-          <div style={{ background: '#0E0E0E', border: '1px solid #FFFFFF', borderRadius: 8, padding: 24, width: '100%', maxWidth: 580, display: 'flex', flexDirection: 'column', gap: 16, boxShadow: '0 10px 40px rgba(0,0,0,1)' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'var(--overlay-bg)', backdropFilter: 'blur(5px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+          <div style={{ background: 'var(--modal-bg)', border: '1px solid var(--border-strong)', borderRadius: 8, padding: 24, width: '100%', maxWidth: 580, display: 'flex', flexDirection: 'column', gap: 16, boxShadow: '0 10px 40px var(--shadow-color)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 900, color: '#FFF', textTransform: 'uppercase' }}>Showdown Text Import / Export</h3>
-              <button onClick={() => setShowImportExport(false)} style={{ background: 'none', border: 'none', color: '#AAAAAA', fontSize: '1.4rem', cursor: 'pointer', fontWeight: 700 }}>×</button>
+              <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase' }}>Showdown Text Import / Export</h3>
+              <button onClick={() => setShowImportExport(false)} style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '1.4rem', cursor: 'pointer', fontWeight: 700 }}>×</button>
             </div>
             <textarea
               className="input"
@@ -562,13 +564,14 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
               placeholder={`Kaze @ Senzu Bean\n- Basic Attack\n- Poison Strike\n\nRyuu @ Berserk Seal\n- Dragon Fist`}
-              style={{ fontFamily: 'monospace', fontSize: '0.85rem', width: '100%', padding: 12, background: '#050505', color: '#FFF', borderRadius: 6, border: '1px solid rgba(255,255,255,0.2)' }}
+              style={{ fontFamily: 'monospace', fontSize: '0.85rem', width: '100%', padding: 12, background: 'var(--input-bg)', color: 'var(--text-primary)', borderRadius: 6, border: '1px solid var(--border)' }}
             />
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
-              <button onClick={() => setShowImportExport(false)} style={{ padding: '8px 16px', fontSize: '0.82rem', background: '#1F1F1F', border: '1px solid rgba(255,255,255,0.25)', color: '#FFF', borderRadius: 6, cursor: 'pointer', fontWeight: 700, textTransform: 'uppercase' }}>Cancel</button>
+              <button onClick={() => setShowImportExport(false)} style={{ padding: '8px 16px', fontSize: '0.82rem', background: 'var(--panel-header)', border: '1px solid var(--border)', color: 'var(--text-primary)', borderRadius: 6, cursor: 'pointer', fontWeight: 700, textTransform: 'uppercase' }}>Cancel</button>
               <button
                 onClick={() => handleImportShowdownText(importText)}
-                style={{ padding: '8px 20px', fontSize: '0.82rem', background: '#FFFFFF', border: 'none', color: '#000000', borderRadius: 6, cursor: 'pointer', fontWeight: 900, textTransform: 'uppercase' }}
+                className="btn btn-primary"
+                style={{ padding: '8px 20px', fontSize: '0.82rem', borderRadius: 6, cursor: 'pointer', fontWeight: 900, textTransform: 'uppercase' }}
               >
                 Import Roster
               </button>
