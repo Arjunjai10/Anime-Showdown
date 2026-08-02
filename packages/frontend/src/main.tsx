@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, useOutletContext } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useOutletContext, useLocation } from 'react-router-dom';
 import App from './App';
-import { Home } from './pages/Home';
-import { Battle } from './pages/Battle';
-import { TeamBuilderPage } from './pages/TeamBuilderPage';
+import { ShowdownWorkspace } from './components/ShowdownWorkspace';
+import { useWorkspaceStore } from './stores/workspaceStore';
 import type { AuthResponse } from './types';
 import './index.css';
 
@@ -15,19 +14,18 @@ interface OutletCtx {
   onLogout: () => void;
 }
 
-function HomePage() {
+function MainWorkspaceRoute({ initialTab }: { initialTab?: 'lobby' | 'teambuilder' }) {
   const ctx = useOutletContext<OutletCtx>();
-  return <Home token={ctx.token} username={ctx.username} onLogin={ctx.onLogin} onLogout={ctx.onLogout} />;
-}
+  const { setActiveTab } = useWorkspaceStore();
+  const location = useLocation();
 
-function BattlePage() {
-  const ctx = useOutletContext<OutletCtx>();
-  return <Battle token={ctx.token} />;
-}
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab, setActiveTab, location]);
 
-function TeamPage() {
-  const ctx = useOutletContext<OutletCtx>();
-  return <TeamBuilderPage token={ctx.token} />;
+  return <ShowdownWorkspace token={ctx.token} username={ctx.username} onLogin={ctx.onLogin} />;
 }
 
 const router = createBrowserRouter([
@@ -35,9 +33,9 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      { index: true,     element: <HomePage /> },
-      { path: 'battle',  element: <BattlePage /> },
-      { path: 'team',    element: <TeamPage /> },
+      { index: true,     element: <MainWorkspaceRoute initialTab="lobby" /> },
+      { path: 'battle',  element: <MainWorkspaceRoute initialTab="lobby" /> },
+      { path: 'team',    element: <MainWorkspaceRoute initialTab="teambuilder" /> },
     ],
   },
 ]);

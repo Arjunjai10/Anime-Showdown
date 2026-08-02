@@ -1,5 +1,6 @@
 import type { BattleFighterState, StatusEffectType } from '@anime-showdown/shared-types';
 import type { MoveWithData, MoveApplicationResult } from './types';
+import { applyRelicToAttack, applyRelicToDodge, applyRelicToDamageTaken } from './relics';
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
 
@@ -12,12 +13,13 @@ const RANDOM_MAX = 1.0;
 
 /**
  * Returns the effective attack (or special attack) stat for a fighter,
- * accounting for burn debuff WITHOUT mutating the stored stats object.
+ * accounting for burn debuff and relics WITHOUT mutating the stored stats object.
  */
 export function getEffectiveAttack(fighter: BattleFighterState, moveType: 'physical' | 'special'): number {
   const base = moveType === 'special' ? fighter.stats.special : fighter.stats.attack;
   const hasBurn = fighter.statusEffects.some(e => e.type === 'burn');
-  return hasBurn ? Math.floor(base * 0.75) : base;
+  let effective = hasBurn ? Math.floor(base * 0.75) : base;
+  return applyRelicToAttack(fighter, effective, moveType);
 }
 
 /**
@@ -32,20 +34,14 @@ export function getEffectiveSpeed(fighter: BattleFighterState): number {
 
 /**
  * Pure damage calculation — no mutations, no I/O.
- *
- * Formula:
- *   damage = max(1, floor(power × (atkStat / defStat) × critMult × randomFactor))
- *
- * For multi-hit moves (tag: 'multi-hit'), the caller should invoke this twice
- * and sum the results.
  */
 export function calculateDamage(
   attacker: BattleFighterState,
   move: MoveWithData,
   defender: BattleFighterState,
 ): MoveApplicationResult {
-  // Accuracy check
-  if (Math.floor(Math.random() * 100) >= move.accuracy) {
+  // Accuracy check & Dodge relic check
+  if (Math.floor(Math.random() * 100) >= move.accuracy || applyRelicToDodge(defender)) {
     return { damage: 0, isCrit: false, missed: true };
   }
 
@@ -60,12 +56,21 @@ export function calculateDamage(
   const critMult = isCrit ? CRIT_MULTIPLIER : 1.0;
   const randomFactor = RANDOM_MIN + Math.random() * (RANDOM_MAX - RANDOM_MIN);
 
-  const damage = Math.max(
+  let rawDamage = Math.max(
     1,
     Math.floor(move.power * (attackStat / defenseStat) * critMult * randomFactor),
   );
 
-  return { damage, isCrit, missed: false };
+  // Apply defensive relics (Dragon Scale, Warrior's Resolve)
+  const relicMod = applyRelicToDamageTaken(defender, rawDamage, move.type);
+
+  return {
+    damage: relicMod.damage,
+    isCrit,
+    missed: false,
+    relicLog: relicMod.logMessage,
+    relicUsed: relicMod.relicUsed,
+  };
 }
 
 /**

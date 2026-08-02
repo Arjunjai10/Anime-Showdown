@@ -1,37 +1,37 @@
 import type { Socket } from 'socket.io';
-import type { ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData } from '@anime-showdown/shared-types';
+import type { ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData, TeamDoc } from '@anime-showdown/shared-types';
 
 type AppSocket = Socket<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>;
 
-/**
- * In-memory matchmaking queue.
- *
- * Pairs waiting sockets by FIFO order, matching the first two players
- * regardless of team composition (ELO matching is a Phase 3+ concern).
- *
- * One server instance only — move to Redis pub/sub when scaling past one process.
- */
-
 interface QueueEntry {
   socket: AppSocket;
-  characterId: string;
+  format: string;
+  team?: TeamDoc;
+  characterId?: string;
   enqueuedAt: number;
 }
 
 const queue: QueueEntry[] = [];
 
 /**
- * Adds a socket to the matchmaking queue.
- * If the socket is already queued, removes and re-adds (handles re-queue after disconnect).
+ * Adds a socket to the matchmaking queue for a specific battle format.
  */
-export function enqueue(socket: AppSocket, characterId: string): void {
-  // Remove any stale entry for this socket
+export function enqueue(socket: AppSocket, format: string = 'ou_6v6', team?: TeamDoc, characterId?: string): void {
   dequeueSocket(socket.id);
-  queue.push({ socket, characterId, enqueuedAt: Date.now() });
   
-  // Emit queue position
-  socket.emit('queue:status', { position: queue.length });
-  console.log(`[Matchmaking] ${socket.id} queued with ${characterId} — queue length: ${queue.length}`);
+  const entry: QueueEntry = {
+    socket,
+    format,
+    team,
+    characterId: characterId || team?.slots?.[0]?.characterId || team?.characterIds?.[0] || 'kaze',
+    enqueuedAt: Date.now(),
+  };
+  
+  queue.push(entry);
+
+  const formatQueueLen = queue.filter(e => e.format === format && e.socket.connected).length;
+  socket.emit('queue:status', { position: formatQueueLen, format });
+  console.log(`[Matchmaking] ${socket.id} joined ${format} queue — format queue length: ${formatQueueLen}`);
 }
 
 /**
@@ -43,21 +43,32 @@ export function dequeueSocket(socketId: string): void {
 }
 
 /**
- * Attempts to pair two players.
- * Returns a matched pair or null if fewer than 2 players are queued.
+ * Attempts to pair two players searching for the exact same battle format.
  */
 export function tryMatch(): [QueueEntry, QueueEntry] | null {
-  // Clean up disconnected sockets first
+  // Clean up disconnected sockets
   const activeQueue = queue.filter(e => e.socket.connected);
-  // Sync the real queue with active-only entries
   queue.length = 0;
   queue.push(...activeQueue);
 
-  if (queue.length < 2) return null;
+  // Group by format
+  const formats = new Set(queue.map(e => e.format));
+  for (const fmt of formats) {
+    const matchCandidates = queue.filter(e => e.format === fmt);
+    if (matchCandidates.length >= 2) {
+      const a = matchCandidates[0];
+      const b = matchCandidates[1];
+      
+      // Remove from real queue
+      dequeueSocket(a.socket.id);
+      dequeueSocket(b.socket.id);
+      
+      console.log(`[Matchmaking] Matched ${a.socket.id} vs ${b.socket.id} in format ${fmt}`);
+      return [a, b];
+    }
+  }
 
-  const [a, b] = queue.splice(0, 2);
-  console.log(`[Matchmaking] Matched ${a.socket.id} vs ${b.socket.id}`);
-  return [a, b];
+  return null;
 }
 
 export type { QueueEntry };

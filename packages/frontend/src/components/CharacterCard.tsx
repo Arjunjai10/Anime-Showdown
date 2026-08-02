@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Character, Move } from '../types';
+import { FighterLogo } from './FighterLogo';
 
 interface CharacterCardProps {
   character: Character & { moves?: Move[] };
@@ -7,18 +8,6 @@ interface CharacterCardProps {
   onClick?: () => void;
   compact?: boolean;
 }
-
-/** Emoji avatar per archetype — replaced with actual sprites in a later phase */
-const ARCHETYPE_EMOJI: Record<string, string> = {
-  'Ninja / Speed':        '🥷',
-  'Fighter / Power':      '🔥',
-  'Warrior / Tank':       '🛡️',
-  'Mage / Elemental':     '⚡',
-  'Brawler / Electric':   '👊',
-  'Assassin / Shadow':    '🗡️',
-  'Dark Mage / Curse':    '🔮',
-  'Berserker / Wild':     '🌪️',
-};
 
 const STAT_LABELS: Array<{ key: keyof Character['baseStats']; label: string }> = [
   { key: 'maxHp',   label: 'HP' },
@@ -34,8 +23,6 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
   onClick,
   compact = false,
 }) => {
-  const emoji = ARCHETYPE_EMOJI[character.archetype] ?? '⚔️';
-
   return (
     <div
       id={`character-card-${character.id}`}
@@ -49,15 +36,18 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
       aria-pressed={onClick ? isSelected : undefined}
       aria-label={`${character.name}, ${character.title}`}
     >
-      {/* Avatar */}
+      {/* Avatar Logo */}
       <div
         className="character-card-avatar"
         style={{
           background: `radial-gradient(circle at 50% 40%, ${character.colorScheme.primary}40 0%, transparent 70%)`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        <div className="fighter-sprite-inner" style={{ fontSize: compact ? '2.5rem' : '3.5rem' }}>
-          {emoji}
+        <div className="fighter-sprite-inner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <FighterLogo id={character.id} size={compact ? 48 : 64} color={character.colorScheme.primary} />
         </div>
 
         {/* Glow ring when selected */}

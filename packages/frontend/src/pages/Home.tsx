@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import type { AuthResponse } from '../types';
+import { FighterLogo } from '../components/FighterLogo';
 
 interface HomeProps {
   token: string | null;
@@ -12,14 +13,14 @@ interface HomeProps {
 type AuthMode = 'login' | 'register';
 
 const ROSTER = [
-  { id: 'kaze',    name: 'Kaze',    title: 'Phantom Blade',   emoji: '🥷', color: '#4F46E5', tag: 'Ninja · Speed',          desc: 'Fastest in the arena. Wins through poison and precision.' },
-  { id: 'ryuu',    name: 'Ryuu',    title: 'Eternal Flame',   emoji: '🔥', color: '#DC2626', tag: 'Fighter · Power',        desc: 'Pure offensive force. Dragon Fist ends fights in one move.' },
-  { id: 'tsubaki', name: 'Tsubaki', title: 'Iron Lotus',      emoji: '🛡️', color: '#059669', tag: 'Warrior · Tank',         desc: 'Laughs at everything you throw. Still standing at the end.' },
-  { id: 'sora',    name: 'Sora',    title: 'Stormcaller',     emoji: '⚡', color: '#0EA5E9', tag: 'Mage · Elemental',       desc: 'Storm\'s Eye hits like a comet. Hard to stay alive that long.' },
-  { id: 'ren',     name: 'Ren',     title: 'Thunder Fist',    emoji: '👊', color: '#D97706', tag: 'Brawler · Electric',     desc: 'Heavy punches, lightning speed. The electric berserker.' },
-  { id: 'hana',    name: 'Hana',    title: 'Void Walker',     emoji: '🗡️', color: '#7C3AED', tag: 'Assassin · Shadow',      desc: 'Strikes from impossible angles. 0 HP before you knew she moved.' },
-  { id: 'mira',    name: 'Mira',    title: 'Cursed Sage',     emoji: '🔮', color: '#BE123C', tag: 'Dark Mage · Curse',      desc: 'Forbidden Art is a one-shot. Don\'t let her survive long enough.' },
-  { id: 'gale',    name: 'Gale',    title: 'Wild Tempest',    emoji: '🌪️', color: '#92400E', tag: 'Berserker · Wild',       desc: 'Gets stronger as the fight drags on. Berserk Mode is terrifying.' },
+  { id: 'kaze',    name: 'Kaze',    title: 'Phantom Blade',   color: '#4F46E5', tag: 'Ninja · Speed',          desc: 'Fastest in the arena. Wins through poison and precision.' },
+  { id: 'ryuu',    name: 'Ryuu',    title: 'Eternal Flame',   color: '#DC2626', tag: 'Fighter · Power',        desc: 'Pure offensive force. Dragon Fist ends fights in one move.' },
+  { id: 'tsubaki', name: 'Tsubaki', title: 'Iron Lotus',      color: '#059669', tag: 'Warrior · Tank',         desc: 'Laughs at everything you throw. Still standing at the end.' },
+  { id: 'sora',    name: 'Sora',    title: 'Stormcaller',     color: '#0EA5E9', tag: 'Mage · Elemental',       desc: 'Storm\'s Eye hits like a comet. Hard to stay alive that long.' },
+  { id: 'ren',     name: 'Ren',     title: 'Thunder Fist',    color: '#D97706', tag: 'Brawler · Electric',     desc: 'Heavy punches, lightning speed. The electric berserker.' },
+  { id: 'hana',    name: 'Hana',    title: 'Void Walker',     color: '#7C3AED', tag: 'Assassin · Shadow',      desc: 'Strikes from impossible angles. 0 HP before you knew she moved.' },
+  { id: 'mira',    name: 'Mira',    title: 'Cursed Sage',     color: '#BE123C', tag: 'Dark Mage · Curse',      desc: 'Forbidden Art is a one-shot. Don\'t let her survive long enough.' },
+  { id: 'gale',    name: 'Gale',    title: 'Wild Tempest',    color: '#92400E', tag: 'Berserker · Wild',       desc: 'Gets stronger as the fight drags on. Berserk Mode is terrifying.' },
 ];
 
 export const Home: React.FC<HomeProps> = ({ token, username, onLogin, onLogout }) => {
@@ -60,7 +61,10 @@ export const Home: React.FC<HomeProps> = ({ token, username, onLogin, onLogout }
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section className="home-hero">
         <div className="home-hero-content">
-          <div className="home-hero-badge">⚔️ 8 Fighters · PvP Battle Arena</div>
+          <div className="home-hero-badge">
+            <FighterLogo id="swords" size={16} color="var(--accent)" />
+            <span>8 Fighters · PvP Battle Arena</span>
+          </div>
           <h1 className="home-hero-title">
             <span className="home-hero-title-main">ANIME</span>
             <span className="home-hero-title-accent">SHOWDOWN</span>
@@ -71,14 +75,21 @@ export const Home: React.FC<HomeProps> = ({ token, username, onLogin, onLogout }
           <div className="home-hero-actions">
             {token ? (
               <>
-                <Link to="/battle" id="queue-btn" className="btn btn-primary btn-lg">⚔️ Fight Now</Link>
-                <Link to="/team" id="team-btn" className="btn btn-ghost btn-lg">🛡️ My Team</Link>
+                <Link to="/battle" id="queue-btn" className="btn btn-primary btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  <FighterLogo id="swords" size={20} color="currentColor" />
+                  <span>Fight Now</span>
+                </Link>
+                <Link to="/team" id="team-btn" className="btn btn-ghost btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                  <FighterLogo id="shield" size={20} color="currentColor" />
+                  <span>My Team</span>
+                </Link>
               </>
             ) : (
               <>
-                <button id="play-now-btn" className="btn btn-primary btn-lg"
+                <button id="play-now-btn" className="btn btn-primary btn-lg" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}
                   onClick={() => { setMode('register'); setShowModal(true); }}>
-                  ⚔️ Play Free
+                  <FighterLogo id="swords" size={20} color="currentColor" />
+                  <span>Play Free</span>
                 </button>
                 <button id="login-btn" className="btn btn-ghost btn-lg"
                   onClick={() => { setMode('login'); setShowModal(true); }}>
@@ -96,15 +107,14 @@ export const Home: React.FC<HomeProps> = ({ token, username, onLogin, onLogout }
           )}
         </div>
 
-        {/* Floating fighter emojis */}
+        {/* Floating fighter logos */}
         <div className="home-hero-fighters" aria-hidden="true">
           {ROSTER.map((f, i) => (
             <div key={f.id} className="hero-float-fighter" style={{
               animationDelay: `${i * 0.4}s`,
               color: f.color,
-              fontSize: i % 3 === 0 ? '3.5rem' : i % 3 === 1 ? '2.8rem' : '2.2rem',
             }}>
-              {f.emoji}
+              <FighterLogo id={f.id} size={52} color={f.color} />
             </div>
           ))}
         </div>
@@ -121,7 +131,9 @@ export const Home: React.FC<HomeProps> = ({ token, username, onLogin, onLogout }
           <div className="roster-grid">
             {ROSTER.map(char => (
               <div key={char.id} className="roster-card" style={{ '--char-color': char.color } as React.CSSProperties}>
-                <div className="roster-card-emoji">{char.emoji}</div>
+                <div className="roster-card-emoji" style={{ display: 'flex', justifyContent: 'center' }}>
+                  <FighterLogo id={char.id} size={76} color={char.color} />
+                </div>
                 <div className="roster-card-body">
                   <div className="roster-card-name" style={{ color: char.color }}>{char.name}</div>
                   <div className="roster-card-title">{char.title}</div>
@@ -151,13 +163,15 @@ export const Home: React.FC<HomeProps> = ({ token, username, onLogin, onLogout }
           </div>
           <div className="how-steps">
             {[
-              { icon: '🎯', step: '01', title: 'Pick a Fighter', desc: 'Choose from 8 unique characters, each with different stats and movesets.' },
-              { icon: '⚔️', step: '02', title: 'Enter the Queue', desc: 'Get matched against a real opponent. Both players pick moves simultaneously each turn.' },
-              { icon: '🏆', step: '03', title: 'Win the Arena', desc: 'Outsmart and outplay your opponent. The last fighter standing wins.' },
+              { icon: 'target', step: '01', title: 'Pick a Fighter', desc: 'Choose from 8 unique characters, each with different stats and movesets.' },
+              { icon: 'swords', step: '02', title: 'Enter the Queue', desc: 'Get matched against a real opponent. Both players pick moves simultaneously each turn.' },
+              { icon: 'trophy', step: '03', title: 'Win the Arena', desc: 'Outsmart and outplay your opponent. The last fighter standing wins.' },
             ].map(s => (
               <div key={s.step} className="how-step">
                 <div className="how-step-num">{s.step}</div>
-                <div className="how-step-icon">{s.icon}</div>
+                <div className="how-step-icon" style={{ display: 'flex', justifyContent: 'center' }}>
+                  <FighterLogo id={s.icon} size={54} color="var(--accent)" />
+                </div>
                 <h3>{s.title}</h3>
                 <p className="text-secondary">{s.desc}</p>
               </div>

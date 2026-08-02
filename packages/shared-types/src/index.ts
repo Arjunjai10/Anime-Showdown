@@ -3,7 +3,7 @@
 export type StatusEffectType = 'poison' | 'burn' | 'stun' | 'slow';
 export type MoveType = 'physical' | 'special' | 'status' | 'self';
 export type StatKey = 'attack' | 'defense' | 'special' | 'speed';
-export type BattlePhase = 'selecting' | 'resolving' | 'ended';
+export type BattlePhase = 'selecting' | 'resolving' | 'switching' | 'ended';
 export type PlayerKey = 'playerA' | 'playerB';
 
 // ─── Move ──────────────────────────────────────────────────────────────────────
@@ -37,6 +37,17 @@ export interface Move {
   statusEffect?: MoveStatusEffect;
   statModifier?: MoveStatModifier;
   tags?: string[];
+}
+
+// ─── Relics (Held Items) ───────────────────────────────────────────────────────
+
+export interface Relic {
+  id: string;
+  name: string;
+  description: string;
+  effectType: 'heal_low_hp' | 'boost_special' | 'reduce_physical' | 'evade_chance' | 'survive_lethal' | 'energy_regen';
+  value: number;
+  oneTime?: boolean;
 }
 
 // ─── Character ─────────────────────────────────────────────────────────────────
@@ -101,6 +112,21 @@ export interface BattleFighterState {
   statusEffects: ActiveStatusEffect[];
   statModifiers: ActiveStatModifier[];
   moveIds: string[];
+  /** Equipped Relic ID for this fighter */
+  relicId?: string;
+  /** True if a one-time relic (e.g., Senzu Bean) has been triggered */
+  relicUsed?: boolean;
+  isAlive?: boolean;
+}
+
+export interface PlayerBattleState extends BattleFighterState {
+  /** Full team roster for this player in this battle (up to 6 fighters) */
+  team: BattleFighterState[];
+  /** Index of currently active fighter in team[] */
+  activeIdx: number;
+  /** True if active fighter fainted and player must choose a benched replacement */
+  mustSwitch?: boolean;
+  username?: string;
 }
 
 export interface BattleLogEntry {
@@ -119,28 +145,57 @@ export interface BattleState {
   id: string;
   turn: number;
   phase: BattlePhase;
-  playerA: BattleFighterState;
-  playerB: BattleFighterState;
+  playerA: PlayerBattleState;
+  playerB: PlayerBattleState;
   log: BattleLogEntry[];
   winner?: PlayerKey | 'draw';
+  format?: string;
 }
 
 // ─── Battle actions ────────────────────────────────────────────────────────────
 
+export type ActionType = 'move' | 'switch';
+
 export interface BattleAction {
   playerKey: PlayerKey;
-  moveId: string;
+  type?: ActionType;
+  moveId?: string;      // Used when type === 'move' (or legacy v1 calls)
+  switchIndex?: number; // Used when type === 'switch' (target slot in team[])
 }
 
-// ─── Team ──────────────────────────────────────────────────────────────────────
+// ─── Team & Format ─────────────────────────────────────────────────────────────
+
+export interface TeamSlot {
+  characterId: string;
+  moveIds: string[];
+  relicId?: string;
+}
 
 export interface TeamDoc {
   id: string;
   name: string;
-  /** Ordered list of character IDs — first is always used in battle (v1) */
+  format?: string;
+  slots: TeamSlot[];
+  /** Legacy array of character IDs for backward compatibility */
   characterIds: string[];
   userId: string;
   createdAt: string;
+}
+
+// ─── Chat & Lobby ──────────────────────────────────────────────────────────────
+
+export interface ChatMessage {
+  id: string;
+  sender: string;
+  text: string;
+  timestamp: number;
+  room: string;
+}
+
+export interface LobbyUser {
+  id: string;
+  username: string;
+  status: 'in-lobby' | 'in-queue' | 'in-battle';
 }
 
 // ─── Auth ──────────────────────────────────────────────────────────────────────
@@ -164,27 +219,23 @@ export interface AuthResponse {
 
 // ─── Socket.io event map ───────────────────────────────────────────────────────
 
-/**
- * Typed socket event payloads for Socket.io.
- * Format: { eventName: [ArgType] } — matches Socket.io's EventsMap convention.
- *
- * Client → Server events use ClientToServerEvents.
- * Server → Client events use ServerToClientEvents.
- */
-
 export interface ClientToServerEvents {
-  'queue:join': (payload: { characterId: string }) => void;
+  'queue:join': (payload: { format?: string; team?: TeamDoc; characterId?: string }) => void;
   'queue:leave': () => void;
-  'battle:action': (payload: { moveId: string }) => void;
+  'battle:action': (payload: { type?: ActionType; moveId?: string; switchIndex?: number }) => void;
+  'chat:send': (payload: { room: string; text: string }) => void;
+  'lobby:join': () => void;
 }
 
 export interface ServerToClientEvents {
-  'queue:status': (payload: { position: number }) => void;
+  'queue:status': (payload: { position: number; format?: string }) => void;
   'battle:start': (payload: { battleId: string; state: BattleState; yourKey: PlayerKey }) => void;
   'battle:stateUpdate': (payload: { state: BattleState }) => void;
   'battle:end': (payload: { state: BattleState; winner: PlayerKey | 'draw' }) => void;
   'battle:error': (payload: { message: string }) => void;
   'matchmaking:error': (payload: { message: string }) => void;
+  'chat:message': (payload: ChatMessage) => void;
+  'lobby:users': (payload: { users: LobbyUser[] }) => void;
 }
 
 export interface InterServerEvents {
@@ -197,4 +248,6 @@ export interface SocketData {
   battleId?: string;
   playerKey?: PlayerKey;
   characterId?: string;
+  team?: TeamDoc;
+  format?: string;
 }

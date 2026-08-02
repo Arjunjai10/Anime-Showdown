@@ -5,16 +5,17 @@ import { useBattleState } from '../hooks/useBattleState';
 import { useSocket } from '../hooks/useSocket';
 import { useBattleStore } from '../stores/battleStore';
 import { BattleArena } from '../components/BattleArena';
+import { FighterLogo } from '../components/FighterLogo';
 
-const CHAR_META: Record<string, { emoji: string; color: string; accent: string }> = {
-  kaze:    { emoji: '🥷', color: '#4F46E5', accent: '#818CF8' },
-  ryuu:    { emoji: '🔥', color: '#DC2626', accent: '#F97316' },
-  tsubaki: { emoji: '🛡️', color: '#059669', accent: '#34D399' },
-  sora:    { emoji: '⚡', color: '#0EA5E9', accent: '#38BDF8' },
-  ren:     { emoji: '👊', color: '#D97706', accent: '#FCD34D' },
-  hana:    { emoji: '🗡️', color: '#7C3AED', accent: '#A78BFA' },
-  mira:    { emoji: '🔮', color: '#BE123C', accent: '#FB7185' },
-  gale:    { emoji: '🌪️', color: '#92400E', accent: '#F59E0B' },
+const CHAR_META: Record<string, { color: string; accent: string }> = {
+  kaze:    { color: '#4F46E5', accent: '#818CF8' },
+  ryuu:    { color: '#DC2626', accent: '#F97316' },
+  tsubaki: { color: '#059669', accent: '#34D399' },
+  sora:    { color: '#0EA5E9', accent: '#38BDF8' },
+  ren:     { color: '#D97706', accent: '#FCD34D' },
+  hana:    { color: '#7C3AED', accent: '#A78BFA' },
+  mira:    { color: '#BE123C', accent: '#FB7185' },
+  gale:    { color: '#92400E', accent: '#F59E0B' },
 };
 
 const MOVE_TYPE_LABEL: Record<string, string> = {
@@ -85,10 +86,16 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
       <div className="page">
         {winner && (
           <div className="winner-overlay">
-            <div className="glass-elevated winner-card">
-              <div className="winner-emoji">{winner === 'draw' ? '🤝' : winner === yourKey ? '🏆' : '💀'}</div>
+            <div className="glass-elevated winner-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="winner-emoji" style={{ marginBottom: 16 }}>
+                <FighterLogo
+                  id={winner === 'draw' ? 'handshake' : winner === yourKey ? 'trophy' : 'skull'}
+                  size={84}
+                  color={winner === 'draw' ? '#94A3B8' : winner === yourKey ? '#EAB308' : '#EF4444'}
+                />
+              </div>
               <div className="winner-title">{winner === 'draw' ? 'Draw!' : winner === yourKey ? 'Victory!' : 'Defeated'}</div>
-              <p className="text-secondary" style={{ marginBottom: 24 }}>
+              <p className="text-secondary" style={{ marginBottom: 24, textAlign: 'center' }}>
                 {winner === 'draw' ? 'Both fighters fell together.' : winner === yourKey ? 'You dominated the arena.' : 'You fought with honour.'}
               </p>
               <button id="play-again-btn" className="btn btn-primary btn-lg w-full" onClick={handlePlayAgain}>Play Again</button>
@@ -106,12 +113,14 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
     return (
       <div className="page">
         <div className="queue-overlay">
-          <div className="queue-hero-emoji" style={{ color: ch?.color }}>{ch?.emoji ?? '⚔️'}</div>
+          <div className="queue-hero-emoji" style={{ color: ch?.color }}>
+            <FighterLogo id={selectedCharId ?? 'game-logo'} size={100} color={ch?.color ?? 'var(--accent)'} />
+          </div>
           <div className="queue-spinner" style={{ borderTopColor: ch?.color ?? 'var(--accent)' }} />
           <h2>Searching for an Opponent</h2>
           <p className="text-secondary">Fielding <span style={{ color: ch?.color }}>{selected?.name}</span></p>
           {queueError && <p className="form-error">{queueError}</p>}
-          <button id="leave-queue-btn" className="btn btn-ghost" onClick={handleLeaveQueue}>Cancel</button>
+          <button id="leave-queue-btn" className="btn btn-ghost" style={{ marginTop: 12 }} onClick={handleLeaveQueue}>Cancel Search</button>
         </div>
       </div>
     );
@@ -130,7 +139,7 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
           </div>
           <div className="char-select-grid">
             {roster.map(char => {
-              const meta = CHAR_META[char.id] ?? { emoji: '⚔️', color: '#6C63FF', accent: '#818CF8' };
+              const meta = CHAR_META[char.id] ?? { color: '#6C63FF', accent: '#818CF8' };
               const isSelected = selectedCharId === char.id;
               return (
                 <button
@@ -140,9 +149,13 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
                   style={{ '--pick-color': meta.color } as React.CSSProperties}
                   onClick={() => setSelectedCharId(char.id)}
                 >
-                  <span className="char-pick-emoji">{meta.emoji}</span>
-                  <span className="char-pick-name" style={{ color: isSelected ? meta.color : undefined }}>{char.name}</span>
-                  <span className="char-pick-title">{char.title}</span>
+                  <div className="char-pick-logo-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <FighterLogo id={char.id} size={36} color={meta.color} />
+                  </div>
+                  <div>
+                    <span className="char-pick-name" style={{ color: isSelected ? meta.color : undefined }}>{char.name}</span>
+                    <span className="char-pick-title">{char.title}</span>
+                  </div>
                 </button>
               );
             })}
@@ -152,12 +165,12 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
         {/* Right — detail panel */}
         <div className="char-select-detail-panel">
           {selected ? (() => {
-            const meta = CHAR_META[selected.id] ?? { emoji: '⚔️', color: '#6C63FF', accent: '#818CF8' };
+            const meta = CHAR_META[selected.id] ?? { color: '#6C63FF', accent: '#818CF8' };
             return (
               <>
                 {/* Avatar */}
                 <div className="char-detail-avatar" style={{ background: `radial-gradient(circle at 50% 40%, ${meta.color}30 0%, transparent 70%)`, boxShadow: `0 0 80px ${meta.color}30` }}>
-                  <span style={{ fontSize: '5rem' }}>{meta.emoji}</span>
+                  <FighterLogo id={selected.id} size={100} color={meta.color} />
                 </div>
 
                 {/* Identity */}
@@ -210,16 +223,19 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
 
                 {/* CTA */}
                 <button id="enter-queue-btn" className="btn btn-primary btn-lg w-full"
-                  style={{ marginTop: 'auto', boxShadow: `0 6px 30px ${meta.color}50` }}
+                  style={{ marginTop: 'auto', boxShadow: `0 6px 30px ${meta.color}50`, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}
                   onClick={handleJoinQueue}>
-                  ⚔️ Fight with {selected.name}
+                  <FighterLogo id="swords" size={20} color="currentColor" />
+                  <span>Fight with {selected.name}</span>
                 </button>
               </>
             );
           })() : (
             <div className="char-detail-empty">
-              <div style={{ fontSize: '4rem', marginBottom: 16, opacity: 0.3 }}>⚔️</div>
-              <p className="text-secondary">Select a fighter to see their full stats and moves</p>
+              <div style={{ opacity: 0.3, marginBottom: 16 }}>
+                <FighterLogo id="game-logo" size={80} color="var(--text-muted)" />
+              </div>
+              <p className="text-secondary">Select a fighter to view full stats, lore, and moveset</p>
             </div>
           )}
         </div>

@@ -1,73 +1,150 @@
 import type {
   BattleState,
   BattleFighterState,
+  PlayerBattleState,
   BattleAction,
   BattleLogEntry,
   PlayerKey,
 } from '@anime-showdown/shared-types';
-import type { MoveWithData } from './types';
+import type { MoveWithData, FighterSpec } from './types';
 import { calculateDamage, rollStatusEffect, getEffectiveSpeed } from './damage';
 import { applyStatusEffect, applyStatModifier, tickStatusEffects, isStunned } from './statusEffects';
+import { applyRelicAfterDamage, applyRelicEndTurn } from './relics';
+
+// ─── Helper: synchronize top-level active properties and team array ───────────
+
+export function syncPlayerFromActive(player: PlayerBattleState, active: BattleFighterState): PlayerBattleState {
+  const newTeam = player.team.map((f, i) => (i === player.activeIdx ? { ...active, isAlive: active.currentHp > 0 } : f));
+  return {
+    ...player,
+    ...active,
+    team: newTeam,
+  };
+}
+
+/**
+ * Switches a player's active fighter to the target bench index.
+ */
+export function switchActiveFighter(
+  player: PlayerBattleState,
+  newIndex: number,
+): { player: PlayerBattleState; success: boolean } {
+  if (newIndex < 0 || newIndex >= player.team.length || player.team[newIndex].currentHp <= 0 || newIndex === player.activeIdx) {
+    return { player, success: false };
+  }
+  const newActive = player.team[newIndex];
+  return {
+    player: {
+      ...player,
+      ...newActive,
+      activeIdx: newIndex,
+      mustSwitch: false,
+    },
+    success: true,
+  };
+}
 
 // ─── Turn resolution ───────────────────────────────────────────────────────────
 
-/**
- * The core battle engine function.
- *
- * Takes the current battle state and two actions (one per player),
- * returns a new BattleState reflecting the results of this turn.
- *
- * Contract:
- *  - Pure function — no side effects, no I/O, no mutations
- *  - Input state is never modified
- *  - The server is authoritative: this function is ONLY called server-side
- *
- * @param state - Current immutable battle state
- * @param actionA - Action chosen by playerA
- * @param actionB - Action chosen by playerB
- * @param moveLookup - A function to resolve a move ID → MoveWithData (injected to keep the engine I/O-free)
- */
 export function resolveTurn(
   state: BattleState,
   actionA: BattleAction,
   actionB: BattleAction,
   moveLookup: (id: string) => MoveWithData | undefined,
 ): BattleState {
-  let playerA = { ...state.playerA };
-  let playerB = { ...state.playerB };
+  let playerA: PlayerBattleState = { ...state.playerA };
+  let playerB: PlayerBattleState = { ...state.playerB };
   const newLog: BattleLogEntry[] = [];
   const turn = state.turn + 1;
 
-  // Determine turn order by effective speed (stun skip happens per actor below)
+  // 1) Handle 'switching' phase (forced replacement after a KO)
+  if (state.phase === 'switching') {
+    if (playerA.mustSwitch) {
+      const idx = actionA.switchIndex !== undefined ? actionA.switchIndex : playerA.team.findIndex(f => f.currentHp > 0);
+      const res = switchActiveFighter(playerA, idx);
+      if (res.success) {
+        playerA = res.player;
+        newLog.push({
+          turn,
+          actorId: playerA.characterId,
+          actorName: playerA.name,
+          action: `was sent out into battle!`,
+        });
+      }
+    }
+    if (playerB.mustSwitch) {
+      const idx = actionB.switchIndex !== undefined ? actionB.switchIndex : playerB.team.findIndex(f => f.currentHp > 0);
+      const res = switchActiveFighter(playerB, idx);
+      if (res.success) {
+        playerB = res.player;
+        newLog.push({
+          turn,
+          actorId: playerB.characterId,
+          actorName: playerB.name,
+          action: `was sent out into battle!`,
+        });
+      }
+    }
+    return {
+      ...state,
+      phase: 'selecting',
+      playerA,
+      playerB,
+      log: [...state.log, ...newLog],
+    };
+  }
+
+  // 2) Regular Combat Phase — Process switches first (highest priority)
+  if (actionA.type === 'switch' && actionA.switchIndex !== undefined) {
+    const oldName = playerA.name;
+    const res = switchActiveFighter(playerA, actionA.switchIndex);
+    if (res.success) {
+      playerA = res.player;
+      newLog.push({
+        turn,
+        actorId: playerA.characterId,
+        actorName: playerA.name,
+        action: `withdrew ${oldName} and sent out ${playerA.name}!`,
+      });
+    }
+  }
+
+  if (actionB.type === 'switch' && actionB.switchIndex !== undefined) {
+    const oldName = playerB.name;
+    const res = switchActiveFighter(playerB, actionB.switchIndex);
+    if (res.success) {
+      playerB = res.player;
+      newLog.push({
+        turn,
+        actorId: playerB.characterId,
+        actorName: playerB.name,
+        action: `withdrew ${oldName} and sent out ${playerB.name}!`,
+      });
+    }
+  }
+
+  // 3) Determine attack order for players submitting moves
+  const moveActions: [PlayerKey, BattleAction][] = [];
   const speedA = getEffectiveSpeed(playerA);
   const speedB = getEffectiveSpeed(playerB);
 
-  let firstKey: PlayerKey;
-  let secondKey: PlayerKey;
+  let firstKey: PlayerKey = speedA > speedB ? 'playerA' : speedB > speedA ? 'playerB' : (Math.random() < 0.5 ? 'playerA' : 'playerB');
+  let secondKey: PlayerKey = firstKey === 'playerA' ? 'playerB' : 'playerA';
 
-  if (speedA > speedB) {
-    firstKey = 'playerA';
-    secondKey = 'playerB';
-  } else if (speedB > speedA) {
-    firstKey = 'playerB';
-    secondKey = 'playerA';
-  } else {
-    // Speed tie — random
-    const coin = Math.random() < 0.5;
-    firstKey = coin ? 'playerA' : 'playerB';
-    secondKey = coin ? 'playerB' : 'playerA';
+  const orderedKeys = [firstKey, secondKey];
+  for (const k of orderedKeys) {
+    const act = k === 'playerA' ? actionA : actionB;
+    if (!act.type || act.type === 'move') {
+      if (act.moveId) moveActions.push([k, act]);
+    }
   }
 
-  const orderedActions: [PlayerKey, BattleAction][] = [
-    [firstKey, firstKey === 'playerA' ? actionA : actionB],
-    [secondKey, secondKey === 'playerA' ? actionA : actionB],
-  ];
+  // 4) Execute attacking actions
+  for (const [actorKey, action] of moveActions) {
+    let actor: PlayerBattleState = actorKey === 'playerA' ? playerA : playerB;
+    let target: PlayerBattleState = actorKey === 'playerA' ? playerB : playerA;
 
-  for (const [actorKey, action] of orderedActions) {
-    const actor: BattleFighterState = actorKey === 'playerA' ? playerA : playerB;
-    const target: BattleFighterState = actorKey === 'playerA' ? playerB : playerA;
-
-    // Stun check — skip this actor's action
+    // Stun check
     if (isStunned(actor)) {
       newLog.push({
         turn,
@@ -75,18 +152,16 @@ export function resolveTurn(
         actorName: actor.name,
         action: 'is stunned and cannot move!',
       });
-      // Remove stun after 1 turn
       const updatedActor = {
         ...actor,
         statusEffects: actor.statusEffects.filter(e => e.type !== 'stun'),
       };
-      if (actorKey === 'playerA') playerA = updatedActor;
-      else playerB = updatedActor;
+      if (actorKey === 'playerA') playerA = syncPlayerFromActive(playerA, updatedActor);
+      else playerB = syncPlayerFromActive(playerB, updatedActor);
       continue;
     }
 
-    // Energy check — if not enough energy, use Shadow Strike fallback or skip
-    const move = moveLookup(action.moveId);
+    const move = moveLookup(action.moveId!);
     if (!move) {
       newLog.push({
         turn,
@@ -108,17 +183,18 @@ export function resolveTurn(
     }
 
     // Deduct energy
-    let updatedActor = {
+    let updatedActor: BattleFighterState = {
       ...actor,
       currentEnergy: actor.currentEnergy - move.energyCost,
     };
-    let updatedTarget = { ...target };
+    let updatedTarget: BattleFighterState = { ...target };
 
-    // Multi-hit handling (tag: 'multi-hit' — hits twice)
+    // Multi-hit moves hit twice
     const hitCount = move.tags?.includes('multi-hit') ? 2 : 1;
     let totalDamage = 0;
     let didMiss = false;
     let didCrit = false;
+    let anyRelicLog: string | undefined;
 
     for (let i = 0; i < hitCount; i++) {
       const result = calculateDamage(updatedActor, move, updatedTarget);
@@ -128,13 +204,19 @@ export function resolveTurn(
       }
       totalDamage += result.damage;
       didCrit = didCrit || result.isCrit;
+      if (result.relicLog) anyRelicLog = result.relicLog;
+      if (result.relicUsed !== undefined) updatedTarget.relicUsed = result.relicUsed;
       updatedTarget = {
         ...updatedTarget,
         currentHp: Math.max(0, updatedTarget.currentHp - result.damage),
       };
     }
 
-    // Self-buff / stat modifier moves
+    if (anyRelicLog) {
+      newLog.push({ turn, actorId: target.characterId, actorName: target.name, action: anyRelicLog });
+    }
+
+    // Self-buff moves
     if (move.statModifier && move.statModifier.target === 'self') {
       updatedActor = applyStatModifier(
         updatedActor,
@@ -157,7 +239,6 @@ export function resolveTurn(
         missed: true,
       });
     } else {
-      // Status-only moves (no power, targets opponent)
       if (move.type === 'status' && move.statusEffect) {
         const applied = rollStatusEffect(
           move.statusEffect.chance,
@@ -165,11 +246,7 @@ export function resolveTurn(
           move.statusEffect.effect,
         );
         if (applied) {
-          updatedTarget = applyStatusEffect(
-            updatedTarget,
-            move.statusEffect.effect,
-            move.statusEffect.duration,
-          );
+          updatedTarget = applyStatusEffect(updatedTarget, move.statusEffect.effect, move.statusEffect.duration);
           newLog.push({
             turn,
             actorId: actor.characterId,
@@ -186,7 +263,6 @@ export function resolveTurn(
           });
         }
       } else {
-        // Damage move log entry
         const hitLabel = hitCount > 1 ? ` (hit ${hitCount}× for ${totalDamage} total)` : '';
         const critLabel = didCrit ? ' Critical hit!' : '';
         newLog.push({
@@ -198,7 +274,6 @@ export function resolveTurn(
           isCrit: didCrit,
         });
 
-        // Roll for secondary status effect on damage moves
         if (move.statusEffect && totalDamage > 0) {
           const applied = rollStatusEffect(
             move.statusEffect.chance,
@@ -206,11 +281,7 @@ export function resolveTurn(
             move.statusEffect.effect,
           );
           if (applied) {
-            updatedTarget = applyStatusEffect(
-              updatedTarget,
-              move.statusEffect.effect,
-              move.statusEffect.duration,
-            );
+            updatedTarget = applyStatusEffect(updatedTarget, move.statusEffect.effect, move.statusEffect.duration);
             newLog.push({
               turn,
               actorId: actor.characterId,
@@ -223,39 +294,63 @@ export function resolveTurn(
       }
     }
 
-    // Write updated actors back
-    if (actorKey === 'playerA') {
-      playerA = updatedActor;
-      playerB = updatedTarget;
-    } else {
-      playerB = updatedActor;
-      playerA = updatedTarget;
+    // Trigger post-damage relics (e.g., Senzu Bean heal)
+    const afterDmg = applyRelicAfterDamage(updatedTarget);
+    if (afterDmg.logMessage) {
+      newLog.push({ turn, actorId: updatedTarget.characterId, actorName: updatedTarget.name, action: afterDmg.logMessage });
+      updatedTarget = afterDmg.fighter;
     }
 
-    // Early KO check — stop processing actions if someone is already knocked out
+    if (actorKey === 'playerA') {
+      playerA = syncPlayerFromActive(playerA, updatedActor);
+      playerB = syncPlayerFromActive(playerB, updatedTarget);
+    } else {
+      playerB = syncPlayerFromActive(playerB, updatedActor);
+      playerA = syncPlayerFromActive(playerA, updatedTarget);
+    }
+
     if (playerA.currentHp <= 0 || playerB.currentHp <= 0) break;
   }
 
-  // End of turn — tick status effects for both fighters
+  // 5) End of turn — ticks and energy recovery
   const { fighter: tickedA, entries: entriesA } = tickStatusEffects(playerA, turn);
   const { fighter: tickedB, entries: entriesB } = tickStatusEffects(playerB, turn);
-  playerA = tickedA;
-  playerB = tickedB;
 
-  // Energy recovery (10 per turn, capped at max)
-  playerA = { ...playerA, currentEnergy: Math.min(playerA.maxEnergy, playerA.currentEnergy + 10) };
-  playerB = { ...playerB, currentEnergy: Math.min(playerB.maxEnergy, playerB.currentEnergy + 10) };
+  const relicTurnA = applyRelicEndTurn(tickedA);
+  const relicTurnB = applyRelicEndTurn(tickedB);
 
-  // Win condition check
-  const aAlive = playerA.currentHp > 0;
-  const bAlive = playerB.currentHp > 0;
+  const finalActiveA = {
+    ...relicTurnA.fighter,
+    currentEnergy: Math.min(relicTurnA.fighter.maxEnergy, relicTurnA.fighter.currentEnergy + 10),
+  };
+  const finalActiveB = {
+    ...relicTurnB.fighter,
+    currentEnergy: Math.min(relicTurnB.fighter.maxEnergy, relicTurnB.fighter.currentEnergy + 10),
+  };
+
+  playerA = syncPlayerFromActive(playerA, finalActiveA);
+  playerB = syncPlayerFromActive(playerB, finalActiveB);
+
+  // 6) KO checks & Phase determination
+  if (playerA.currentHp <= 0 && playerA.team.some(f => f.currentHp > 0)) {
+    playerA.mustSwitch = true;
+    newLog.push({ turn, actorId: playerA.characterId, actorName: playerA.name, action: 'was knocked out!' });
+  }
+  if (playerB.currentHp <= 0 && playerB.team.some(f => f.currentHp > 0)) {
+    playerB.mustSwitch = true;
+    newLog.push({ turn, actorId: playerB.characterId, actorName: playerB.name, action: 'was knocked out!' });
+  }
+
+  const aDefeated = !playerA.team.some(f => f.currentHp > 0);
+  const bDefeated = !playerB.team.some(f => f.currentHp > 0);
+
   const winner: BattleState['winner'] =
-    !aAlive && !bAlive ? 'draw'
-    : !aAlive ? 'playerB'
-    : !bAlive ? 'playerA'
+    aDefeated && bDefeated ? 'draw'
+    : aDefeated ? 'playerB'
+    : bDefeated ? 'playerA'
     : undefined;
 
-  const phase = winner !== undefined ? 'ended' : 'selecting';
+  const phase = winner !== undefined ? 'ended' : (playerA.mustSwitch || playerB.mustSwitch ? 'switching' : 'selecting');
 
   return {
     ...state,
@@ -270,45 +365,54 @@ export function resolveTurn(
 
 // ─── Battle state factory ──────────────────────────────────────────────────────
 
-/**
- * Creates the initial BattleState from two characters.
- * The server calls this when a match is made.
- */
 export function createInitialBattleState(
   battleId: string,
-  charA: { id: string; name: string; baseStats: { maxHp: number; maxEnergy: number; attack: number; defense: number; special: number; speed: number }; moveIds: string[] },
-  charB: { id: string; name: string; baseStats: { maxHp: number; maxEnergy: number; attack: number; defense: number; special: number; speed: number }; moveIds: string[] },
+  charA: FighterSpec | FighterSpec[],
+  charB: FighterSpec | FighterSpec[],
+  format: string = 'ou_6v6',
 ): BattleState {
-  const makeFighter = (char: typeof charA): BattleFighterState => ({
-    characterId: char.id,
-    name: char.name,
-    currentHp: char.baseStats.maxHp,
-    maxHp: char.baseStats.maxHp,
-    currentEnergy: char.baseStats.maxEnergy,
-    maxEnergy: char.baseStats.maxEnergy,
-    stats: {
-      attack: char.baseStats.attack,
-      defense: char.baseStats.defense,
-      special: char.baseStats.special,
-      speed: char.baseStats.speed,
-    },
-    baseStats: {
-      attack: char.baseStats.attack,
-      defense: char.baseStats.defense,
-      special: char.baseStats.special,
-      speed: char.baseStats.speed,
-    },
-    statusEffects: [],
-    statModifiers: [],
-    moveIds: char.moveIds,
-  });
+  const makePlayerState = (specs: FighterSpec | FighterSpec[]): PlayerBattleState => {
+    const specList = Array.isArray(specs) ? specs : [specs];
+    const team: BattleFighterState[] = specList.map(char => ({
+      characterId: char.id,
+      name: char.name,
+      currentHp: char.baseStats.maxHp,
+      maxHp: char.baseStats.maxHp,
+      currentEnergy: char.baseStats.maxEnergy,
+      maxEnergy: char.baseStats.maxEnergy,
+      stats: {
+        attack: char.baseStats.attack,
+        defense: char.baseStats.defense,
+        special: char.baseStats.special,
+        speed: char.baseStats.speed,
+      },
+      baseStats: {
+        attack: char.baseStats.attack,
+        defense: char.baseStats.defense,
+        special: char.baseStats.special,
+        speed: char.baseStats.speed,
+      },
+      statusEffects: [],
+      statModifiers: [],
+      moveIds: char.moveIds,
+      relicId: char.relicId,
+      isAlive: true,
+    }));
+
+    return {
+      ...team[0],
+      team,
+      activeIdx: 0,
+    };
+  };
 
   return {
     id: battleId,
     turn: 0,
     phase: 'selecting',
-    playerA: makeFighter(charA),
-    playerB: makeFighter(charB),
+    playerA: makePlayerState(charA),
+    playerB: makePlayerState(charB),
     log: [],
+    format,
   };
 }

@@ -51,9 +51,14 @@ export function useBattleState() {
 
   /** Submits a move to the server */
   const submitAction = useCallback(
-    (moveId: string) => {
-      socket.emit('battle:action', { moveId });
-      storeSubmitAction(moveId);
+    (payload: string | { type: 'move' | 'switch'; moveId?: string; switchIndex?: number }) => {
+      if (typeof payload === 'string') {
+        socket.emit('battle:action', { moveId: payload });
+        storeSubmitAction(payload);
+      } else {
+        socket.emit('battle:action', payload);
+        storeSubmitAction(payload.moveId || `switch:${payload.switchIndex}`);
+      }
     },
     [socket, storeSubmitAction],
   );

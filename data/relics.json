@@ -1,0 +1,46 @@
+[
+  {
+    "id": "senzu_bean",
+    "name": "Senzu Bean",
+    "description": "Once per battle, automatically restores 30% max HP when falling below 30% HP.",
+    "effectType": "heal_low_hp",
+    "value": 30,
+    "oneTime": true
+  },
+  {
+    "id": "chakra_band",
+    "name": "Chakra Band",
+    "description": "Boosts Special attack power by 20%.",
+    "effectType": "boost_special",
+    "value": 1.2
+  },
+  {
+    "id": "dragon_scale",
+    "name": "Dragon Scale",
+    "description": "Reduces all incoming physical attack damage by 15%.",
+    "effectType": "reduce_physical",
+    "value": 0.85
+  },
+  {
+    "id": "shadow_cloak",
+    "name": "Shadow Cloak",
+    "description": "Grants a 10% dodge chance against all incoming attacks.",
+    "effectType": "evade_chance",
+    "value": 0.1
+  },
+  {
+    "id": "warriors_resolve",
+    "name": "Warrior's Resolve",
+    "description": "If hit by an attack that would inflict lethal damage from full HP, survives with 1 HP instead. (Once per battle)",
+    "effectType": "survive_lethal",
+    "value": 1,
+    "oneTime": true
+  },
+  {
+    "id": "energy_flask",
+    "name": "Energy Flask",
+    "description": "Regenerates +15 extra energy automatically at the end of every turn.",
+    "effectType": "energy_regen",
+    "value": 15
+  }
+]

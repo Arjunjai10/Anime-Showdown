@@ -3,13 +3,10 @@
  * These are NOT exported from the package — they're internal helpers only.
  */
 
-import type { Move, Character } from '@anime-showdown/shared-types';
+import type { Move, Character, PlayerBattleState, BattleFighterState } from '@anime-showdown/shared-types';
 
 /** A move with its full data resolved (from the moves registry). */
-export interface MoveWithData extends Move {
-  // Currently the same shape — this alias exists so the engine can evolve
-  // internal fields without touching shared-types
-}
+export interface MoveWithData extends Move {}
 
 /** A character with its full move data resolved. */
 export interface CharacterWithMoves extends Character {
@@ -21,4 +18,21 @@ export interface MoveApplicationResult {
   damage: number;
   isCrit: boolean;
   missed: boolean;
+  relicLog?: string;
+  relicUsed?: boolean;
+}
+
+export interface FighterSpec {
+  id: string;
+  name: string;
+  baseStats: {
+    maxHp: number;
+    maxEnergy: number;
+    attack: number;
+    defense: number;
+    special: number;
+    speed: number;
+  };
+  moveIds: string[];
+  relicId?: string;
 }

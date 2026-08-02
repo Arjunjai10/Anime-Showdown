@@ -278,3 +278,48 @@ describe('resolveTurn — stat modifiers', () => {
     expect(next.playerA.stats.attack).toBeGreaterThan(before);
   });
 });
+
+describe('resolveTurn — multi-fighter switching & KO replacement', () => {
+  it('switches active fighter before opponent attacks', () => {
+    const teamA = [CHAR_FAST, { ...CHAR_SLOW, id: 'bench-char', name: 'Bench Char' }];
+    const state = createInitialBattleState('team-battle', teamA, CHAR_EQUAL);
+    const actionSwitch: BattleAction = { playerKey: 'playerA', type: 'switch', switchIndex: 1 };
+    const actionMove: BattleAction = { playerKey: 'playerB', moveId: 'basic-attack' };
+
+    const next = resolveTurn(state, actionSwitch, actionMove, basicLookup);
+    expect(next.playerA.activeIdx).toBe(1);
+    expect(next.playerA.characterId).toBe('bench-char');
+    expect(next.playerA.currentHp).toBeLessThan(next.playerA.maxHp);
+    expect(next.playerA.team[0].currentHp).toBe(next.playerA.team[0].maxHp);
+  });
+
+  it('enters switching phase when lead fighter is KOd and bench is alive', () => {
+    const teamB = [CHAR_LOW_HP, { ...CHAR_SLOW, id: 'bench-b', name: 'Bench B' }];
+    const state = createInitialBattleState('ko-battle', CHAR_FAST, teamB);
+    const next = resolveTurn(state, makeAction('playerA', 'basic-attack'), makeAction('playerB', 'basic-attack'), basicLookup);
+
+    expect(next.playerB.currentHp).toBe(0);
+    expect(next.playerB.mustSwitch).toBe(true);
+    expect(next.phase).toBe('switching');
+    expect(next.winner).toBeUndefined();
+  });
+
+  it('resolves switching phase when fainted player selects replacement', () => {
+    const teamB = [CHAR_LOW_HP, { ...CHAR_SLOW, id: 'bench-b', name: 'Bench B' }];
+    const state = createInitialBattleState('ko-battle-2', CHAR_FAST, teamB);
+    const afterKo = resolveTurn(state, makeAction('playerA', 'basic-attack'), makeAction('playerB', 'basic-attack'), basicLookup);
+
+    const switchAfterKo = resolveTurn(
+      afterKo,
+      makeAction('playerA', 'basic-attack'),
+      { playerKey: 'playerB', type: 'switch', switchIndex: 1 },
+      basicLookup,
+    );
+
+    expect(switchAfterKo.phase).toBe('selecting');
+    expect(switchAfterKo.playerB.activeIdx).toBe(1);
+    expect(switchAfterKo.playerB.characterId).toBe('bench-b');
+    expect(switchAfterKo.playerB.mustSwitch).toBe(false);
+  });
+});
+
