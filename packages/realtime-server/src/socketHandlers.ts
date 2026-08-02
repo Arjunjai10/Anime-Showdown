@@ -116,7 +116,7 @@ export function registerSocketHandlers(io: AppIO): void {
             format,
             io,
             socket.data.username || 'Duelist',
-            '🤖 Showdown AI (CPU)',
+            'Showdown AI (CPU)',
           );
           activeSessions.set(battleId, session);
           session.start();
@@ -191,7 +191,7 @@ export function registerSocketHandlers(io: AppIO): void {
               socket.data.format || 'ou_6v6',
               io,
               socket.data.username || 'Duelist',
-              '🤖 Showdown AI (CPU)',
+              'Showdown AI (CPU)',
             );
             activeSessions.set(battleId, session);
             session.start();

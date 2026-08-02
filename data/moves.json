@@ -1,7 +1,7 @@
 [
   {
     "id": "recharge",
-    "name": "⚡ Focus & Regain Energy",
+    "name": "Focus & Regain Energy",
     "description": "Focus internal energy and fighting spirit to instantly regain +50% Energy for upcoming attacks.",
     "type": "self", "power": 0, "accuracy": 100, "energyCost": 0
   },

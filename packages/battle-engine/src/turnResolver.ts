@@ -173,7 +173,7 @@ export function resolveTurn(
         turn,
         actorId: actor.characterId,
         actorName: actor.name,
-        action: `focused internal energy and spirit to regain +${actualGain} Energy! ⚡`,
+        action: `focused internal energy and spirit to regain +${actualGain} Energy!`,
       });
       if (actorKey === 'playerA') playerA = syncPlayerFromActive(playerA, updatedActor);
       else playerB = syncPlayerFromActive(playerB, updatedActor);
