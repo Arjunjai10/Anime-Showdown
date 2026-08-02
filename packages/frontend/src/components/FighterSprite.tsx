@@ -13,7 +13,7 @@ export const FIGHTER_GIFS: Record<string, FighterGifMeta> = {
   kaze: {
     name: 'Kaze',
     title: 'Phantom Blade',
-    gif: 'https://media.giphy.com/media/YSeOANLTDZtdm/giphy.gif',
+    gif: 'https://media.giphy.com/media/cTk3X2v2hF5dG/giphy.gif',
     color: 'var(--text-primary)',
   },
   ryuu: {
@@ -25,37 +25,37 @@ export const FIGHTER_GIFS: Record<string, FighterGifMeta> = {
   tsubaki: {
     name: 'Tsubaki',
     title: 'Iron Lotus',
-    gif: 'https://media.giphy.com/media/C5pcN5xLIfHNu/giphy.gif',
+    gif: 'https://media.giphy.com/media/25hfBwL0fG7C0/giphy.gif',
     color: 'var(--text-primary)',
   },
   sora: {
     name: 'Sora',
     title: 'Stormcaller',
-    gif: 'https://media.giphy.com/media/k5qKwe9WnL8n6/giphy.gif',
+    gif: 'https://media.giphy.com/media/13EZZ3rV1CthT2/giphy.gif',
     color: 'var(--text-secondary)',
   },
   ren: {
     name: 'Ren',
     title: 'Thunder Fist',
-    gif: 'https://media.giphy.com/media/arbUO3vF6t44w/giphy.gif',
+    gif: 'https://media.giphy.com/media/g5Sz48N7F3u3m/giphy.gif',
     color: 'var(--text-primary)',
   },
   hana: {
     name: 'Hana',
     title: 'Void Walker',
-    gif: 'https://media.giphy.com/media/y07IinYfN04cE/giphy.gif',
+    gif: 'https://media.giphy.com/media/12wsnVFIjCneO4/giphy.gif',
     color: 'var(--text-secondary)',
   },
   mira: {
     name: 'Mira',
     title: 'Cursed Sage',
-    gif: 'https://media.giphy.com/media/2e4d25yEhrvHw7RgyG/giphy.gif',
+    gif: 'https://media.giphy.com/media/8qsq9Vgh3mYvR830iB/giphy.gif',
     color: 'var(--text-primary)',
   },
   gale: {
     name: 'Gale',
     title: 'Wild Tempest',
-    gif: 'https://media.giphy.com/media/1zH0e9S98mBgc14z0S/giphy.gif',
+    gif: 'https://media.giphy.com/media/wMqi2Gg3WbS5G/giphy.gif',
     color: 'var(--text-secondary)',
   },
 };
