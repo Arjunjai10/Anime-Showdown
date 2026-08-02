@@ -91,7 +91,7 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
                 <FighterLogo
                   id={winner === 'draw' ? 'handshake' : winner === yourKey ? 'trophy' : 'skull'}
                   size={84}
-                  color={winner === 'draw' ? '#94A3B8' : winner === yourKey ? '#EAB308' : '#EF4444'}
+                  color="var(--text-primary)"
                 />
               </div>
               <div className="winner-title">{winner === 'draw' ? 'Draw!' : winner === yourKey ? 'Victory!' : 'Defeated'}</div>

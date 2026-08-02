@@ -7,7 +7,7 @@ export const WorkspaceTabs: React.FC = () => {
   const battleTabIds = Object.keys(openBattleTabs);
 
   return (
-    <div className="workspace-tabs-bar">
+    <div className="workspace-tabs-bar" style={{ background: 'var(--panel-header)', borderBottom: '1px solid var(--border)' }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 6, overflowX: 'auto', padding: '6px 16px' }}>
         
         {/* Lobby Tab */}
@@ -17,7 +17,7 @@ export const WorkspaceTabs: React.FC = () => {
           onClick={() => setActiveTab('lobby')}
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
-          <FighterLogo id="swords" size={16} color={activeTabId === 'lobby' ? '#FFFFFF' : '#888888'} />
+          <FighterLogo id="swords" size={16} color={activeTabId === 'lobby' ? 'var(--text-primary)' : 'var(--text-secondary)'} />
           <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Lobby & Roster</span>
         </button>
 
@@ -28,7 +28,7 @@ export const WorkspaceTabs: React.FC = () => {
           onClick={() => setActiveTab('teambuilder')}
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
-          <FighterLogo id="shield" size={16} color={activeTabId === 'teambuilder' ? '#FFFFFF' : '#888888'} />
+          <FighterLogo id="shield" size={16} color={activeTabId === 'teambuilder' ? 'var(--text-primary)' : 'var(--text-secondary)'} />
           <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Teambuilder</span>
         </button>
 
@@ -43,7 +43,7 @@ export const WorkspaceTabs: React.FC = () => {
               onClick={() => setActiveTab(bid)}
               style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}
             >
-              <FighterLogo id="fire" size={16} color={isActive ? '#FFFFFF' : '#888888'} />
+              <FighterLogo id="fire" size={16} color={isActive ? 'var(--text-primary)' : 'var(--text-secondary)'} />
               <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>{tab.title || 'Battle Room'}</span>
               {tab.hasUnread && <span className="unread-dot" title="New messages!" />}
               <button
