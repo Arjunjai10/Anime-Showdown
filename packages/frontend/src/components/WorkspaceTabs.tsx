@@ -7,7 +7,7 @@ export const WorkspaceTabs: React.FC = () => {
   const battleTabIds = Object.keys(openBattleTabs);
 
   return (
-    <div className="workspace-tabs-bar" style={{ background: 'var(--panel-header)', borderBottom: '1px solid var(--border)' }}>
+    <div className="workspace-tabs-bar" style={{ position: 'sticky', top: 60, zIndex: 990, background: 'var(--panel-header)', borderBottom: '1px solid var(--border)', boxShadow: '0 4px 14px rgba(0,0,0,0.15)' }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', gap: 6, overflowX: 'auto', padding: '6px 16px' }}>
         
         {/* Lobby Tab */}

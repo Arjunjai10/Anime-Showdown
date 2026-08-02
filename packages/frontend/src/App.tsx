@@ -87,7 +87,7 @@ export default function App() {
   return (
     <>
       {/* ── Navigation Bar ────────────────────────────────────────── */}
-      <nav className="nav" style={{ borderBottom: '1px solid var(--border)', zIndex: 200, position: 'relative', background: 'var(--bg-surface)' }}>
+      <nav className="nav" style={{ borderBottom: '1px solid var(--border)', zIndex: 1000, position: 'sticky', top: 0, background: 'var(--bg-surface)', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}>
         <Link
           to="/"
           id="nav-logo"
