@@ -4,79 +4,79 @@
     "name": "Kaze",
     "title": "The Phantom Blade",
     "archetype": "Ninja / Speed",
-    "description": "A shadow-step master who strikes before the enemy can react. Kaze sacrifices raw power for blinding speed and debilitating poisons, winning battles through attrition and precision rather than brute force.",
-    "baseStats": {
-      "maxHp": 900,
-      "maxEnergy": 100,
-      "attack": 85,
-      "defense": 70,
-      "special": 80,
-      "speed": 120
-    },
+    "description": "A shadow-step master who strikes before the enemy can react. Wins through attrition and precision.",
+    "baseStats": { "maxHp": 900, "maxEnergy": 100, "attack": 85, "defense": 70, "special": 80, "speed": 120 },
     "moveIds": ["shadow-strike", "poison-shuriken", "smoke-veil", "wind-slash"],
-    "colorScheme": {
-      "primary": "#4F46E5",
-      "secondary": "#818CF8"
-    }
+    "colorScheme": { "primary": "#4F46E5", "secondary": "#818CF8" }
   },
   {
     "id": "ryuu",
     "name": "Ryuu",
     "title": "The Eternal Flame",
     "archetype": "Fighter / Power",
-    "description": "A warrior of legendary power who channels primal fire through every blow. Ryuu hits harder than anyone alive, trading speed and finesse for sheer devastating output that ends fights fast.",
-    "baseStats": {
-      "maxHp": 1100,
-      "maxEnergy": 100,
-      "attack": 120,
-      "defense": 80,
-      "special": 110,
-      "speed": 70
-    },
+    "description": "A warrior of legendary power who channels primal fire through every blow. Ends fights fast.",
+    "baseStats": { "maxHp": 1100, "maxEnergy": 100, "attack": 120, "defense": 80, "special": 110, "speed": 70 },
     "moveIds": ["dragon-fist", "flame-burst", "power-surge", "supernova"],
-    "colorScheme": {
-      "primary": "#DC2626",
-      "secondary": "#F97316"
-    }
+    "colorScheme": { "primary": "#DC2626", "secondary": "#F97316" }
   },
   {
     "id": "tsubaki",
     "name": "Tsubaki",
     "title": "The Iron Lotus",
     "archetype": "Warrior / Tank",
-    "description": "An iron-willed warrior who outlasts everything thrown at her. Tsubaki's defense borders on the impenetrable — she wins not by dealing damage first, but by still standing when everyone else has fallen.",
-    "baseStats": {
-      "maxHp": 1300,
-      "maxEnergy": 100,
-      "attack": 90,
-      "defense": 130,
-      "special": 70,
-      "speed": 60
-    },
+    "description": "An iron-willed warrior who outlasts everything thrown at her. Wins by still standing when everyone else falls.",
+    "baseStats": { "maxHp": 1300, "maxEnergy": 100, "attack": 90, "defense": 130, "special": 70, "speed": 60 },
     "moveIds": ["iron-guard", "petal-storm", "thorn-barrier", "earth-slam"],
-    "colorScheme": {
-      "primary": "#059669",
-      "secondary": "#34D399"
-    }
+    "colorScheme": { "primary": "#059669", "secondary": "#34D399" }
   },
   {
     "id": "sora",
     "name": "Sora",
     "title": "The Stormcaller",
     "archetype": "Mage / Elemental",
-    "description": "A conduit for elemental chaos who bends lightning, ice, and storm to her will. Sora's special power is unmatched, capable of erasing opponents with a single fully-charged technique — if she survives long enough to charge it.",
-    "baseStats": {
-      "maxHp": 850,
-      "maxEnergy": 100,
-      "attack": 75,
-      "defense": 65,
-      "special": 130,
-      "speed": 95
-    },
+    "description": "A conduit for elemental chaos who bends lightning, ice, and storm to her will. Unmatched special power.",
+    "baseStats": { "maxHp": 850, "maxEnergy": 100, "attack": 75, "defense": 65, "special": 130, "speed": 95 },
     "moveIds": ["thunder-lance", "blizzard", "arcane-surge", "storms-eye"],
-    "colorScheme": {
-      "primary": "#0EA5E9",
-      "secondary": "#38BDF8"
-    }
+    "colorScheme": { "primary": "#0EA5E9", "secondary": "#38BDF8" }
+  },
+  {
+    "id": "ren",
+    "name": "Ren",
+    "title": "The Thunder Fist",
+    "archetype": "Brawler / Electric",
+    "description": "A martial artist who channels raw electricity through every punch. Built like a tank but moves like lightning — unpredictable and relentless in close range.",
+    "baseStats": { "maxHp": 1000, "maxEnergy": 100, "attack": 105, "defense": 85, "special": 95, "speed": 90 },
+    "moveIds": ["lightning-jab", "thunder-clap", "static-charge", "thunderstrike"],
+    "colorScheme": { "primary": "#D97706", "secondary": "#FCD34D" }
+  },
+  {
+    "id": "hana",
+    "name": "Hana",
+    "title": "The Void Walker",
+    "archetype": "Assassin / Shadow",
+    "description": "She steps through the void between moments, striking from positions that should be impossible. The fastest fighter alive — if you see her move, it's already too late.",
+    "baseStats": { "maxHp": 820, "maxEnergy": 100, "attack": 115, "defense": 58, "special": 90, "speed": 135 },
+    "moveIds": ["shadow-step", "void-strike", "phantom-form", "dimension-slash"],
+    "colorScheme": { "primary": "#7C3AED", "secondary": "#A78BFA" }
+  },
+  {
+    "id": "mira",
+    "name": "Mira",
+    "title": "The Cursed Sage",
+    "archetype": "Dark Mage / Curse",
+    "description": "A forbidden arts practitioner whose curses rot through any defense over time. Fragile up front, catastrophic given enough turns — never let her reach the late game.",
+    "baseStats": { "maxHp": 875, "maxEnergy": 100, "attack": 72, "defense": 72, "special": 128, "speed": 85 },
+    "moveIds": ["curse-seal", "dark-pulse", "hex-shield", "forbidden-art"],
+    "colorScheme": { "primary": "#BE123C", "secondary": "#FB7185" }
+  },
+  {
+    "id": "gale",
+    "name": "Gale",
+    "title": "The Wild Tempest",
+    "archetype": "Berserker / Wild",
+    "description": "Fights like a force of nature — chaotic, relentless, and terrifyingly strong. Gale gets stronger the longer a fight goes, rewarding those willing to take hits to deal them.",
+    "baseStats": { "maxHp": 1050, "maxEnergy": 100, "attack": 118, "defense": 72, "special": 88, "speed": 95 },
+    "moveIds": ["reckless-charge", "cyclone-spin", "berserk-mode", "wild-storm"],
+    "colorScheme": { "primary": "#92400E", "secondary": "#F59E0B" }
   }
 ]

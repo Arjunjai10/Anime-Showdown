@@ -2,200 +2,214 @@
   {
     "id": "shadow-strike",
     "name": "Shadow Strike",
-    "description": "A blindingly fast physical strike from the shadows. Low cost, reliable damage — Kaze's bread-and-butter move.",
-    "type": "physical",
-    "power": 70,
-    "accuracy": 100,
-    "energyCost": 20
+    "description": "A blindingly fast physical strike from the shadows. Low cost, reliable damage.",
+    "type": "physical", "power": 70, "accuracy": 100, "energyCost": 20
   },
   {
     "id": "poison-shuriken",
     "name": "Poison Shuriken",
-    "description": "A shuriken laced with paralytic venom. Deals moderate damage with a high chance of poisoning the target.",
-    "type": "physical",
-    "power": 40,
-    "accuracy": 95,
-    "energyCost": 25,
-    "statusEffect": {
-      "effect": "poison",
-      "chance": 0.65,
-      "duration": 3
-    }
+    "description": "A shuriken laced with paralytic venom. Deals moderate damage with a high chance of poison.",
+    "type": "physical", "power": 40, "accuracy": 95, "energyCost": 25,
+    "statusEffect": { "effect": "poison", "chance": 0.65, "duration": 3 }
   },
   {
     "id": "smoke-veil",
     "name": "Smoke Veil",
     "description": "Vanish into a cloud of chakra smoke. Greatly boosts defense for several turns.",
-    "type": "self",
-    "accuracy": 100,
-    "energyCost": 30,
-    "statModifier": {
-      "target": "self",
-      "stat": "defense",
-      "multiplier": 1.5,
-      "duration": 3
-    }
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.5, "duration": 3 }
   },
   {
     "id": "wind-slash",
     "name": "Wind Slash",
-    "description": "A razor blade of compressed wind energy. Never misses and deals solid special damage.",
-    "type": "special",
-    "power": 80,
-    "accuracy": 100,
-    "energyCost": 35
+    "description": "A razor blade of compressed wind energy. Never misses.",
+    "type": "special", "power": 80, "accuracy": 100, "energyCost": 35
   },
   {
     "id": "dragon-fist",
     "name": "Dragon Fist",
-    "description": "A devastating punch that hits like a dragon's jaws. Massive physical damage with a chance to stun.",
-    "type": "physical",
-    "power": 100,
-    "accuracy": 90,
-    "energyCost": 40,
-    "statusEffect": {
-      "effect": "stun",
-      "chance": 0.25,
-      "duration": 1
-    }
+    "description": "A devastating punch that hits like a dragon's jaws. Massive damage with a chance to stun.",
+    "type": "physical", "power": 100, "accuracy": 90, "energyCost": 40,
+    "statusEffect": { "effect": "stun", "chance": 0.25, "duration": 1 }
   },
   {
     "id": "flame-burst",
     "name": "Flame Burst",
-    "description": "A controlled explosion of pure fire energy. Burns the target, reducing their attack over time.",
-    "type": "special",
-    "power": 85,
-    "accuracy": 95,
-    "energyCost": 35,
-    "statusEffect": {
-      "effect": "burn",
-      "chance": 0.35,
-      "duration": 3
-    }
+    "description": "A controlled explosion of pure fire energy. Burns the target, reducing their attack.",
+    "type": "special", "power": 85, "accuracy": 95, "energyCost": 35,
+    "statusEffect": { "effect": "burn", "chance": 0.35, "duration": 3 }
   },
   {
     "id": "power-surge",
     "name": "Power Surge",
-    "description": "Channel raw energy into your muscles. Dramatically increases attack power for several turns.",
-    "type": "self",
-    "accuracy": 100,
-    "energyCost": 30,
-    "statModifier": {
-      "target": "self",
-      "stat": "attack",
-      "multiplier": 1.5,
-      "duration": 3
-    }
+    "description": "Channel raw energy into your muscles. Dramatically increases attack power.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.5, "duration": 3 }
   },
   {
     "id": "supernova",
     "name": "Supernova",
-    "description": "Ryuu's ultimate technique — a concentrated blast of flame-force energy that obliterates everything in range. Devastatingly powerful but costs almost everything.",
-    "type": "special",
-    "power": 140,
-    "accuracy": 85,
-    "energyCost": 60
+    "description": "Ryuu's ultimate — a concentrated blast of flame-force energy. Obliterates everything. High cost, high risk.",
+    "type": "special", "power": 140, "accuracy": 85, "energyCost": 60
   },
   {
     "id": "iron-guard",
     "name": "Iron Guard",
-    "description": "Reinforce every part of your body with concentrated iron will. Massively boosts defense for an extended duration.",
-    "type": "self",
-    "accuracy": 100,
-    "energyCost": 30,
-    "statModifier": {
-      "target": "self",
-      "stat": "defense",
-      "multiplier": 1.7,
-      "duration": 4
-    }
+    "description": "Reinforce every part of your body with iron will. Massively boosts defense for an extended duration.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.7, "duration": 4 }
   },
   {
     "id": "petal-storm",
     "name": "Petal Storm",
-    "description": "A flurry of razor-sharp petals that strikes twice in quick succession. Each hit is moderate but together they shred through defenses.",
-    "type": "physical",
-    "power": 55,
-    "accuracy": 90,
-    "energyCost": 35,
+    "description": "A flurry of razor-sharp petals that strikes twice in quick succession.",
+    "type": "physical", "power": 55, "accuracy": 90, "energyCost": 35,
     "tags": ["multi-hit"]
   },
   {
     "id": "thorn-barrier",
     "name": "Thorn Barrier",
-    "description": "Surround yourself with an aura of hardened thorns. Slows the opponent significantly by making every strike cost them momentum.",
-    "type": "status",
-    "accuracy": 90,
-    "energyCost": 40,
-    "statusEffect": {
-      "effect": "slow",
-      "chance": 0.9,
-      "duration": 3
-    }
+    "description": "Surround yourself with hardened thorns. Slows the opponent significantly.",
+    "type": "status", "accuracy": 90, "energyCost": 40,
+    "statusEffect": { "effect": "slow", "chance": 0.9, "duration": 3 }
   },
   {
     "id": "earth-slam",
     "name": "Earth Slam",
-    "description": "Bring both fists down with tectonic force. Heavy physical damage and a high chance of slowing the target.",
-    "type": "physical",
-    "power": 95,
-    "accuracy": 90,
-    "energyCost": 40,
-    "statusEffect": {
-      "effect": "slow",
-      "chance": 0.3,
-      "duration": 2
-    }
+    "description": "Bring both fists down with tectonic force. Heavy damage and a high chance of slowing.",
+    "type": "physical", "power": 95, "accuracy": 90, "energyCost": 40,
+    "statusEffect": { "effect": "slow", "chance": 0.3, "duration": 2 }
   },
   {
     "id": "thunder-lance",
     "name": "Thunder Lance",
-    "description": "A javelin of pure lightning hurled at the opponent. Heavy special damage with a chance of stun from the electrical discharge.",
-    "type": "special",
-    "power": 90,
-    "accuracy": 95,
-    "energyCost": 35,
-    "statusEffect": {
-      "effect": "stun",
-      "chance": 0.2,
-      "duration": 1
-    }
+    "description": "A javelin of pure lightning. Heavy special damage with a chance of stun.",
+    "type": "special", "power": 90, "accuracy": 95, "energyCost": 35,
+    "statusEffect": { "effect": "stun", "chance": 0.2, "duration": 1 }
   },
   {
     "id": "blizzard",
     "name": "Blizzard",
-    "description": "Unleash a howling blizzard of ice that coats the opponent in frost, dealing damage and drastically reducing their speed.",
-    "type": "special",
-    "power": 70,
-    "accuracy": 90,
-    "energyCost": 35,
-    "statusEffect": {
-      "effect": "slow",
-      "chance": 0.45,
-      "duration": 2
-    }
+    "description": "A howling blizzard of ice that deals damage and drastically reduces speed.",
+    "type": "special", "power": 70, "accuracy": 90, "energyCost": 35,
+    "statusEffect": { "effect": "slow", "chance": 0.45, "duration": 2 }
   },
   {
     "id": "arcane-surge",
     "name": "Arcane Surge",
-    "description": "Flood your core with raw elemental power. Dramatically boosts special attack for several turns.",
-    "type": "self",
-    "accuracy": 100,
-    "energyCost": 30,
-    "statModifier": {
-      "target": "self",
-      "stat": "special",
-      "multiplier": 1.5,
-      "duration": 3
-    }
+    "description": "Flood your core with raw elemental power. Dramatically boosts special attack.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "special", "multiplier": 1.5, "duration": 3 }
   },
   {
     "id": "storms-eye",
     "name": "Storm's Eye",
-    "description": "Sora's signature technique — a focused convergence of all elemental forces into a single devastating strike. The most powerful special attack in the game, at massive energy cost.",
-    "type": "special",
-    "power": 150,
-    "accuracy": 80,
-    "energyCost": 70
+    "description": "Sora's signature — a focused convergence of all elemental forces. The most powerful special attack in the game.",
+    "type": "special", "power": 150, "accuracy": 80, "energyCost": 70
+  },
+  {
+    "id": "lightning-jab",
+    "name": "Lightning Jab",
+    "description": "A rapid, electricity-charged jab that crackles on impact. Reliable, fast, and always on target.",
+    "type": "physical", "power": 65, "accuracy": 100, "energyCost": 20
+  },
+  {
+    "id": "thunder-clap",
+    "name": "Thunder Clap",
+    "description": "Ren claps his electrified fists together, generating a shockwave that can stun on impact.",
+    "type": "physical", "power": 82, "accuracy": 90, "energyCost": 30,
+    "statusEffect": { "effect": "stun", "chance": 0.22, "duration": 1 }
+  },
+  {
+    "id": "static-charge",
+    "name": "Static Charge",
+    "description": "Overload your muscles with static electricity. Massively increases speed for several turns.",
+    "type": "self", "accuracy": 100, "energyCost": 25,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.5, "duration": 3 }
+  },
+  {
+    "id": "thunderstrike",
+    "name": "Thunderstrike",
+    "description": "Ren calls down a focused lightning bolt through his raised fist. Devastating special damage with a high stun chance.",
+    "type": "special", "power": 112, "accuracy": 85, "energyCost": 45,
+    "statusEffect": { "effect": "stun", "chance": 0.32, "duration": 1 }
+  },
+  {
+    "id": "shadow-step",
+    "name": "Shadow Step",
+    "description": "Hana phases through shadow itself and reappears directly behind the target. Never misses. High critical rate.",
+    "type": "physical", "power": 78, "accuracy": 100, "energyCost": 20
+  },
+  {
+    "id": "void-strike",
+    "name": "Void Strike",
+    "description": "Channel void energy into a concentrated blast. Passes through standard defenses.",
+    "type": "special", "power": 88, "accuracy": 95, "energyCost": 30
+  },
+  {
+    "id": "phantom-form",
+    "name": "Phantom Form",
+    "description": "Hana becomes partially ethereal, dramatically increasing her already terrifying speed.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.6, "duration": 3 }
+  },
+  {
+    "id": "dimension-slash",
+    "name": "Dimension Slash",
+    "description": "A blade drawn through the space between dimensions. Punishing physical damage.",
+    "type": "physical", "power": 125, "accuracy": 80, "energyCost": 50
+  },
+  {
+    "id": "curse-seal",
+    "name": "Curse Seal",
+    "description": "Brand the target with a forbidden curse mark. High chance of applying a lethal poison.",
+    "type": "status", "accuracy": 90, "energyCost": 30,
+    "statusEffect": { "effect": "poison", "chance": 0.85, "duration": 4 }
+  },
+  {
+    "id": "dark-pulse",
+    "name": "Dark Pulse",
+    "description": "A pulse of condensed dark energy that sears the target, with a chance of lingering burn.",
+    "type": "special", "power": 78, "accuracy": 95, "energyCost": 28,
+    "statusEffect": { "effect": "burn", "chance": 0.38, "duration": 3 }
+  },
+  {
+    "id": "hex-shield",
+    "name": "Hex Shield",
+    "description": "Weave a barrier of hexes and dark matter around yourself. Exceptional defense boost.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.65, "duration": 4 }
+  },
+  {
+    "id": "forbidden-art",
+    "name": "Forbidden Art",
+    "description": "Mira's ultimate — a technique banned from all known schools of magic. Costs nearly everything. The most dangerous spell in existence.",
+    "type": "special", "power": 158, "accuracy": 73, "energyCost": 72
+  },
+  {
+    "id": "reckless-charge",
+    "name": "Reckless Charge",
+    "description": "Gale hurls himself at the enemy with full force and zero restraint. Massive damage, imperfect accuracy.",
+    "type": "physical", "power": 92, "accuracy": 85, "energyCost": 25
+  },
+  {
+    "id": "cyclone-spin",
+    "name": "Cyclone Spin",
+    "description": "Spin at hurricane speed, raking the target with wind-enhanced strikes and reducing their movement.",
+    "type": "physical", "power": 65, "accuracy": 95, "energyCost": 25,
+    "statusEffect": { "effect": "slow", "chance": 0.45, "duration": 2 }
+  },
+  {
+    "id": "berserk-mode",
+    "name": "Berserk Mode",
+    "description": "Gale discards all self-preservation and enters a pure rage state. Attack skyrockets for 2 turns.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.8, "duration": 2 }
+  },
+  {
+    "id": "wild-storm",
+    "name": "Wild Storm",
+    "description": "Unleash a tempest of wild, uncontrolled energy. Heavy special damage that bypasses careful defense.",
+    "type": "special", "power": 102, "accuracy": 85, "energyCost": 42
   }
 ]

@@ -8,6 +8,10 @@ const ARCHETYPE_EMOJI: Record<string, string> = {
   ryuu:    '🔥',
   tsubaki: '🛡️',
   sora:    '⚡',
+  ren:     '👊',
+  hana:    '🗡️',
+  mira:    '🔮',
+  gale:    '🌪️',
 };
 
 const CHAR_COLORS: Record<string, { primary: string; secondary: string }> = {
@@ -15,6 +19,10 @@ const CHAR_COLORS: Record<string, { primary: string; secondary: string }> = {
   ryuu:    { primary: '#DC2626', secondary: '#F97316' },
   tsubaki: { primary: '#059669', secondary: '#34D399' },
   sora:    { primary: '#0EA5E9', secondary: '#38BDF8' },
+  ren:     { primary: '#D97706', secondary: '#FCD34D' },
+  hana:    { primary: '#7C3AED', secondary: '#A78BFA' },
+  mira:    { primary: '#BE123C', secondary: '#FB7185' },
+  gale:    { primary: '#92400E', secondary: '#F59E0B' },
 };
 
 interface BattleArenaProps {

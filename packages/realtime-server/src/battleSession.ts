@@ -18,7 +18,7 @@ import type { MoveWithData } from '@anime-showdown/battle-engine';
 
 // Load character/move data at startup
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const dataDir = resolve(__dirname, '../../../../data');
+const dataDir = resolve(__dirname, '../../../data');
 const characters: Character[] = JSON.parse(readFileSync(resolve(dataDir, 'characters.json'), 'utf-8'));
 const moves: Move[] = JSON.parse(readFileSync(resolve(dataDir, 'moves.json'), 'utf-8'));
 const movesById = new Map<string, MoveWithData>(moves.map(m => [m.id, m as MoveWithData]));

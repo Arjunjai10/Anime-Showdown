@@ -10,10 +10,14 @@ interface CharacterCardProps {
 
 /** Emoji avatar per archetype — replaced with actual sprites in a later phase */
 const ARCHETYPE_EMOJI: Record<string, string> = {
-  'Ninja / Speed':      '🥷',
-  'Fighter / Power':    '🔥',
-  'Warrior / Tank':     '🛡️',
-  'Mage / Elemental':   '⚡',
+  'Ninja / Speed':        '🥷',
+  'Fighter / Power':      '🔥',
+  'Warrior / Tank':       '🛡️',
+  'Mage / Elemental':     '⚡',
+  'Brawler / Electric':   '👊',
+  'Assassin / Shadow':    '🗡️',
+  'Dark Mage / Curse':    '🔮',
+  'Berserker / Wild':     '🌪️',
 };
 
 const STAT_LABELS: Array<{ key: keyof Character['baseStats']; label: string }> = [
