@@ -1,0 +1,25 @@
+{
+  "name": "@anime-showdown/realtime-server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@anime-showdown/battle-engine": "1.0.0",
+    "@anime-showdown/shared-types": "1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "socket.io": "^4.7.5",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20.14.5",
+    "@types/uuid": "^10.0.0",
+    "tsx": "^4.15.7",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,26 @@
+// Re-export everything from shared-types for convenient local imports.
+// Components import from here rather than the package path directly.
+export type {
+  Character,
+  Move,
+  MoveType,
+  StatKey,
+  StatusEffectType,
+  BattlePhase,
+  PlayerKey,
+  BattleState,
+  BattleFighterState,
+  BattleAction,
+  BattleLogEntry,
+  ActiveStatusEffect,
+  ActiveStatModifier,
+  StatBlock,
+  TeamDoc,
+  AuthResponse,
+  LoginRequest,
+  RegisterRequest,
+  ClientToServerEvents,
+  ServerToClientEvents,
+  InterServerEvents,
+  SocketData,
+} from '@anime-showdown/shared-types';

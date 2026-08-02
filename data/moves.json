@@ -1,0 +1,201 @@
+[
+  {
+    "id": "shadow-strike",
+    "name": "Shadow Strike",
+    "description": "A blindingly fast physical strike from the shadows. Low cost, reliable damage — Kaze's bread-and-butter move.",
+    "type": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "energyCost": 20
+  },
+  {
+    "id": "poison-shuriken",
+    "name": "Poison Shuriken",
+    "description": "A shuriken laced with paralytic venom. Deals moderate damage with a high chance of poisoning the target.",
+    "type": "physical",
+    "power": 40,
+    "accuracy": 95,
+    "energyCost": 25,
+    "statusEffect": {
+      "effect": "poison",
+      "chance": 0.65,
+      "duration": 3
+    }
+  },
+  {
+    "id": "smoke-veil",
+    "name": "Smoke Veil",
+    "description": "Vanish into a cloud of chakra smoke. Greatly boosts defense for several turns.",
+    "type": "self",
+    "accuracy": 100,
+    "energyCost": 30,
+    "statModifier": {
+      "target": "self",
+      "stat": "defense",
+      "multiplier": 1.5,
+      "duration": 3
+    }
+  },
+  {
+    "id": "wind-slash",
+    "name": "Wind Slash",
+    "description": "A razor blade of compressed wind energy. Never misses and deals solid special damage.",
+    "type": "special",
+    "power": 80,
+    "accuracy": 100,
+    "energyCost": 35
+  },
+  {
+    "id": "dragon-fist",
+    "name": "Dragon Fist",
+    "description": "A devastating punch that hits like a dragon's jaws. Massive physical damage with a chance to stun.",
+    "type": "physical",
+    "power": 100,
+    "accuracy": 90,
+    "energyCost": 40,
+    "statusEffect": {
+      "effect": "stun",
+      "chance": 0.25,
+      "duration": 1
+    }
+  },
+  {
+    "id": "flame-burst",
+    "name": "Flame Burst",
+    "description": "A controlled explosion of pure fire energy. Burns the target, reducing their attack over time.",
+    "type": "special",
+    "power": 85,
+    "accuracy": 95,
+    "energyCost": 35,
+    "statusEffect": {
+      "effect": "burn",
+      "chance": 0.35,
+      "duration": 3
+    }
+  },
+  {
+    "id": "power-surge",
+    "name": "Power Surge",
+    "description": "Channel raw energy into your muscles. Dramatically increases attack power for several turns.",
+    "type": "self",
+    "accuracy": 100,
+    "energyCost": 30,
+    "statModifier": {
+      "target": "self",
+      "stat": "attack",
+      "multiplier": 1.5,
+      "duration": 3
+    }
+  },
+  {
+    "id": "supernova",
+    "name": "Supernova",
+    "description": "Ryuu's ultimate technique — a concentrated blast of flame-force energy that obliterates everything in range. Devastatingly powerful but costs almost everything.",
+    "type": "special",
+    "power": 140,
+    "accuracy": 85,
+    "energyCost": 60
+  },
+  {
+    "id": "iron-guard",
+    "name": "Iron Guard",
+    "description": "Reinforce every part of your body with concentrated iron will. Massively boosts defense for an extended duration.",
+    "type": "self",
+    "accuracy": 100,
+    "energyCost": 30,
+    "statModifier": {
+      "target": "self",
+      "stat": "defense",
+      "multiplier": 1.7,
+      "duration": 4
+    }
+  },
+  {
+    "id": "petal-storm",
+    "name": "Petal Storm",
+    "description": "A flurry of razor-sharp petals that strikes twice in quick succession. Each hit is moderate but together they shred through defenses.",
+    "type": "physical",
+    "power": 55,
+    "accuracy": 90,
+    "energyCost": 35,
+    "tags": ["multi-hit"]
+  },
+  {
+    "id": "thorn-barrier",
+    "name": "Thorn Barrier",
+    "description": "Surround yourself with an aura of hardened thorns. Slows the opponent significantly by making every strike cost them momentum.",
+    "type": "status",
+    "accuracy": 90,
+    "energyCost": 40,
+    "statusEffect": {
+      "effect": "slow",
+      "chance": 0.9,
+      "duration": 3
+    }
+  },
+  {
+    "id": "earth-slam",
+    "name": "Earth Slam",
+    "description": "Bring both fists down with tectonic force. Heavy physical damage and a high chance of slowing the target.",
+    "type": "physical",
+    "power": 95,
+    "accuracy": 90,
+    "energyCost": 40,
+    "statusEffect": {
+      "effect": "slow",
+      "chance": 0.3,
+      "duration": 2
+    }
+  },
+  {
+    "id": "thunder-lance",
+    "name": "Thunder Lance",
+    "description": "A javelin of pure lightning hurled at the opponent. Heavy special damage with a chance of stun from the electrical discharge.",
+    "type": "special",
+    "power": 90,
+    "accuracy": 95,
+    "energyCost": 35,
+    "statusEffect": {
+      "effect": "stun",
+      "chance": 0.2,
+      "duration": 1
+    }
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "description": "Unleash a howling blizzard of ice that coats the opponent in frost, dealing damage and drastically reducing their speed.",
+    "type": "special",
+    "power": 70,
+    "accuracy": 90,
+    "energyCost": 35,
+    "statusEffect": {
+      "effect": "slow",
+      "chance": 0.45,
+      "duration": 2
+    }
+  },
+  {
+    "id": "arcane-surge",
+    "name": "Arcane Surge",
+    "description": "Flood your core with raw elemental power. Dramatically boosts special attack for several turns.",
+    "type": "self",
+    "accuracy": 100,
+    "energyCost": 30,
+    "statModifier": {
+      "target": "self",
+      "stat": "special",
+      "multiplier": 1.5,
+      "duration": 3
+    }
+  },
+  {
+    "id": "storms-eye",
+    "name": "Storm's Eye",
+    "description": "Sora's signature technique — a focused convergence of all elemental forces into a single devastating strike. The most powerful special attack in the game, at massive energy cost.",
+    "type": "special",
+    "power": 150,
+    "accuracy": 80,
+    "energyCost": 70
+  }
+]

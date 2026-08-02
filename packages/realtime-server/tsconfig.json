@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "paths": {
+      "@anime-showdown/shared-types": ["../shared-types/src/index.ts"],
+      "@anime-showdown/battle-engine": ["../battle-engine/src/index.ts"]
+    }
+  },
+  "include": ["src"]
+}

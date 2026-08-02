@@ -1,0 +1,22 @@
+{
+  "name": "anime-showdown",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,rt,fe -c cyan,magenta,yellow \"npm run dev --workspace=packages/api-server\" \"npm run dev --workspace=packages/realtime-server\" \"npm run dev --workspace=packages/frontend\"",
+    "dev:api": "npm run dev --workspace=packages/api-server",
+    "dev:realtime": "npm run dev --workspace=packages/realtime-server",
+    "dev:frontend": "npm run dev --workspace=packages/frontend",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspace=packages/battle-engine",
+    "test:watch": "npm run test:watch --workspace=packages/battle-engine",
+    "lint": "tsc --noEmit --project packages/battle-engine/tsconfig.json && tsc --noEmit --project packages/shared-types/tsconfig.json"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.4.5"
+  }
+}
