@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import type { AuthResponse } from './types';
 import { FighterLogo } from './components/FighterLogo';
 import { useWorkspaceStore } from './stores/workspaceStore';
+import { useSettingsStore } from './stores/settingsStore';
+import { UserSettingsModal } from './components/UserSettingsModal';
 
 interface AppState {
   token: string | null;
@@ -27,6 +29,7 @@ function saveAuth(state: AppState) {
 export default function App() {
   const [auth, setAuth] = useState<AppState>(loadAuth);
   const [showModal, setShowModal] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [form, setForm] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState<string | null>(null);
@@ -34,6 +37,11 @@ export default function App() {
 
   const navigate = useNavigate();
   const { setActiveTab } = useWorkspaceStore();
+  const { initTheme, theme } = useSettingsStore();
+
+  useEffect(() => {
+    initTheme();
+  }, [initTheme]);
 
   function handleLogin(resp: AuthResponse) {
     const next = { token: resp.token, userId: resp.userId, username: resp.username };
@@ -76,22 +84,23 @@ export default function App() {
   return (
     <>
       {/* ── Navigation Bar ────────────────────────────────────────── */}
-      <nav className="nav" style={{ borderBottom: '1px solid var(--glass-border)', zIndex: 200, position: 'relative' }}>
+      <nav className="nav" style={{ borderBottom: '1px solid var(--border)', zIndex: 200, position: 'relative', background: 'var(--bg-surface)' }}>
         <Link
           to="/"
           id="nav-logo"
           className="nav-logo"
-          style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+          style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'var(--text-primary)' }}
           onClick={() => setActiveTab('lobby')}
         >
-          <FighterLogo id="game-logo" size={28} color="var(--accent)" />
+          <FighterLogo id="game-logo" size={28} color="var(--text-primary)" />
           <span style={{ fontWeight: 900, letterSpacing: '0.05em' }}>ANIME SHOWDOWN</span>
         </Link>
+        
         <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <button
             id="nav-teambuilder-btn"
             className="btn btn-ghost"
-            style={{ padding: '6px 14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6 }}
+            style={{ padding: '6px 14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700 }}
             onClick={() => {
               navigate('/');
               setActiveTab('teambuilder');
@@ -104,14 +113,26 @@ export default function App() {
           <button
             id="nav-battle-btn"
             className="btn btn-primary"
-            style={{ padding: '6px 16px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, background: 'linear-gradient(135deg, #38BDF8, #4F46E5)' }}
+            style={{ padding: '6px 16px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6 }}
             onClick={() => {
               navigate('/');
               setActiveTab('lobby');
             }}
           >
-            <FighterLogo id="swords" size={16} color="#FFF" />
+            <FighterLogo id="swords" size={16} color="currentColor" />
             <span>Battle Lobby</span>
+          </button>
+
+          {/* User Settings Button */}
+          <button
+            id="nav-settings-btn"
+            className="btn btn-ghost"
+            onClick={() => setShowSettings(true)}
+            style={{ padding: '6px 14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 800, textTransform: 'uppercase' }}
+            title="Open User Settings & Theme Toggle"
+          >
+            <span>{theme === 'dark' ? '🌙' : '☀️'}</span>
+            <span>Settings</span>
           </button>
 
           {auth.token ? (
@@ -119,7 +140,7 @@ export default function App() {
               id="nav-logout-btn"
               onClick={handleLogout}
               className="btn btn-ghost"
-              style={{ padding: '6px 14px', fontSize: '0.85rem', color: '#94A3B8' }}
+              style={{ padding: '6px 14px', fontSize: '0.85rem', color: 'var(--text-secondary)' }}
             >
               {auth.username} (Log Out)
             </button>
@@ -127,7 +148,7 @@ export default function App() {
             <button
               id="nav-login-btn"
               className="btn btn-ghost"
-              style={{ padding: '6px 16px', fontSize: '0.85rem', border: '1px solid var(--accent)', color: 'var(--accent)' }}
+              style={{ padding: '6px 16px', fontSize: '0.85rem', border: '1px solid var(--border-strong)', color: 'var(--text-primary)', fontWeight: 800 }}
               onClick={() => { setMode('login'); setShowModal(true); }}
             >
               Log In / Register
@@ -136,10 +157,13 @@ export default function App() {
         </div>
       </nav>
 
+      {/* ── User Settings Modal ───────────────────────────────────── */}
+      {showSettings && <UserSettingsModal onClose={() => setShowSettings(false)} />}
+
       {/* ── Auth Modal ────────────────────────────────────────────── */}
       {showModal && (
-        <div className="winner-overlay" style={{ zIndex: 2000, padding: 16 }}>
-          <div className="glass-elevated" style={{ padding: 32, width: '100%', maxWidth: 420, position: 'relative', border: '1px solid var(--accent)' }}>
+        <div className="winner-overlay" style={{ zIndex: 2000, padding: 16, backgroundColor: 'var(--overlay-bg)' }}>
+          <div className="glass-elevated" style={{ padding: 32, width: '100%', maxWidth: 420, position: 'relative', border: '1px solid var(--border-strong)', background: 'var(--modal-bg)' }}>
             <button
               className="inline-text-btn"
               style={{ position: 'absolute', top: 16, right: 20, fontSize: '1.5rem', color: 'var(--text-muted)' }}
@@ -147,10 +171,10 @@ export default function App() {
             >
               ×
             </button>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: 6 }}>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: 6, color: 'var(--text-primary)', fontWeight: 900 }}>
               {mode === 'login' ? 'Log In to Anime Showdown' : 'Create Showdown Account'}
             </h3>
-            <p className="text-secondary" style={{ fontSize: '0.85rem', marginBottom: 20 }}>
+            <p style={{ fontSize: '0.85rem', marginBottom: 20, color: 'var(--text-secondary)' }}>
               {mode === 'login' ? 'Enter your credentials to sync teams and rating.' : 'Join thousands of anime duelists worldwide.'}
             </p>
 
@@ -163,7 +187,7 @@ export default function App() {
                   value={form.username}
                   onChange={handleChange}
                   required
-                  style={{ marginTop: 4 }}
+                  style={{ marginTop: 4, background: 'var(--input-bg)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
                   placeholder="DuelistName"
                 />
               </div>
@@ -178,7 +202,7 @@ export default function App() {
                     value={form.email}
                     onChange={handleChange}
                     required
-                    style={{ marginTop: 4 }}
+                    style={{ marginTop: 4, background: 'var(--input-bg)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
                     placeholder="you@example.com"
                   />
                 </div>
@@ -193,7 +217,7 @@ export default function App() {
                   value={form.password}
                   onChange={handleChange}
                   required
-                  style={{ marginTop: 4 }}
+                  style={{ marginTop: 4, background: 'var(--input-bg)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
                   placeholder="••••••••"
                 />
               </div>
@@ -209,14 +233,14 @@ export default function App() {
               {mode === 'login' ? (
                 <span style={{ color: 'var(--text-secondary)' }}>
                   Don't have an account?{' '}
-                  <button className="inline-text-btn" style={{ color: 'var(--accent)', fontWeight: 700 }} onClick={() => setMode('register')}>
+                  <button className="inline-text-btn" style={{ color: 'var(--text-primary)', fontWeight: 800, textDecoration: 'underline' }} onClick={() => setMode('register')}>
                     Register free
                   </button>
                 </span>
               ) : (
                 <span style={{ color: 'var(--text-secondary)' }}>
                   Already registered?{' '}
-                  <button className="inline-text-btn" style={{ color: 'var(--accent)', fontWeight: 700 }} onClick={() => setMode('login')}>
+                  <button className="inline-text-btn" style={{ color: 'var(--text-primary)', fontWeight: 800, textDecoration: 'underline' }} onClick={() => setMode('login')}>
                     Log in here
                   </button>
                 </span>

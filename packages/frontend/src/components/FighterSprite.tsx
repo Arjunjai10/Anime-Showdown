@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FighterLogo } from './FighterLogo';
+import { useSettingsStore } from '../stores/settingsStore';
 
 export interface FighterGifMeta {
   gif: string;
@@ -13,49 +14,49 @@ export const FIGHTER_GIFS: Record<string, FighterGifMeta> = {
     name: 'Kaze',
     title: 'Phantom Blade',
     gif: 'https://media.giphy.com/media/YSeOANLTDZtdm/giphy.gif',
-    color: '#FFFFFF',
+    color: 'var(--text-primary)',
   },
   ryuu: {
     name: 'Ryuu',
     title: 'Eternal Flame',
     gif: 'https://media.giphy.com/media/ul1omlrGG6kpO/giphy.gif',
-    color: '#E5E5E5',
+    color: 'var(--text-secondary)',
   },
   tsubaki: {
     name: 'Tsubaki',
     title: 'Iron Lotus',
     gif: 'https://media.giphy.com/media/C5pcN5xLIfHNu/giphy.gif',
-    color: '#D4D4D4',
+    color: 'var(--text-primary)',
   },
   sora: {
     name: 'Sora',
     title: 'Stormcaller',
     gif: 'https://media.giphy.com/media/k5qKwe9WnL8n6/giphy.gif',
-    color: '#FFFFFF',
+    color: 'var(--text-secondary)',
   },
   ren: {
     name: 'Ren',
     title: 'Thunder Fist',
     gif: 'https://media.giphy.com/media/arbUO3vF6t44w/giphy.gif',
-    color: '#CCCCCC',
+    color: 'var(--text-primary)',
   },
   hana: {
     name: 'Hana',
     title: 'Void Walker',
     gif: 'https://media.giphy.com/media/y07IinYfN04cE/giphy.gif',
-    color: '#E0E0E0',
+    color: 'var(--text-secondary)',
   },
   mira: {
     name: 'Mira',
     title: 'Cursed Sage',
     gif: 'https://media.giphy.com/media/2e4d25yEhrvHw7RgyG/giphy.gif',
-    color: '#FFFFFF',
+    color: 'var(--text-primary)',
   },
   gale: {
     name: 'Gale',
     title: 'Wild Tempest',
     gif: 'https://media.giphy.com/media/1zH0e9S98mBgc14z0S/giphy.gif',
-    color: '#B8B8B8',
+    color: 'var(--text-secondary)',
   },
 };
 
@@ -78,6 +79,7 @@ export const FighterSprite: React.FC<FighterSpriteProps> = ({
 }) => {
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
+  const { animateSprites } = useSettingsStore();
 
   const meta = FIGHTER_GIFS[id.toLowerCase()];
 
@@ -89,7 +91,7 @@ export const FighterSprite: React.FC<FighterSpriteProps> = ({
     battle: { width: 160, height: 160, logoSize: 84, radius: 12 },
   }[size] || { width: 68, height: 68, logoSize: 36, radius: 8 };
 
-  const themeColor = meta?.color || '#FFFFFF';
+  const themeColor = meta?.color || 'var(--text-primary)';
 
   return (
     <div
@@ -98,33 +100,33 @@ export const FighterSprite: React.FC<FighterSpriteProps> = ({
         width: dims.width,
         height: dims.height,
         borderRadius: dims.radius,
-        border: active ? `2px solid #FFFFFF` : '1px solid rgba(255, 255, 255, 0.15)',
+        border: active ? `2px solid var(--border-strong)` : '1px solid var(--border)',
         boxShadow: active
-          ? `0 4px 14px rgba(0, 0, 0, 0.8), 0 0 14px rgba(255, 255, 255, 0.4)`
-          : '0 3px 10px rgba(0, 0, 0, 0.6)',
+          ? `0 4px 14px var(--shadow-color), 0 0 14px var(--accent-glow)`
+          : '0 3px 10px var(--shadow-color)',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#050505',
-        transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+        backgroundColor: 'var(--sprite-bg)',
+        transition: 'border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease',
       }}
     >
-      {/* Subtle monochrome lighting */}
+      {/* Subtle lighting */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background: `radial-gradient(circle at top, rgba(255, 255, 255, 0.08) 0%, transparent 70%)`,
+          background: `radial-gradient(circle at top, var(--accent-dim) 0%, transparent 70%)`,
           pointerEvents: 'none',
           zIndex: 0,
         }}
       />
 
       {/* Sprite or SVG Fallback */}
-      {meta && meta.gif && !imgError ? (
+      {animateSprites && meta && meta.gif && !imgError ? (
         <>
           {!imgLoaded && (
             <div style={{ position: 'absolute', zIndex: 1, opacity: 0.4 }}>
@@ -149,11 +151,11 @@ export const FighterSprite: React.FC<FighterSpriteProps> = ({
         </>
       ) : (
         <div style={{ zIndex: 1, padding: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <FighterLogo id={id} size={dims.logoSize} color={themeColor} />
+          <FighterLogo id={id} size={dims.logoSize} color="var(--text-primary)" />
         </div>
       )}
 
-      {/* Clean monochrome name tag */}
+      {/* Name tag */}
       {showNameTag && meta && (
         <div
           style={{
@@ -162,16 +164,16 @@ export const FighterSprite: React.FC<FighterSpriteProps> = ({
             left: 0,
             right: 0,
             padding: '14px 6px 5px',
-            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.75) 60%, transparent 100%)',
+            background: 'linear-gradient(to top, var(--bg-base) 0%, var(--overlay-bg) 60%, transparent 100%)',
             textAlign: 'center',
             zIndex: 2,
             lineHeight: 1.2,
           }}
         >
-          <div style={{ fontWeight: 700, fontSize: '0.8rem', color: '#FFFFFF', textShadow: '0 1px 2px rgba(0,0,0,1)' }}>
+          <div style={{ fontWeight: 700, fontSize: '0.8rem', color: 'var(--text-primary)' }}>
             {meta.name}
           </div>
-          <div style={{ fontSize: '0.65rem', color: '#CCCCCC', fontWeight: 600, textTransform: 'uppercase', marginTop: 1 }}>
+          <div style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase', marginTop: 1 }}>
             {meta.title}
           </div>
         </div>
