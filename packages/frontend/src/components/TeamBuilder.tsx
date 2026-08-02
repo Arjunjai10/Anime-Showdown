@@ -14,16 +14,13 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
   const [teams, setTeams] = useState<TeamDoc[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Active build state
   const [teamName, setTeamName] = useState('My Anime Roster');
   const [teamFormat, setTeamFormat] = useState('ou_6v6');
   const [slots, setSlots] = useState<TeamSlot[]>([]);
   const [activeSlotIdx, setActiveSlotIdx] = useState<number | null>(null);
   
-  // Import/Export Modal state
   const [showImportExport, setShowImportExport] = useState(false);
   const [importText, setImportText] = useState('');
-
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -86,7 +83,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
       updatedMoves = slot.moveIds.filter(id => id !== moveId);
     } else {
       if (slot.moveIds.length >= 4) {
-        setError('Each fighter can equip a maximum of 4 moves!');
+        setError('Each fighter can equip up to 4 moves.');
         return;
       }
       updatedMoves = [...slot.moveIds, moveId];
@@ -103,7 +100,6 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
     setSlots(next);
   }
 
-  // Showdown Text Import/Export Logic
   function generateShowdownText(): string {
     return slots.map(slot => {
       const char = charsById.get(slot.characterId);
@@ -155,7 +151,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
     if (importedSlots.length > 0) {
       setSlots(importedSlots);
       setActiveSlotIdx(0);
-      setSuccess('Successfully imported anime roster!');
+      setSuccess('Roster imported successfully!');
       setTimeout(() => setSuccess(null), 3000);
     } else {
       setError('Could not parse valid anime champions from text.');
@@ -181,7 +177,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
       if (!res.ok) throw new Error((await res.json()).error);
       const team: TeamDoc = await res.json();
       setTeams(prev => [team, ...prev.filter(t => t.id !== team.id)]);
-      setSuccess(`Team "${team.name}" saved successfully!`);
+      setSuccess(`Team "${team.name}" saved!`);
       setTimeout(() => setSuccess(null), 3000);
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Failed to save team');
@@ -207,15 +203,14 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
         });
     setSlots(loadSlots);
     if (loadSlots.length > 0) setActiveSlotIdx(0);
-    setSuccess(`Loaded team "${team.name}" into editor`);
+    setSuccess(`Loaded "${team.name}" into editor`);
     setTimeout(() => setSuccess(null), 2500);
   }
 
   if (loading) {
     return (
-      <div className="queue-overlay" style={{ padding: 64, textAlign: 'center' }}>
-        <div className="queue-spinner" />
-        <span className="text-secondary" style={{ display: 'block', marginTop: 16 }}>Loading Anime Showdown Assets…</span>
+      <div style={{ padding: 60, textAlign: 'center', color: 'var(--text-secondary)' }}>
+        Loading Teambuilder...
       </div>
     );
   }
@@ -225,348 +220,353 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
   const availableMovesForActive = activeChar ? activeChar.moveIds.map(id => movesById.get(id)).filter((m): m is Move => !!m) : [];
 
   return (
-    <div className="container" style={{ padding: '24px 16px', maxWidth: 1350 }}>
+    <div className="container" style={{ padding: '20px 24px', maxWidth: 1280, margin: '0 auto' }}>
       
-      {/* Header Bar */}
-      <div className="glass-elevated" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginBottom: 24, padding: '20px 24px', border: '1px solid var(--glass-border)' }}>
-        <div>
-          <h2 style={{ fontSize: '1.8rem', display: 'flex', alignItems: 'center', gap: 12, margin: 0, fontWeight: 900 }}>
-            <FighterLogo id="shield" size={30} color="var(--accent)" />
-            <span>ANIME TEAMBUILDER</span>
-          </h2>
-          <p className="text-secondary" style={{ fontSize: '0.9rem', margin: '4px 0 0' }}>
-            Assemble your dream roster of up to 6 animated champions. Equip moves, relics, and prepare for battle.
-          </p>
+      {/* ── Header ──────────────────────────────────────────────────── */}
+      <div
+        style={{
+          padding: '16px 20px',
+          marginBottom: 20,
+          background: '#111622',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: 10,
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <FighterLogo id="shield" size={26} color="var(--accent)" />
+          <div>
+            <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, color: '#FFF' }}>ANIME TEAMBUILDER</h2>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Configure moves, held relics, and tactical order for up to 6 fighters.</span>
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: 12 }}>
+        <div style={{ display: 'flex', gap: 10 }}>
           <button
-            className="btn btn-ghost"
-            style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 18px', fontWeight: 700 }}
             onClick={() => {
               setImportText(generateShowdownText());
               setShowImportExport(true);
             }}
+            style={{ height: 36, padding: '0 16px', fontSize: '0.82rem', fontWeight: 700, background: '#1E293B', border: '1px solid rgba(255,255,255,0.12)', color: '#FFF', borderRadius: 6, cursor: 'pointer' }}
           >
-            <FighterLogo id="swords" size={16} color="currentColor" />
-            <span>Import / Export Text</span>
+            Import / Export Text
           </button>
           {token && (
             <button
-              className="btn btn-primary"
-              style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 24px', fontWeight: 800, background: 'linear-gradient(135deg, #38BDF8, #4F46E5)' }}
               onClick={handleSaveTeam}
               disabled={slots.length === 0 || saving || !teamName.trim()}
+              style={{ height: 36, padding: '0 20px', fontSize: '0.82rem', fontWeight: 700, background: 'var(--accent, #6366F1)', border: 'none', color: '#FFF', borderRadius: 6, cursor: slots.length === 0 ? 'not-allowed' : 'pointer', opacity: slots.length === 0 ? 0.6 : 1 }}
             >
-              <span>{saving ? 'Saving...' : 'Save Roster'}</span>
+              {saving ? 'Saving...' : 'Save Team'}
             </button>
           )}
         </div>
       </div>
 
-      {error && <div className="glass p-3 mb-4" style={{ borderColor: '#EF4444', color: '#EF4444', fontWeight: 700, fontSize: '0.9rem' }}>{error}</div>}
-      {success && <div className="glass p-3 mb-4" style={{ borderColor: '#34D399', color: '#34D399', fontWeight: 700, fontSize: '0.9rem' }}>{success}</div>}
+      {error && <div style={{ padding: '10px 14px', marginBottom: 16, background: 'rgba(239, 68, 68, 0.12)', border: '1px solid #EF4444', borderRadius: 8, color: '#EF4444', fontSize: '0.85rem', fontWeight: 600 }}>{error}</div>}
+      {success && <div style={{ padding: '10px 14px', marginBottom: 16, background: 'rgba(16, 185, 129, 0.12)', border: '1px solid #10B981', borderRadius: 8, color: '#10B981', fontSize: '0.85rem', fontWeight: 600 }}>{success}</div>}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(290px, 340px) 1fr', gap: 24, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 20, alignItems: 'start' }}>
         
-        {/* LEFT COLUMN: Team Roster overview */}
-        <div className="glass" style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 18, border: '1px solid var(--glass-border)' }}>
+        {/* LEFT COLUMN: Roster Setup & Slots */}
+        <div
+          style={{
+            background: '#0E131E',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: 10,
+            padding: 16,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+          }}
+        >
           <div>
-            <label className="form-label" style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)' }}>TEAM NAME</label>
+            <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 4 }}>Team Name</label>
             <input
-              className="input"
               type="text"
+              className="input"
               value={teamName}
               onChange={(e) => setTeamName(e.target.value)}
               placeholder="Enter team name..."
               maxLength={40}
-              style={{ marginTop: 4, height: 40, fontWeight: 700 }}
+              style={{ width: '100%', height: 36, fontSize: '0.88rem', padding: '0 10px', background: '#090D14' }}
             />
           </div>
 
           <div>
-            <label className="form-label" style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)' }}>BATTLE FORMAT</label>
+            <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 4 }}>Format</label>
             <select
               className="input"
               value={teamFormat}
               onChange={(e) => setTeamFormat(e.target.value)}
-              style={{ marginTop: 4, height: 40, fontWeight: 600 }}
+              style={{ width: '100%', height: 36, fontSize: '0.82rem', padding: '0 10px', background: '#090D14' }}
             >
-              <option value="ou_6v6">[OU] 6v6 Battle Arena (Up to 6 Fighters)</option>
-              <option value="blitz_3v3">[Blitz] 3v3 Fast Combat (First 3 Fighters)</option>
-              <option value="quick_1v1">[Quick] 1v1 Solo Duel (Lead Only)</option>
+              <option value="ou_6v6">[OU] 6v6 Standard Roster</option>
+              <option value="blitz_3v3">[Blitz] 3v3 Fast Combat</option>
+              <option value="quick_1v1">[Quick] 1v1 Solo Duel</option>
             </select>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--accent)' }}>
-              ROSTER SLOTS ({slots.length} / 6)
-            </span>
-            {slots.length > 0 && (
-              <button className="inline-text-btn" style={{ fontSize: '0.75rem', fontWeight: 700, color: '#EF4444' }} onClick={() => { setSlots([]); setActiveSlotIdx(null); }}>
-                Clear Roster
-              </button>
-            )}
-          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                Roster Slots ({slots.length}/6)
+              </span>
+              {slots.length > 0 && (
+                <button
+                  onClick={() => { setSlots([]); setActiveSlotIdx(null); }}
+                  style={{ background: 'none', border: 'none', color: '#F87171', fontSize: '0.75rem', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Clear All
+                </button>
+              )}
+            </div>
 
-          {/* Slots List */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 180 }}>
-            {slots.length === 0 ? (
-              <div className="glass" style={{ padding: '32px 16px', textAlign: 'center', opacity: 0.7, borderStyle: 'dashed' }}>
-                <FighterLogo id="shield" size={36} color="var(--text-muted)" />
-                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: 10, fontWeight: 700 }}>No champions equipped yet.</p>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 4 }}>Click on an animated champion card on the right to recruit them!</p>
-              </div>
-            ) : (
-              slots.map((slot, idx) => {
-                const c = charsById.get(slot.characterId);
-                const isSel = idx === activeSlotIdx;
-                const r = allRelics.find(rel => rel.id === slot.relicId);
-                return (
-                  <div
-                    key={idx}
-                    className={`glass p-3 ${isSel ? 'glass-elevated' : ''}`}
-                    onClick={() => setActiveSlotIdx(idx)}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      cursor: 'pointer',
-                      border: isSel ? '2px solid var(--accent)' : '1px solid var(--glass-border)',
-                      background: isSel ? 'rgba(56, 189, 248, 0.1)' : 'rgba(15, 23, 42, 0.6)',
-                      transition: 'all 0.2s',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                      <FighterSprite id={slot.characterId} size="sm" />
-                      <div>
-                        <div style={{ fontWeight: 800, fontSize: '0.95rem', color: isSel ? '#FFF' : 'var(--text-primary)' }}>
-                          {c?.name || slot.characterId}{' '}
-                          {idx === 0 ? <span style={{ fontSize: '0.68rem', color: 'var(--accent)', background: 'rgba(56, 189, 248, 0.15)', padding: '2px 6px', borderRadius: 4, fontWeight: 800 }}>LEAD</span> : ''}
-                        </div>
-                        <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: 2 }}>
-                          {r ? `Held: ${r.name}` : 'No Relic'} · {slot.moveIds.length} Moves
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      className="inline-text-btn"
-                      style={{ fontSize: '1.4rem', padding: '0 6px', color: '#EF4444' }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        removeSlot(idx);
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, minHeight: 140 }}>
+              {slots.length === 0 ? (
+                <div style={{ padding: '28px 16px', textAlign: 'center', border: '1px dashed rgba(255,255,255,0.12)', borderRadius: 8, color: 'var(--text-muted)', fontSize: '0.8rem' }}>
+                  No fighters equipped.<br/>Click a champion on the right to add to your roster.
+                </div>
+              ) : (
+                slots.map((slot, idx) => {
+                  const c = charsById.get(slot.characterId);
+                  const r = allRelics.find(rel => rel.id === slot.relicId);
+                  const isSel = idx === activeSlotIdx;
+                  return (
+                    <div
+                      key={idx}
+                      onClick={() => setActiveSlotIdx(idx)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '8px 10px',
+                        borderRadius: 6,
+                        cursor: 'pointer',
+                        background: isSel ? '#1E293B' : '#131926',
+                        border: isSel ? '1px solid var(--accent)' : '1px solid rgba(255,255,255,0.06)',
+                        transition: 'background 0.15s ease',
                       }}
-                      title="Remove champion"
                     >
-                      ×
-                    </button>
-                  </div>
-                );
-              })
-            )}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <FighterSprite id={slot.characterId} size="sm" active={isSel} />
+                        <div>
+                          <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#FFF' }}>
+                            {c?.name || slot.characterId}
+                            {idx === 0 && <span style={{ marginLeft: 6, fontSize: '0.65rem', padding: '1px 5px', background: 'rgba(99, 102, 241, 0.2)', color: '#818CF8', borderRadius: 4, fontWeight: 700 }}>LEAD</span>}
+                          </div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 2 }}>
+                            {r ? r.name : 'No Relic'} · {slot.moveIds.length}/4 Moves
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                        onClick={(e) => { e.stopPropagation(); removeSlot(idx); }}
+                        style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '1.2rem', cursor: 'pointer', padding: '0 4px' }}
+                        title="Remove fighter"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  );
+                })
+              )}
+            </div>
           </div>
 
-          {/* Saved Teams Drawer */}
-          <div style={{ marginTop: 12, borderTop: '1px solid var(--glass-border)', paddingTop: 16 }}>
-            <h4 style={{ fontSize: '0.85rem', fontWeight: 800, marginBottom: 10, color: 'var(--text-muted)' }}>SAVED TEAMS CLOUD SYNC</h4>
+          {/* Cloud Saved Teams */}
+          <div style={{ paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8 }}>Saved Cloud Teams</span>
             {!token ? (
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0, fontStyle: 'italic' }}>Log in via the top nav to cloud-save rosters across devices.</p>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Login to sync rosters across devices.</span>
             ) : teams.length === 0 ? (
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>No saved teams yet.</p>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>No saved teams yet.</span>
             ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 220, overflowY: 'auto', paddingRight: 4 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 160, overflowY: 'auto' }}>
                 {teams.map((t) => (
-                  <div key={t.id} className="glass p-2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)' }}>
-                    <div>
-                      <div style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-primary)' }}>{t.name}</div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                        {(t.slots?.length || t.characterIds?.length || 0)} Fighters · {t.format || 'ou_6v6'}
-                      </div>
-                    </div>
+                  <div key={t.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 8px', background: '#131926', borderRadius: 6 }}>
+                    <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-primary)' }}>{t.name}</span>
                     <div style={{ display: 'flex', gap: 6 }}>
-                      <button className="btn btn-ghost" style={{ padding: '4px 10px', fontSize: '0.75rem', fontWeight: 700, borderColor: 'var(--accent)', color: 'var(--accent)' }} onClick={() => handleLoadTeam(t)}>Load</button>
-                      <button className="inline-text-btn" style={{ color: '#EF4444', fontSize: '0.75rem', fontWeight: 700, padding: '0 4px' }} onClick={() => handleDeleteTeam(t.id)}>Del</button>
+                      <button onClick={() => handleLoadTeam(t)} style={{ padding: '2px 8px', fontSize: '0.72rem', background: '#1E293B', border: '1px solid rgba(255,255,255,0.12)', color: '#FFF', borderRadius: 4, cursor: 'pointer' }}>Load</button>
+                      <button onClick={() => handleDeleteTeam(t.id)} style={{ padding: '2px 6px', fontSize: '0.72rem', background: 'none', border: 'none', color: '#F87171', cursor: 'pointer' }}>Del</button>
                     </div>
                   </div>
                 ))}
               </div>
             )}
           </div>
-
         </div>
 
-        {/* RIGHT COLUMN: Fighter Selector & Active Fighter Customizer */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+        {/* RIGHT COLUMN: Active Fighter Editor & Available Roster */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           
-          {/* Active Fighter Editor (When a slot is selected) */}
+          {/* Active Fighter Customization Panel */}
           {activeSlot && activeChar ? (
-            <div className="glass-elevated p-6" style={{ borderLeft: '5px solid var(--accent)', background: 'radial-gradient(ellipse at top right, rgba(56, 189, 248, 0.15) 0%, rgba(15, 23, 42, 0.95) 75%)', border: '1px solid var(--glass-border)' }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 20, marginBottom: 24, borderBottom: '1px solid var(--glass-border)', paddingBottom: 20 }}>
-                
-                <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-                  <FighterSprite id={activeChar.id} size="xl" />
+            <div
+              style={{
+                background: '#101522',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: 10,
+                padding: 18,
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, paddingBottom: 14, borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <FighterSprite id={activeChar.id} size="lg" />
                   <div>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent)', background: 'rgba(56, 189, 248, 0.1)', padding: '4px 10px', borderRadius: 20 }}>
-                      SLOT #{activeSlotIdx! + 1} CONFIGURATION
+                    <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--accent)', fontWeight: 700 }}>
+                      Configuring Slot #{activeSlotIdx! + 1}
                     </span>
-                    <h3 style={{ fontSize: '2rem', margin: '8px 0 4px', fontWeight: 900, color: '#FFF' }}>{activeChar.name}</h3>
-                    <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontStyle: 'italic', marginBottom: 12 }}>{activeChar.title}</div>
-                    <div style={{ display: 'flex', gap: 14, fontSize: '0.82rem', background: 'rgba(0,0,0,0.4)', padding: '6px 12px', borderRadius: 8, border: '1px solid var(--glass-border)' }}>
-                      <span style={{ color: '#34D399', fontWeight: 800 }}>HP: {activeChar.baseStats.maxHp}</span>
-                      <span style={{ color: '#F97316', fontWeight: 800 }}>ATK: {activeChar.baseStats.attack}</span>
-                      <span style={{ color: '#38BDF8', fontWeight: 800 }}>DEF: {activeChar.baseStats.defense}</span>
-                      <span style={{ color: '#FDE047', fontWeight: 800 }}>SPD: {activeChar.baseStats.speed}</span>
+                    <h3 style={{ margin: '2px 0', fontSize: '1.4rem', fontWeight: 800, color: '#FFF' }}>{activeChar.name}</h3>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 8 }}>{activeChar.title}</div>
+                    <div style={{ display: 'flex', gap: 12, fontSize: '0.75rem', color: 'var(--text-primary)', background: '#0A0D14', padding: '4px 10px', borderRadius: 6 }}>
+                      <span><strong>HP:</strong> {activeChar.baseStats.maxHp}</span>
+                      <span><strong>ATK:</strong> {activeChar.baseStats.attack}</span>
+                      <span><strong>DEF:</strong> {activeChar.baseStats.defense}</span>
+                      <span><strong>SPD:</strong> {activeChar.baseStats.speed}</span>
                     </div>
                   </div>
                 </div>
-
                 <button
-                  className="btn btn-ghost"
-                  style={{ padding: '8px 16px', fontSize: '0.85rem', fontWeight: 700 }}
                   onClick={() => setActiveSlotIdx(null)}
+                  style={{ padding: '6px 14px', fontSize: '0.8rem', background: '#1E293B', border: '1px solid rgba(255,255,255,0.12)', color: '#FFF', borderRadius: 6, cursor: 'pointer', fontWeight: 600 }}
                 >
                   Done Editing
                 </button>
               </div>
 
-              {/* Relic selection */}
-              <div style={{ marginBottom: 26 }}>
-                <label className="form-label" style={{ fontSize: '0.88rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, color: '#FFF' }}>
-                  <FighterLogo id="shield" size={18} color="var(--accent)" />
-                  <span>EQUIPPED ANIME RELIC (HELD ITEM)</span>
+              {/* Relic Selection */}
+              <div style={{ marginBottom: 18 }}>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>
+                  Held Anime Relic (Item)
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 12 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10 }}>
                   {allRelics.map((r) => {
-                    const isEquipped = activeSlot.relicId === r.id;
+                    const isEq = activeSlot.relicId === r.id;
                     return (
                       <div
                         key={r.id}
                         onClick={() => selectRelic(activeSlotIdx!, r.id)}
-                        className="glass p-3"
                         style={{
+                          padding: '10px 12px',
+                          borderRadius: 6,
                           cursor: 'pointer',
-                          border: isEquipped ? '2px solid var(--accent)' : '1px solid var(--glass-border)',
-                          background: isEquipped ? 'rgba(56, 189, 248, 0.12)' : 'rgba(0,0,0,0.3)',
-                          borderRadius: 10,
-                          transition: 'all 0.2s',
+                          background: isEq ? '#1E293B' : '#0D111C',
+                          border: isEq ? '1px solid var(--accent)' : '1px solid rgba(255,255,255,0.06)',
                         }}
                       >
-                        <div style={{ fontWeight: 800, fontSize: '0.92rem', display: 'flex', justifyContent: 'space-between', color: isEquipped ? '#FFF' : 'var(--text-primary)' }}>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 700, color: isEq ? '#FFF' : 'var(--text-primary)', display: 'flex', justifyContent: 'space-between' }}>
                           <span>{r.name}</span>
-                          {isEquipped && <span style={{ color: 'var(--accent)', fontSize: '0.75rem', fontWeight: 900 }}>EQUIPPED</span>}
+                          {isEq && <span style={{ color: 'var(--accent)', fontSize: '0.7rem' }}>✔</span>}
                         </div>
-                        <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: 6, lineHeight: 1.4 }}>{r.description}</div>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.3 }}>{r.description}</div>
                       </div>
                     );
                   })}
                 </div>
               </div>
 
-              {/* Move selection */}
+              {/* Move Selection */}
               <div>
-                <label className="form-label" style={{ fontSize: '0.88rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, color: '#FFF' }}>
-                  <FighterLogo id="swords" size={18} color="var(--accent)" />
-                  <span>SELECT ATTACK MOVES (Pick up to 4 — currently {activeSlot.moveIds.length}/4)</span>
+                <label style={{ display: 'block', fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 8 }}>
+                  Select Moves (Choose up to 4 — currently {activeSlot.moveIds.length}/4)
                 </label>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 12 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10 }}>
                   {availableMovesForActive.map((m) => {
-                    const isSelected = activeSlot.moveIds.includes(m.id);
+                    const isSel = activeSlot.moveIds.includes(m.id);
                     return (
                       <div
                         key={m.id}
                         onClick={() => toggleMoveInSlot(activeSlotIdx!, m.id)}
-                        className="glass p-3"
                         style={{
+                          padding: '10px 12px',
+                          borderRadius: 6,
                           cursor: 'pointer',
-                          border: isSelected ? '2px solid #34D399' : '1px solid var(--glass-border)',
-                          background: isSelected ? 'rgba(52, 211, 153, 0.12)' : 'rgba(0,0,0,0.3)',
-                          borderRadius: 10,
-                          transition: 'all 0.2s',
+                          background: isSel ? 'rgba(16, 185, 129, 0.12)' : '#0D111C',
+                          border: isSel ? '1px solid #10B981' : '1px solid rgba(255,255,255,0.06)',
                         }}
                       >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 800, fontSize: '0.92rem', color: isSelected ? '#FFF' : 'var(--text-primary)' }}>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 700, color: isSel ? '#FFF' : 'var(--text-primary)', display: 'flex', justifyContent: 'space-between' }}>
                           <span>{m.name}</span>
-                          <span style={{ fontSize: '0.72rem', fontWeight: 900, textTransform: 'uppercase', color: m.type === 'physical' ? '#F97316' : m.type === 'special' ? '#38BDF8' : '#A855F7', background: 'rgba(255,255,255,0.05)', padding: '2px 6px', borderRadius: 4 }}>{m.type}</span>
+                          <span style={{ fontSize: '0.68rem', textTransform: 'uppercase', color: m.type === 'physical' ? '#F59E0B' : m.type === 'special' ? '#38BDF8' : '#8B5CF6' }}>{m.type}</span>
                         </div>
-                        <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: 6, lineHeight: 1.4 }}>{m.description}</div>
-                        <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: 8, display: 'flex', gap: 14, fontWeight: 700 }}>
-                          {m.power ? <span>PWR: {m.power}</span> : null}
-                          <span>COST: {m.energyCost} ENG</span>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginTop: 4, lineHeight: 1.3 }}>{m.description}</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: 6 }}>
+                          Cost: {m.energyCost} ENG {m.power ? `· Pwr: ${m.power}` : ''}
                         </div>
                       </div>
                     );
                   })}
                 </div>
               </div>
-
             </div>
           ) : null}
 
-          {/* Roster Grid to add fighters */}
+          {/* Roster Picker */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <FighterLogo id="swords" size={24} color="var(--accent)" />
-              <h3 style={{ fontSize: '1.4rem', margin: 0, fontWeight: 900 }}>AVAILABLE ANIME CHAMPIONS</h3>
-            </div>
-            <p className="text-secondary" style={{ fontSize: '0.9rem', marginBottom: 20 }}>
-              Click any animated character card below to append them directly into your active Showdown roster team.
-            </p>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 20 }}>
+            <h3 style={{ margin: '0 0 12px', fontSize: '1.1rem', fontWeight: 800, color: '#FFF' }}>
+              Available Anime Champions
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 14 }}>
               {roster.map((char) => (
                 <div
                   key={char.id}
                   onClick={() => addFighterToTeam(char.id)}
                   className="roster-card"
-                  style={{ '--char-color': '#4F46E5', cursor: 'pointer', padding: 14, background: 'rgba(15, 23, 42, 0.7)', border: '1px solid var(--glass-border)', borderRadius: 16, transition: 'all 0.25s', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' } as React.CSSProperties}
+                  style={{
+                    background: '#101522',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: 8,
+                    padding: 12,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    transition: 'transform 0.15s ease, border-color 0.15s ease',
+                  }}
                 >
-                  <FighterSprite id={char.id} size="lg" showNameTag={false} />
-                  
-                  <div style={{ width: '100%', marginTop: 12 }}>
-                    <div style={{ fontSize: '1.1rem', fontWeight: 900, color: '#FFF' }}>{char.name}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--accent)', fontWeight: 700, textTransform: 'uppercase', marginTop: 2 }}>{char.title}</div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginTop: 8, background: 'rgba(0,0,0,0.4)', padding: '4px', borderRadius: 6 }}>
-                      HP: {char.baseStats.maxHp} · SPD: {char.baseStats.speed}
+                  <FighterSprite id={char.id} size="md" />
+                  <div style={{ marginTop: 10, width: '100%' }}>
+                    <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#FFF' }}>{char.name}</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--accent)', fontWeight: 600 }}>{char.title}</div>
+                    <div style={{ marginTop: 8, fontSize: '0.75rem', fontWeight: 700, color: '#10B981', background: 'rgba(16, 185, 129, 0.1)', padding: '4px', borderRadius: 4 }}>
+                      + Add to Roster
                     </div>
-                    <button className="btn btn-primary w-full" style={{ marginTop: 12, padding: '8px 12px', fontSize: '0.82rem', fontWeight: 800 }}>
-                      + Recruit Champion
-                    </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
-
       </div>
 
       {/* Showdown Import/Export Modal */}
       {showImportExport && (
-        <div className="winner-overlay" style={{ zIndex: 1000, padding: 16 }}>
-          <div className="glass-elevated" style={{ padding: 32, width: '100%', maxWidth: 650, display: 'flex', flexDirection: 'column', gap: 18, border: '1px solid var(--accent)' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(4px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+          <div style={{ background: '#111622', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: 10, padding: 24, width: '100%', maxWidth: 580, display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <h3 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 900 }}>SHOWDOWN PLAINTEXT IMPORT / EXPORT</h3>
-              <button className="inline-text-btn" style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-muted)' }} onClick={() => setShowImportExport(false)}>×</button>
+              <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 800, color: '#FFF' }}>Showdown Text Import / Export</h3>
+              <button onClick={() => setShowImportExport(false)} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', fontSize: '1.4rem', cursor: 'pointer' }}>×</button>
             </div>
-            <p className="text-secondary" style={{ fontSize: '0.9rem', margin: 0 }}>
-              Paste Showdown format text below to import a full squad, or copy your active roster setup to share with duelists.
-            </p>
             <textarea
               className="input"
-              rows={12}
+              rows={10}
               value={importText}
               onChange={(e) => setImportText(e.target.value)}
               placeholder={`Kaze @ Senzu Bean\n- Basic Attack\n- Poison Strike\n\nRyuu @ Berserk Seal\n- Dragon Fist`}
-              style={{ fontFamily: 'monospace', fontSize: '0.92rem', width: '100%', padding: 16, lineHeight: 1.5 }}
+              style={{ fontFamily: 'monospace', fontSize: '0.85rem', width: '100%', padding: 12, background: '#080C14', color: '#FFF', borderRadius: 6, border: '1px solid rgba(255,255,255,0.1)' }}
             />
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 14 }}>
-              <button className="btn btn-ghost" style={{ padding: '10px 20px', fontWeight: 700 }} onClick={() => setShowImportExport(false)}>Cancel</button>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+              <button onClick={() => setShowImportExport(false)} style={{ padding: '8px 16px', fontSize: '0.82rem', background: '#1E293B', border: '1px solid rgba(255,255,255,0.12)', color: '#FFF', borderRadius: 6, cursor: 'pointer', fontWeight: 600 }}>Cancel</button>
               <button
-                className="btn btn-primary"
-                style={{ padding: '10px 24px', fontWeight: 800 }}
                 onClick={() => handleImportShowdownText(importText)}
+                style={{ padding: '8px 20px', fontSize: '0.82rem', background: 'var(--accent, #6366F1)', border: 'none', color: '#FFF', borderRadius: 6, cursor: 'pointer', fontWeight: 700 }}
               >
-                Apply Roster Setup
+                Import Roster
               </button>
             </div>
           </div>
