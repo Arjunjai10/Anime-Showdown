@@ -119,55 +119,30 @@ export const ShowdownWorkspace: React.FC<ShowdownWorkspaceProps> = ({ token, use
         )}
 
         {activeBattleTab && (
-          <div className="container" style={{ padding: '16px', maxWidth: 1280 }}>
-            {/* Battle Room Banner */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, padding: '10px 18px', background: 'var(--panel-bg)', borderRadius: 8, border: '1px solid var(--border)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <FighterLogo id="swords" size={20} color="var(--text-primary)" />
-                <span style={{ fontWeight: 800, fontSize: '1.05rem', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.03em' }}>{activeBattleTab.title}</span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700 }}>ID: {activeBattleTab.battleId.slice(0, 8)}</span>
-              </div>
-              <div>
-                <button
-                  className="btn btn-ghost"
-                  style={{ padding: '4px 14px', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase' }}
-                  onClick={() => {
-                    if (window.confirm('Are you sure you want to leave / forfeit this battle room?')) {
-                      closeBattleTab(activeBattleTab.battleId);
-                      setActiveTab('lobby');
-                    }
-                  }}
-                >
-                  Leave Room
-                </button>
-              </div>
-            </div>
-
+          <div style={{ height: 'calc(100vh - 110px)', width: '100%', overflow: 'hidden', padding: '8px 16px' }}>
             {activeBattleTab.error && (
-              <div className="p-3 mb-4" style={{ background: 'var(--panel-bg)', border: '1px solid var(--text-muted)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 700 }}>
+              <div className="p-3 mb-2" style={{ background: 'var(--panel-bg)', border: '1px solid var(--text-muted)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 700 }}>
                 ⚠️ {activeBattleTab.error}
               </div>
             )}
 
             {activeBattleTab.winner && (
-              <div style={{ position: 'relative', minHeight: 220, marginBottom: 24, borderRadius: 12, border: '1px solid var(--border-strong)', background: 'var(--card-bg)', boxShadow: '0 10px 40px var(--shadow-color)' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 32 }}>
+              <div style={{ position: 'absolute', inset: 0, zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(4px)' }}>
+                <div style={{ width: 450, padding: 32, borderRadius: 12, border: '2px solid var(--border-strong)', background: 'var(--card-bg)', boxShadow: '0 10px 40px var(--shadow-color)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
                   <FighterLogo
                     id={activeBattleTab.winner === 'draw' ? 'handshake' : activeBattleTab.winner === activeBattleTab.yourKey ? 'trophy' : 'skull'}
                     size={64}
                     color="var(--text-primary)"
                   />
-                  <h2 style={{ fontSize: '2rem', margin: '12px 0 4px', fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <h2 style={{ fontSize: '2rem', margin: '16px 0 6px', fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     {activeBattleTab.winner === 'draw' ? 'Battle Drawn!' : activeBattleTab.winner === activeBattleTab.yourKey ? 'Victory Achieved!' : 'Defeated in Combat'}
                   </h2>
-                  <p style={{ marginBottom: 20, color: 'var(--text-secondary)', fontWeight: 600 }}>
+                  <p style={{ marginBottom: 24, color: 'var(--text-secondary)', fontWeight: 600 }}>
                     {activeBattleTab.winner === 'draw' ? 'Both dueling champions fell simultaneously.' : activeBattleTab.winner === activeBattleTab.yourKey ? 'Your strategies and moveset reigned supreme!' : 'Your team fought valiantly until the end.'}
                   </p>
-                  <div style={{ display: 'flex', gap: 12 }}>
-                    <button className="btn btn-primary" onClick={() => { closeBattleTab(activeBattleTab.battleId); setActiveTab('lobby'); }}>
-                      Return to Lobby
-                    </button>
-                  </div>
+                  <button className="btn btn-primary" style={{ width: '100%', height: 42, fontSize: '0.95rem', fontWeight: 900, textTransform: 'uppercase' }} onClick={() => { closeBattleTab(activeBattleTab.battleId); setActiveTab('lobby'); }}>
+                    Return to Lobby
+                  </button>
                 </div>
               </div>
             )}
@@ -182,6 +157,12 @@ export const ShowdownWorkspace: React.FC<ShowdownWorkspaceProps> = ({ token, use
                 onSelectMove={(payload) => handleSelectBattleMove(activeBattleTab.battleId, payload)}
                 onSendChat={(text) => handleSendBattleChat(activeBattleTab.battleId, text)}
                 chatMessages={activeBattleTab.chatMessages}
+                onLeaveRoom={() => {
+                  if (window.confirm('Are you sure you want to leave / forfeit this battle room?')) {
+                    closeBattleTab(activeBattleTab.battleId);
+                    setActiveTab('lobby');
+                  }
+                }}
               />
             )}
           </div>
