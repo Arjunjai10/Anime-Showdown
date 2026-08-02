@@ -44,11 +44,14 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Ryuu, Madara, Sanji, Kaido (Blazing Flame / Dragon Crest) ─────────────
+    // ── Ryuu, Madara, Sanji, Kaido, Goku, Vegeta, Frieza ──────────────────────
     case 'ryuu':
     case 'madara':
     case 'sanji':
     case 'kaido':
+    case 'goku':
+    case 'vegeta':
+    case 'frieza':
     case 'Fighter / Power':
     case 'Destroyer / Fire & Meteor':
     case 'Speed Kicker / Flame':
@@ -90,10 +93,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Sora, Sasuke, Kakashi (Lightning / Storm) ────────────────────────────
+    // ── Sora, Sasuke, Kakashi, Gojo (Lightning / Storm / Infinity) ────────────
     case 'sora':
     case 'sasuke':
     case 'kakashi':
+    case 'gojo':
     case 'Mage / Elemental':
     case 'Lightning Ninja / Fire':
     case 'Tactician / Lightning':
@@ -108,9 +112,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Ren, Luffy (Gauntlet / Impact Fist) ──────────────────────────────────
+    // ── Ren, Luffy, Yuji, Saitama (Gauntlet / Impact Fist) ────────────────────
     case 'ren':
     case 'luffy':
+    case 'yuji':
+    case 'saitama':
     case 'Brawler / Electric':
     case 'Rubber Brawler / Haki':
       return (
@@ -156,9 +162,10 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Gale, Zaraki (Twin Berserker Axes) ───────────────────────────────────
+    // ── Gale, Zaraki, Sukuna (Twin Berserker Axes / Cursed Cleave) ────────────
     case 'gale':
     case 'zaraki':
+    case 'sukuna':
     case 'Berserker / Wild':
     case 'Berserker / Cutting Force':
       return (
@@ -171,11 +178,13 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Crossed Blades (Zoro, Ichigo, Game Brand) ──────────────────────────────
+    // ── Crossed Blades (Zoro, Ichigo, Tanjiro, Levi, Game Brand) ──────────────
     case 'game-logo':
     case 'swords':
     case 'zoro':
     case 'ichigo':
+    case 'tanjiro':
+    case 'levi':
     case 'Three-Sword Master / Power':
     case 'Getsuga Hybrid / Speed':
       return (

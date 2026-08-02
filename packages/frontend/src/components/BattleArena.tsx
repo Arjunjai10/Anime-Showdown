@@ -183,13 +183,13 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
     <div style={{ height: '100%', width: '100%', display: 'grid', gridTemplateColumns: '1fr 380px', gap: 12, overflow: 'hidden' }}>
 
       {/* LEFT COLUMN: Stage (flex 1) & Tactical Action Deck (auto) */}
-      <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', gap: 10 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, overflow: 'hidden', gap: 10 }}>
         
         {/* ── 1. THE ARENA STAGE (Flex-grows to fit exact screen without scrolling) ──────── */}
         <div
           style={{
             flex: '1 1 0%',
-            minHeight: 220,
+            minHeight: 160,
             background: 'var(--stage-bg)',
             border: '2px solid var(--border-strong)',
             borderRadius: 8,

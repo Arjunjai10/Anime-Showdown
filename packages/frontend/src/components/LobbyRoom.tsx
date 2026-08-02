@@ -107,13 +107,13 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
   }
 
   return (
-    <div className="container" style={{ padding: '20px 24px', maxWidth: 1280, margin: '0 auto' }}>
+    <div className="container" style={{ padding: '16px 32px', width: '100%', maxWidth: '100%', margin: '0 auto', flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
       
       {/* ── Matchmaking Dashboard Header (Theme Responsive) ────────── */}
       <div
         style={{
-          padding: '18px 22px',
-          marginBottom: 20,
+          padding: '16px 22px',
+          marginBottom: 16,
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
@@ -245,7 +245,7 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
       )}
 
       {/* ── Main Workspace split: Lobby Chat & Duelist Roster ───────── */}
-      <div style={{ display: 'grid', gridTemplateColumns: showLobbyChat ? '1fr 300px' : '1fr', gap: 20, marginBottom: 28, alignItems: 'stretch' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: showLobbyChat ? '1fr 300px' : '1fr', gap: 16, flex: 1, minHeight: 0, paddingBottom: 12, alignItems: 'stretch' }}>
         
         {/* Lobby Chat Panel */}
         {showLobbyChat ? (
@@ -256,7 +256,8 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
               borderRadius: 8,
               display: 'flex',
               flexDirection: 'column',
-              height: 420,
+              height: '100%',
+              minHeight: 250,
               overflow: 'hidden',
             }}
           >
@@ -322,7 +323,8 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
             borderRadius: 8,
             display: 'flex',
             flexDirection: 'column',
-            height: 420,
+            height: '100%',
+            minHeight: 250,
             overflow: 'hidden',
           }}
         >

@@ -103,13 +103,13 @@ export const ShowdownWorkspace: React.FC<ShowdownWorkspaceProps> = ({ token, use
   const activeBattleTab = openBattleTabs[activeTabId];
 
   return (
-    <div className="showdown-workspace" style={{ display: 'flex', flexDirection: 'column', minHeight: 'calc(100vh - 64px)' }}>
+    <div className="showdown-workspace" style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 60px)', maxHeight: 'calc(100vh - 60px)', width: '100%', overflow: 'hidden' }}>
       
       {/* Tab Navigation */}
       <WorkspaceTabs />
 
       {/* Workspace Content */}
-      <div style={{ flex: 1, position: 'relative', overflowY: 'auto' }}>
+      <div style={{ flex: 1, minHeight: 0, position: 'relative', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
         {activeTabId === 'lobby' && (
           <LobbyRoom token={token} username={username} onLogin={onLogin} />
         )}
@@ -119,7 +119,7 @@ export const ShowdownWorkspace: React.FC<ShowdownWorkspaceProps> = ({ token, use
         )}
 
         {activeBattleTab && (
-          <div style={{ height: 'calc(100vh - 110px)', width: '100%', overflow: 'hidden', padding: '8px 16px' }}>
+          <div style={{ flex: 1, minHeight: 0, width: '100%', overflow: 'hidden', padding: '8px 16px', display: 'flex', flexDirection: 'column' }}>
             {activeBattleTab.error && (
               <div className="p-3 mb-2" style={{ background: 'var(--panel-bg)', border: '1px solid var(--text-muted)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 700 }}>
                 ⚠️ {activeBattleTab.error}

@@ -198,5 +198,95 @@
     "baseStats": { "maxHp": 1420, "maxEnergy": 100, "attack": 148, "defense": 110, "special": 60, "speed": 85 },
     "moveIds": ["kendo-cleave", "eyepatch-off", "nozarashi", "bloodlust-roar"],
     "colorScheme": { "primary": "#F59E0B", "secondary": "#78350F" }
+  },
+  {
+    "id": "goku",
+    "name": "Son Goku",
+    "title": "Saiyan Emperor of Martial Arts",
+    "archetype": "Saiyan Brawler / Instinct",
+    "description": "A pure-hearted Saiyan warrior raised on Earth whose combat evolution breaks through planetary and godly boundaries. Harnesses Ultra Instinct and towering Kamehameha energy blasts.",
+    "baseStats": { "maxHp": 1350, "maxEnergy": 100, "attack": 145, "defense": 100, "special": 135, "speed": 130 },
+    "moveIds": ["kamehameha", "spirit-bomb", "ultra-instinct", "dragon-smash"],
+    "colorScheme": { "primary": "#F97316", "secondary": "#3B82F6" }
+  },
+  {
+    "id": "vegeta",
+    "name": "Vegeta",
+    "title": "Proud Prince of Saiyans",
+    "archetype": "Saiyan Destroyer / Power",
+    "description": "The relentless royal Saiyan prince driven by pride and indomitable grit. Unleashes cataclysmic Galick Gun torrents, Final Flash devastations, and pure destructive Ego.",
+    "baseStats": { "maxHp": 1280, "maxEnergy": 100, "attack": 148, "defense": 95, "special": 140, "speed": 120 },
+    "moveIds": ["final-flash", "galick-gun", "big-bang-attack", "saiyan-pride"],
+    "colorScheme": { "primary": "#1E3A8A", "secondary": "#F59E0B" }
+  },
+  {
+    "id": "frieza",
+    "name": "Frieza",
+    "title": "Galactic Tyrant",
+    "archetype": "Cosmic Destroyer / Beam",
+    "description": "The ruthless ruler of the cosmos who destroys entire planets with a single finger flick. Transforms into blinding Golden radiance to terrorize the arena.",
+    "baseStats": { "maxHp": 1300, "maxEnergy": 100, "attack": 135, "defense": 110, "special": 148, "speed": 115 },
+    "moveIds": ["death-beam", "supernova-destroyer", "golden-transformation", "emperor-tail-whip"],
+    "colorScheme": { "primary": "#9333EA", "secondary": "#EAB308" }
+  },
+  {
+    "id": "gojo",
+    "name": "Satoru Gojo",
+    "title": "The Strongest Sorcerer Alive",
+    "archetype": "Limitless Sorcerer / Infinity",
+    "description": "Wields the hereditary Limitless technique and Six Eyes with divine confidence. Wraps himself in impassable spatial Infinity before obliterating targets with Hollow Purple and Infinite Void.",
+    "baseStats": { "maxHp": 1450, "maxEnergy": 100, "attack": 135, "defense": 150, "special": 155, "speed": 135 },
+    "moveIds": ["hollow-purple", "infinity-shield", "red-reversal", "unlimited-void"],
+    "colorScheme": { "primary": "#3B82F6", "secondary": "#A855F7" }
+  },
+  {
+    "id": "sukuna",
+    "name": "Ryomen Sukuna",
+    "title": "King of Curses",
+    "archetype": "Cursed Deity / Slashing Dismantle",
+    "description": "The ancient, multi-armed calamity incarnated into modern times. Deploys invisible Cleave and Dismantle slashes alongside his terrifying divine domain expansion, Malevolent Shrine.",
+    "baseStats": { "maxHp": 1500, "maxEnergy": 100, "attack": 155, "defense": 120, "special": 145, "speed": 125 },
+    "moveIds": ["dismantle", "cleave-slash", "flame-arrow", "malevolent-shrine"],
+    "colorScheme": { "primary": "#DC2626", "secondary": "#1E293B" }
+  },
+  {
+    "id": "yuji",
+    "name": "Yuji Itadori",
+    "title": "The Cursed Vessel",
+    "archetype": "Superhuman Brawler / Strike",
+    "description": "A gifted martial athlete wielding superhuman density and unrelenting guts. Chains explosive Black Flash impacts that shatter spiritual defenses with terrifying physical force.",
+    "baseStats": { "maxHp": 1180, "maxEnergy": 100, "attack": 132, "defense": 95, "special": 90, "speed": 120 },
+    "moveIds": ["divergence-fist", "black-flash", "tiger-knee", "unbreakable-will"],
+    "colorScheme": { "primary": "#EF4444", "secondary": "#0284C7" }
+  },
+  {
+    "id": "tanjiro",
+    "name": "Tanjiro Kamado",
+    "title": "Sun Breath Demon Slayer",
+    "archetype": "Water & Sun Swordsman / Blade",
+    "description": "A passionate swordsman with superhuman scent analysis and unwavering resolve. Fluidly transitions between defensive Water Breathing techniques and explosive fiery Hinokami Kagura solar dances.",
+    "baseStats": { "maxHp": 1100, "maxEnergy": 100, "attack": 122, "defense": 92, "special": 105, "speed": 118 },
+    "moveIds": ["hinokami-kagura", "water-wheel", "constant-flux", "sun-breathing"],
+    "colorScheme": { "primary": "#10B981", "secondary": "#DC2626" }
+  },
+  {
+    "id": "levi",
+    "name": "Levi Ackerman",
+    "title": "Humanity's Strongest Soldier",
+    "archetype": "Omni-Directional Scout / Speed",
+    "description": "An aerial spinning tornado of dual ultra-hard steel blades and maneuvering gear mastery. Carves through colossal targets at blinding speeds before they can even perceive his positioning.",
+    "baseStats": { "maxHp": 1000, "maxEnergy": 100, "attack": 138, "defense": 78, "special": 65, "speed": 145 },
+    "moveIds": ["spinning-slash", "odm-assault", "dual-blade-slice", "ackerman-fury"],
+    "colorScheme": { "primary": "#3F6212", "secondary": "#64748B" }
+  },
+  {
+    "id": "saitama",
+    "name": "Saitama",
+    "title": "Hero for Fun",
+    "archetype": "Overwhelming Strength / Caped Baldy",
+    "description": "A caped hero who trained so hard his hair fell out. Possesses immeasurable, terrifyingly absolute strength that ends apocalyptic cosmic threats with a single casual punch.",
+    "baseStats": { "maxHp": 1600, "maxEnergy": 100, "attack": 180, "defense": 160, "special": 80, "speed": 140 },
+    "moveIds": ["normal-punch", "consecutive-normal-punches", "serious-punch", "impenetrable-baldness"],
+    "colorScheme": { "primary": "#EAB308", "secondary": "#DC2626" }
   }
 ]

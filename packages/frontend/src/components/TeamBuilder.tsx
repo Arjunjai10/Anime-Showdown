@@ -251,7 +251,7 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
   const availableMovesForActive = activeChar ? activeChar.moveIds.map(id => movesById.get(id)).filter((m): m is Move => !!m) : [];
 
   return (
-    <div className="container" style={{ padding: '20px 24px', maxWidth: 1280, margin: '0 auto' }}>
+    <div className="container" style={{ padding: '20px 32px', width: '100%', maxWidth: '100%', margin: '0 auto', flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
       
       {/* ── Header (Theme Responsive) ────────────────────────────────── */}
       <div

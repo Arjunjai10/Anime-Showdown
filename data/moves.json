@@ -533,5 +533,236 @@
     "name": "Bankai Demon Roar",
     "description": "Zaraki's ultimate — transform into a crimson berserk oni whose cutting reach shears reality itself.",
     "type": "physical", "power": 158, "accuracy": 78, "energyCost": 70
+  },
+  {
+    "id": "kamehameha",
+    "name": "Kamehameha Wave",
+    "description": "Concentrate ki into a blinding blue energy torrent capable of blasting across planetary horizons.",
+    "type": "special", "power": 110, "accuracy": 95, "energyCost": 40,
+    "statusEffect": { "effect": "burn", "chance": 0.3, "duration": 2 }
+  },
+  {
+    "id": "spirit-bomb",
+    "name": "Super Spirit Bomb",
+    "description": "Goku's ultimate — gather energy from all life across the cosmos into a colossal sphere that obliterates evil.",
+    "type": "special", "power": 155, "accuracy": 85, "energyCost": 70,
+    "statusEffect": { "effect": "stun", "chance": 0.4, "duration": 1 }
+  },
+  {
+    "id": "ultra-instinct",
+    "name": "Mastered Ultra Instinct",
+    "description": "Separate consciousness from reflex, enabling automatic dodge responses against lethal incoming strikes.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.8, "duration": 3 }
+  },
+  {
+    "id": "dragon-smash",
+    "name": "Meteor Dragon Smash",
+    "description": "A hypersonic physical assault concluding with an explosive downward slam into the bedrock.",
+    "type": "physical", "power": 95, "accuracy": 100, "energyCost": 30
+  },
+  {
+    "id": "galick-gun",
+    "name": "Galick Gun",
+    "description": "Channel royal violet energy before firing a concentrated artillery beam with destructive backlash.",
+    "type": "special", "power": 105, "accuracy": 95, "energyCost": 35
+  },
+  {
+    "id": "final-flash",
+    "name": "Final Flash",
+    "description": "Vegeta's ultimate — spread both arms wide to charge a transcendent golden laser that scorches outer space.",
+    "type": "special", "power": 150, "accuracy": 85, "energyCost": 65
+  },
+  {
+    "id": "big-bang-attack",
+    "name": "Big Bang Attack",
+    "description": "Discharge a concentrated plasma sphere from an outstretched palm that detonates upon contact.",
+    "type": "special", "power": 115, "accuracy": 90, "energyCost": 45
+  },
+  {
+    "id": "saiyan-pride",
+    "name": "Royal Saiyan Pride",
+    "description": "Ignite indomitable royal ambition to multiply raw damage output through sheer defiance.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.75, "duration": 3 }
+  },
+  {
+    "id": "death-beam",
+    "name": "Emperor's Death Beam",
+    "description": "An instantaneous piercing scarlet ray fired from the index finger that never misses its vital target.",
+    "type": "special", "power": 90, "accuracy": 100, "energyCost": 25
+  },
+  {
+    "id": "supernova-destroyer",
+    "name": "Death Ball Supernova",
+    "description": "Frieza's ultimate — conjure a sun-sized sphere of flaming destruction capable of rupturing planetary cores.",
+    "type": "special", "power": 145, "accuracy": 85, "energyCost": 60
+  },
+  {
+    "id": "golden-transformation",
+    "name": "Golden Frieza Evolution",
+    "description": "Evolve into blinding golden radiance, maximizing cruel tyrannical combat strength.",
+    "type": "self", "accuracy": 100, "energyCost": 40,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.65, "duration": 3 }
+  },
+  {
+    "id": "emperor-tail-whip",
+    "name": "Vengeful Tail Whip",
+    "description": "A wicked crushing blow using a prehensile tail that leaves opponents gasping and immobilized.",
+    "type": "physical", "power": 85, "accuracy": 95, "energyCost": 25,
+    "statusEffect": { "effect": "stun", "chance": 0.3, "duration": 1 }
+  },
+  {
+    "id": "hollow-purple",
+    "name": "Hollow Purple",
+    "description": "Gojo's ultimate — merge Limitless Blue and Red to erupt an imaginary mass that erases matter from reality.",
+    "type": "special", "power": 155, "accuracy": 90, "energyCost": 65
+  },
+  {
+    "id": "infinity-shield",
+    "name": "Limitless Infinity",
+    "description": "Activate spatial paradoxes where attacks slow down infinitely, making defensive breaching impossible.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 2.0, "duration": 2 }
+  },
+  {
+    "id": "red-reversal",
+    "name": "Cursed Technique Reversal: Red",
+    "description": "Invert Limitless spatial attraction into explosive violent repulsion that blasts through obstacles.",
+    "type": "special", "power": 110, "accuracy": 95, "energyCost": 35
+  },
+  {
+    "id": "unlimited-void",
+    "name": "Domain Expansion: Unlimited Void",
+    "description": "Trap foes inside infinite cosmic information, paralyzing all thought and motor function instantly.",
+    "type": "special", "power": 130, "accuracy": 90, "energyCost": 60,
+    "statusEffect": { "effect": "stun", "chance": 0.8, "duration": 2 }
+  },
+  {
+    "id": "dismantle",
+    "name": "Dismantle Slash",
+    "description": "An invisible long-range cursed cleave that silently dices opponents before sound even follows.",
+    "type": "physical", "power": 95, "accuracy": 100, "energyCost": 25
+  },
+  {
+    "id": "cleave-slash",
+    "name": "Cursed Cleave",
+    "description": "A close-quarters cursed slash that automatically calibrates cutting force to shear through heavy defense.",
+    "type": "physical", "power": 125, "accuracy": 95, "energyCost": 40
+  },
+  {
+    "id": "flame-arrow",
+    "name": "Divine Flame Arrow",
+    "description": "Unseal a primordial furnace to fire an incinerating arrow that turns whole city blocks to ash.",
+    "type": "special", "power": 135, "accuracy": 90, "energyCost": 55,
+    "statusEffect": { "effect": "burn", "chance": 0.5, "duration": 3 }
+  },
+  {
+    "id": "malevolent-shrine",
+    "name": "Domain Expansion: Malevolent Shrine",
+    "description": "Sukuna's ultimate — construct an unbarred divine reliquary that ceaselessly carves everything within range into dust.",
+    "type": "physical", "power": 160, "accuracy": 85, "energyCost": 75
+  },
+  {
+    "id": "divergence-fist",
+    "name": "Divergent Fist",
+    "description": "A bone-shattering strike where delayed cursed energy produces a secondary explosive impact.",
+    "type": "physical", "power": 85, "accuracy": 100, "energyCost": 20
+  },
+  {
+    "id": "black-flash",
+    "name": "Black Flash Combo",
+    "description": "Distort spatial reality by impacting cursed energy within 0.000001 seconds of a physical hit.",
+    "type": "physical", "power": 135, "accuracy": 90, "energyCost": 45,
+    "statusEffect": { "effect": "stun", "chance": 0.35, "duration": 1 }
+  },
+  {
+    "id": "tiger-knee",
+    "name": "Tiger Smash",
+    "description": "An acrobatic flying knee strike delivered with beastly athletic momentum.",
+    "type": "physical", "power": 95, "accuracy": 95, "energyCost": 25
+  },
+  {
+    "id": "unbreakable-will",
+    "name": "Vessel's Unshakeable Will",
+    "description": "Draw upon unbreakable human resilience to harden muscles against lethal cursed impacts.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.5, "duration": 3 }
+  },
+  {
+    "id": "hinokami-kagura",
+    "name": "Hinokami Kagura: Dragon Sun Halo",
+    "description": "Tanjiro's ultimate — perform an uninterrupted blazing solar dance that decapitates demon lords.",
+    "type": "special", "power": 135, "accuracy": 90, "energyCost": 50,
+    "statusEffect": { "effect": "burn", "chance": 0.4, "duration": 3 }
+  },
+  {
+    "id": "water-wheel",
+    "name": "Water Breathing: Water Wheel",
+    "description": "A fluid defensive somersault generating a rushing wheel of water that slices incoming assaults.",
+    "type": "physical", "power": 85, "accuracy": 100, "energyCost": 20
+  },
+  {
+    "id": "constant-flux",
+    "name": "Water Breathing: Constant Flux",
+    "description": "A continuously accelerating dragon-form water strike that grows heavier with every turn.",
+    "type": "physical", "power": 115, "accuracy": 95, "energyCost": 35
+  },
+  {
+    "id": "sun-breathing",
+    "name": "Total Concentration: Sun Breathing",
+    "description": "Max oxygen intake to heat blood vessels and unleash peak athletic sword speed.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.6, "duration": 3 }
+  },
+  {
+    "id": "spinning-slash",
+    "name": "Omni-Directional Spin Slash",
+    "description": "A blinding rotating whirlwind of dual blades that dices target armor into scrap metal.",
+    "type": "physical", "power": 115, "accuracy": 100, "energyCost": 30
+  },
+  {
+    "id": "odm-assault",
+    "name": "High-Altitude ODM Assault",
+    "description": "Launch off grappling anchors to deliver an unavoidable aerial decapitation strike.",
+    "type": "physical", "power": 130, "accuracy": 95, "energyCost": 40
+  },
+  {
+    "id": "dual-blade-slice",
+    "name": "Ultra-Hard Steel Slicing",
+    "description": "Rapid surgical cuts aimed directly at vulnerable tendons and joints.",
+    "type": "physical", "power": 90, "accuracy": 100, "energyCost": 25
+  },
+  {
+    "id": "ackerman-fury",
+    "name": "Awakened Ackerman Instinct",
+    "description": "Unleash suppressed combat lineage to turn into an untraceable battlefield reaper.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.8, "duration": 2 }
+  },
+  {
+    "id": "normal-punch",
+    "name": "Casual Normal Punch",
+    "description": "A seemingly lazy single punch that generates destructive shockwaves capable of parting cloud systems.",
+    "type": "physical", "power": 120, "accuracy": 100, "energyCost": 30
+  },
+  {
+    "id": "consecutive-normal-punches",
+    "name": "Consecutive Normal Punches",
+    "description": "A split-second flurry of effortless punches that leaves massive subterranean craters.",
+    "type": "physical", "power": 150, "accuracy": 90, "energyCost": 50
+  },
+  {
+    "id": "serious-punch",
+    "name": "Killer Move: Serious Punch",
+    "description": "Saitama's ultimate — get slightly serious for a millisecond, unleashing an apocalypse-halving atmospheric blast.",
+    "type": "physical", "power": 200, "accuracy": 85, "energyCost": 85
+  },
+  {
+    "id": "impenetrable-baldness",
+    "name": "Hero's Impenetrable Stash",
+    "description": "Shrug off intergalactic thermal lasers and gravity crushes with complete boredom.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 2.0, "duration": 3 }
   }
 ]
