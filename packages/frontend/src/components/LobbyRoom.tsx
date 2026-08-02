@@ -4,7 +4,6 @@ import { useSettingsStore } from '../stores/settingsStore';
 import { useSocket } from '../hooks/useSocket';
 import type { Character, TeamDoc, AuthResponse } from '../types';
 import { FighterLogo } from './FighterLogo';
-import { FighterSprite } from './FighterSprite';
 
 interface LobbyRoomProps {
   token: string | null;
@@ -334,49 +333,6 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
           <div style={{ padding: '8px 12px', background: 'var(--panel-header)', borderTop: '1px solid var(--border)', textAlign: 'center', fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>
             Authoritative Server (WebSocket)
           </div>
-        </div>
-      </div>
-
-      {/* ── Champion Archetypes Showcase (Theme Responsive) ──────────── */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-          <FighterLogo id="shield" size={20} color="var(--text-primary)" />
-          <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-            Anime Champion Roster Showcase
-          </h3>
-        </div>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
-          {roster.map((char) => (
-            <div
-              key={char.id}
-              className="roster-card"
-              style={{
-                background: 'var(--card-bg)',
-                border: '1px solid var(--border)',
-                borderRadius: 8,
-                padding: 14,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                transition: 'transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease',
-              }}
-            >
-              <FighterSprite id={char.id} size="lg" />
-              
-              <div style={{ marginTop: 12, width: '100%' }}>
-                <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.02em' }}>{char.name}</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase', marginTop: 2 }}>{char.title}</div>
-                
-                <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginTop: 10, paddingTop: 8, borderTop: '1px solid var(--border)', fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                  <span><strong style={{ color: 'var(--text-primary)' }}>HP:</strong> {char.baseStats.maxHp}</span>
-                  <span><strong style={{ color: 'var(--text-primary)' }}>ATK:</strong> {char.baseStats.attack}</span>
-                  <span><strong style={{ color: 'var(--text-primary)' }}>SPD:</strong> {char.baseStats.speed}</span>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 

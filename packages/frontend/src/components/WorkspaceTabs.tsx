@@ -18,7 +18,7 @@ export const WorkspaceTabs: React.FC = () => {
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
           <FighterLogo id="swords" size={16} color={activeTabId === 'lobby' ? 'var(--text-primary)' : 'var(--text-secondary)'} />
-          <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Lobby & Roster</span>
+          <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Lobby</span>
         </button>
 
         {/* Teambuilder Tab */}
