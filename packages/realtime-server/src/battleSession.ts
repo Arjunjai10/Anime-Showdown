@@ -27,9 +27,11 @@ function moveLookup(id: string): MoveWithData | undefined {
   return movesById.get(id);
 }
 
-function buildFighterSpecs(team?: TeamDoc, singleCharId?: string): FighterSpec[] {
+function buildFighterSpecs(team?: TeamDoc, singleCharId?: string, format: string = 'ou_6v6'): FighterSpec[] {
+  let initialSpecs: FighterSpec[] = [];
+
   if (team && team.slots && team.slots.length > 0) {
-    return team.slots.map(s => {
+    initialSpecs = team.slots.map(s => {
       const char = charsById.get(s.characterId) || charsById.get('kaze')!;
       return {
         id: char.id,
@@ -40,7 +42,7 @@ function buildFighterSpecs(team?: TeamDoc, singleCharId?: string): FighterSpec[]
       };
     });
   } else if (team && team.characterIds && team.characterIds.length > 0) {
-    return team.characterIds.map(cid => {
+    initialSpecs = team.characterIds.map(cid => {
       const char = charsById.get(cid) || charsById.get('kaze')!;
       return {
         id: char.id,
@@ -49,14 +51,49 @@ function buildFighterSpecs(team?: TeamDoc, singleCharId?: string): FighterSpec[]
         moveIds: char.moveIds,
       };
     });
+  } else {
+    let fallback = singleCharId ? charsById.get(singleCharId) : undefined;
+    if (!fallback) {
+      const randomIdx = Math.floor(Math.random() * characters.length);
+      fallback = characters[randomIdx] || charsById.values().next().value!;
+    }
+    initialSpecs = [{
+      id: fallback.id,
+      name: fallback.name,
+      baseStats: fallback.baseStats,
+      moveIds: fallback.moveIds,
+    }];
   }
-  const fallback = charsById.get(singleCharId || 'kaze') || charsById.values().next().value!;
-  return [{
-    id: fallback.id,
-    name: fallback.name,
-    baseStats: fallback.baseStats,
-    moveIds: fallback.moveIds,
-  }];
+
+  // Determine required team size for format
+  let targetSize = 6;
+  if (format === 'blitz_3v3' || format === '3v3') targetSize = 3;
+  if (format === 'quick_1v1' || format === '1v1') targetSize = 1;
+
+  // Trim team if too large for selected format
+  if (initialSpecs.length > targetSize) {
+    initialSpecs = initialSpecs.slice(0, targetSize);
+  }
+
+  // Auto-fill diverse characters if team is smaller than format demands (e.g. starter in 6v6 or 3v3)
+  if (initialSpecs.length < targetSize) {
+    const usedIds = new Set(initialSpecs.map(s => s.id));
+    const shuffled = [...characters].sort(() => 0.5 - Math.random());
+    for (const char of shuffled) {
+      if (initialSpecs.length >= targetSize) break;
+      if (!usedIds.has(char.id)) {
+        usedIds.add(char.id);
+        initialSpecs.push({
+          id: char.id,
+          name: char.name,
+          baseStats: char.baseStats,
+          moveIds: char.moveIds,
+        });
+      }
+    }
+  }
+
+  return initialSpecs;
 }
 
 type AppIO = Server<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>;
@@ -92,12 +129,49 @@ export class BattleSession {
     this.socketB = socketB;
     this.io = io;
 
-    const specsA = buildFighterSpecs(teamA, charIdA);
-    const specsB = buildFighterSpecs(teamB, charIdB);
+    const specsA = buildFighterSpecs(teamA, charIdA, format);
+    const specsB = buildFighterSpecs(teamB, charIdB, format);
 
     this.state = createInitialBattleState(battleId, specsA, specsB, format);
     if (usernameA) this.state.playerA.username = usernameA;
     if (usernameB) this.state.playerB.username = usernameB;
+  }
+
+  private isBotBattle(): boolean {
+    return this.socketB.startsWith('BOT_');
+  }
+
+  private triggerBotActionIfNeeded(immediate: boolean = false): void {
+    if (!this.isBotBattle() || this.state.phase === 'ended') return;
+    if (this.pendingActions.has('playerB')) return;
+
+    const execute = () => {
+      if (this.state.phase === 'ended' || this.pendingActions.has('playerB')) return;
+
+      if (this.state.phase === 'switching') {
+        if (this.state.playerB.mustSwitch) {
+          const aliveIdx = this.state.playerB.team.findIndex((f, idx) => f.isAlive && idx !== this.state.playerB.activeIdx);
+          if (aliveIdx !== -1) {
+            this.submitAction(this.socketB, { type: 'switch', switchIndex: aliveIdx });
+          }
+        }
+      } else {
+        const currentFighter = this.state.playerB.team[this.state.playerB.activeIdx] || (this.state.playerB as any);
+        if (currentFighter.currentEnergy !== undefined && currentFighter.currentEnergy < 25) {
+          this.submitAction(this.socketB, { type: 'move', moveId: 'recharge' });
+        } else {
+          const availableMoves = currentFighter.moveIds || ['strike'];
+          const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)] || 'strike';
+          this.submitAction(this.socketB, { type: 'move', moveId: randomMove });
+        }
+      }
+    };
+
+    if (immediate) {
+      execute();
+    } else {
+      setTimeout(execute, 450);
+    }
   }
 
   start(): void {
@@ -106,12 +180,15 @@ export class BattleSession {
       state: this.state,
       yourKey: 'playerA',
     });
-    this.io.to(this.socketB).emit('battle:start', {
-      battleId: this.battleId,
-      state: this.state,
-      yourKey: 'playerB',
-    });
-    console.log(`[Battle ${this.battleId}] Started (Format: ${this.state.format || '6v6'})`);
+    if (!this.isBotBattle()) {
+      this.io.to(this.socketB).emit('battle:start', {
+        battleId: this.battleId,
+        state: this.state,
+        yourKey: 'playerB',
+      });
+    }
+    console.log(`[Battle ${this.battleId}] Started (Format: ${this.state.format || 'ou_6v6'})`);
+    this.triggerBotActionIfNeeded();
   }
 
   submitAction(socketId: string, payload: { type?: 'move' | 'switch'; moveId?: string; switchIndex?: number } | string): void {
@@ -134,6 +211,10 @@ export class BattleSession {
 
     console.log(`[Battle ${this.battleId}] Action from ${playerKey}: ${JSON.stringify(action)}`);
 
+    if (socketId === this.socketA && this.isBotBattle()) {
+      this.triggerBotActionIfNeeded(true);
+    }
+
     if (this.state.phase === 'switching') {
       const aDone = !this.state.playerA.mustSwitch || this.pendingActions.has('playerA');
       const bDone = !this.state.playerB.mustSwitch || this.pendingActions.has('playerB');
@@ -155,19 +236,26 @@ export class BattleSession {
     } catch (err) {
       console.error(`[Battle ${this.battleId}] Engine error:`, err);
       this.io.to(this.socketA).emit('battle:error', { message: 'Battle engine error — please reconnect' });
-      this.io.to(this.socketB).emit('battle:error', { message: 'Battle engine error — please reconnect' });
+      if (!this.isBotBattle()) {
+        this.io.to(this.socketB).emit('battle:error', { message: 'Battle engine error — please reconnect' });
+      }
       return;
     }
 
     if (this.state.phase === 'ended') {
       const winner = this.state.winner ?? 'draw';
       this.io.to(this.socketA).emit('battle:end', { state: this.state, winner });
-      this.io.to(this.socketB).emit('battle:end', { state: this.state, winner });
+      if (!this.isBotBattle()) {
+        this.io.to(this.socketB).emit('battle:end', { state: this.state, winner });
+      }
       console.log(`[Battle ${this.battleId}] Ended — winner: ${winner}`);
       activeSessions.delete(this.battleId);
     } else {
       this.io.to(this.socketA).emit('battle:stateUpdate', { state: this.state });
-      this.io.to(this.socketB).emit('battle:stateUpdate', { state: this.state });
+      if (!this.isBotBattle()) {
+        this.io.to(this.socketB).emit('battle:stateUpdate', { state: this.state });
+      }
+      this.triggerBotActionIfNeeded(false);
     }
   }
 
@@ -177,7 +265,9 @@ export class BattleSession {
 
     const finalState: BattleState = { ...this.state, phase: 'ended', winner };
     this.io.to(this.socketA).emit('battle:end', { state: finalState, winner });
-    this.io.to(this.socketB).emit('battle:end', { state: finalState, winner });
+    if (!this.isBotBattle()) {
+      this.io.to(this.socketB).emit('battle:end', { state: finalState, winner });
+    }
     console.log(`[Battle ${this.battleId}] Forfeit by ${forfeitedKey}`);
     activeSessions.delete(this.battleId);
   }

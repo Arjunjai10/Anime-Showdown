@@ -12,15 +12,39 @@ const REALTIME_URL = import.meta.env.VITE_REALTIME_URL ?? 'http://localhost:3002
  * that touches socket.io directly.
  */
 let socketInstance: AppSocket | null = null;
+function getAuthUsername(): string | null {
+  try {
+    const raw = localStorage.getItem('anime-showdown-auth');
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (data && data.username && data.token) {
+        return data.username;
+      }
+    }
+  } catch {}
+  return null;
+}
+
+export function resetSocketAuth() {
+  if (socketInstance) {
+    socketInstance.disconnect();
+    socketInstance = null;
+  }
+}
 
 function getSocket(): AppSocket {
+  const authUsername = getAuthUsername();
   if (!socketInstance || socketInstance.disconnected) {
     socketInstance = io(REALTIME_URL, {
       autoConnect: false,
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
+      query: authUsername ? { username: authUsername } : {},
     });
+  } else if (authUsername && socketInstance.io.opts.query?.username !== authUsername) {
+    socketInstance.io.opts.query = { username: authUsername };
+    socketInstance.disconnect().connect();
   }
   return socketInstance;
 }

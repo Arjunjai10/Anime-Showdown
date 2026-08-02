@@ -1,5 +1,11 @@
 [
   {
+    "id": "recharge",
+    "name": "⚡ Focus & Regain Energy",
+    "description": "Focus internal energy and fighting spirit to instantly regain +50% Energy for upcoming attacks.",
+    "type": "self", "power": 0, "accuracy": 100, "energyCost": 0
+  },
+  {
     "id": "shadow-strike",
     "name": "Shadow Strike",
     "description": "A blindingly fast physical strike from the shadows. Low cost, reliable damage.",
@@ -62,128 +68,128 @@
   {
     "id": "petal-storm",
     "name": "Petal Storm",
-    "description": "A flurry of razor-sharp petals that strikes twice in quick succession.",
-    "type": "physical", "power": 55, "accuracy": 90, "energyCost": 35,
-    "tags": ["multi-hit"]
+    "description": "A swirling hurricane of iron-hard flower petals that slices the enemy over time.",
+    "type": "physical", "power": 65, "accuracy": 100, "energyCost": 25,
+    "statusEffect": { "effect": "poison", "chance": 0.5, "duration": 3 }
   },
   {
     "id": "thorn-barrier",
     "name": "Thorn Barrier",
-    "description": "Surround yourself with hardened thorns. Slows the opponent significantly.",
-    "type": "status", "accuracy": 90, "energyCost": 40,
-    "statusEffect": { "effect": "slow", "chance": 0.9, "duration": 3 }
+    "description": "Summon defensive iron thorns around yourself, lowering damage taken while punishing attackers.",
+    "type": "self", "accuracy": 100, "energyCost": 25,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.4, "duration": 3 }
   },
   {
     "id": "earth-slam",
     "name": "Earth Slam",
-    "description": "Bring both fists down with tectonic force. Heavy damage and a high chance of slowing.",
+    "description": "Slam the ground with colossal physical force, sending shockwaves through the arena.",
     "type": "physical", "power": 95, "accuracy": 90, "energyCost": 40,
-    "statusEffect": { "effect": "slow", "chance": 0.3, "duration": 2 }
+    "statusEffect": { "effect": "slow", "chance": 0.6, "duration": 2 }
   },
   {
     "id": "thunder-lance",
     "name": "Thunder Lance",
-    "description": "A javelin of pure lightning. Heavy special damage with a chance of stun.",
+    "description": "A focused spear of lightning that pierces special defenses and shocks the target.",
     "type": "special", "power": 90, "accuracy": 95, "energyCost": 35,
     "statusEffect": { "effect": "stun", "chance": 0.2, "duration": 1 }
   },
   {
     "id": "blizzard",
     "name": "Blizzard",
-    "description": "A howling blizzard of ice that deals damage and drastically reduces speed.",
-    "type": "special", "power": 70, "accuracy": 90, "energyCost": 35,
-    "statusEffect": { "effect": "slow", "chance": 0.45, "duration": 2 }
+    "description": "Unleash an absolute freezing storm upon the battlefield, slowing enemy movement.",
+    "type": "special", "power": 85, "accuracy": 90, "energyCost": 35,
+    "statusEffect": { "effect": "slow", "chance": 0.7, "duration": 3 }
   },
   {
     "id": "arcane-surge",
     "name": "Arcane Surge",
-    "description": "Flood your core with raw elemental power. Dramatically boosts special attack.",
+    "description": "Overcharge your magical conductors to vastly boost special attack power.",
     "type": "self", "accuracy": 100, "energyCost": 30,
-    "statModifier": { "target": "self", "stat": "special", "multiplier": 1.5, "duration": 3 }
+    "statModifier": { "target": "self", "stat": "special", "multiplier": 1.6, "duration": 3 }
   },
   {
     "id": "storms-eye",
     "name": "Storm's Eye",
-    "description": "Sora's signature — a focused convergence of all elemental forces. The most powerful special attack in the game.",
-    "type": "special", "power": 150, "accuracy": 80, "energyCost": 70
+    "description": "Sora's ultimate — summon a localized cataclysm that rains lightning and hail simultaneously.",
+    "type": "special", "power": 145, "accuracy": 85, "energyCost": 65
   },
   {
     "id": "lightning-jab",
     "name": "Lightning Jab",
-    "description": "A rapid, electricity-charged jab that crackles on impact. Reliable, fast, and always on target.",
-    "type": "physical", "power": 65, "accuracy": 100, "energyCost": 20
+    "description": "A rapid electified boxing jab. Fast, reliable, and keeps up aggressive momentum.",
+    "type": "physical", "power": 65, "accuracy": 100, "energyCost": 15
   },
   {
     "id": "thunder-clap",
     "name": "Thunder Clap",
-    "description": "Ren claps his electrified fists together, generating a shockwave that can stun on impact.",
-    "type": "physical", "power": 82, "accuracy": 90, "energyCost": 30,
-    "statusEffect": { "effect": "stun", "chance": 0.22, "duration": 1 }
+    "description": "A concussive shockwave produced by striking gauntlets together. High stun probability.",
+    "type": "physical", "power": 85, "accuracy": 90, "energyCost": 35,
+    "statusEffect": { "effect": "stun", "chance": 0.35, "duration": 1 }
   },
   {
     "id": "static-charge",
     "name": "Static Charge",
-    "description": "Overload your muscles with static electricity. Massively increases speed for several turns.",
+    "description": "Build an electrostatic field over your body, enhancing quick reflexes and combat speed.",
     "type": "self", "accuracy": 100, "energyCost": 25,
     "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.5, "duration": 3 }
   },
   {
     "id": "thunderstrike",
     "name": "Thunderstrike",
-    "description": "Ren calls down a focused lightning bolt through his raised fist. Devastating special damage with a high stun chance.",
-    "type": "special", "power": 112, "accuracy": 85, "energyCost": 45,
-    "statusEffect": { "effect": "stun", "chance": 0.32, "duration": 1 }
+    "description": "Leap high and plunge down like a falling thunderbolt. Massive physical burst.",
+    "type": "physical", "power": 125, "accuracy": 88, "energyCost": 50
   },
   {
     "id": "shadow-step",
     "name": "Shadow Step",
-    "description": "Hana phases through shadow itself and reappears directly behind the target. Never misses. High critical rate.",
-    "type": "physical", "power": 78, "accuracy": 100, "energyCost": 20
+    "description": "Slip between spatial gaps to evade assaults while setting up a lethal counterstroke.",
+    "type": "self", "accuracy": 100, "energyCost": 20,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.6, "duration": 3 }
   },
   {
     "id": "void-strike",
     "name": "Void Strike",
-    "description": "Channel void energy into a concentrated blast. Passes through standard defenses.",
-    "type": "special", "power": 88, "accuracy": 95, "energyCost": 30
+    "description": "An assassination blow struck from a spatial blind spot. Ignores standard defensive postures.",
+    "type": "physical", "power": 90, "accuracy": 100, "energyCost": 35
   },
   {
     "id": "phantom-form",
     "name": "Phantom Form",
-    "description": "Hana becomes partially ethereal, dramatically increasing her already terrifying speed.",
+    "description": "Become incorporeal, sharply increasing defense against conventional physical strikes.",
     "type": "self", "accuracy": 100, "energyCost": 30,
-    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.6, "duration": 3 }
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.5, "duration": 3 }
   },
   {
     "id": "dimension-slash",
     "name": "Dimension Slash",
-    "description": "A blade drawn through the space between dimensions. Punishing physical damage.",
-    "type": "physical", "power": 125, "accuracy": 80, "energyCost": 50
+    "description": "Hana's ultimate — carve a permanent rip through spacetime directly through the opponent.",
+    "type": "physical", "power": 150, "accuracy": 80, "energyCost": 65
   },
   {
     "id": "curse-seal",
     "name": "Curse Seal",
-    "description": "Brand the target with a forbidden curse mark. High chance of applying a lethal poison.",
-    "type": "status", "accuracy": 90, "energyCost": 30,
-    "statusEffect": { "effect": "poison", "chance": 0.85, "duration": 4 }
+    "description": "Imprint a malignant runic brand onto the enemy's spirit, draining their vitality each turn.",
+    "type": "special", "power": 55, "accuracy": 100, "energyCost": 25,
+    "statusEffect": { "effect": "poison", "chance": 0.8, "duration": 4 }
   },
   {
     "id": "dark-pulse",
     "name": "Dark Pulse",
-    "description": "A pulse of condensed dark energy that sears the target, with a chance of lingering burn.",
-    "type": "special", "power": 78, "accuracy": 95, "energyCost": 28,
-    "statusEffect": { "effect": "burn", "chance": 0.38, "duration": 3 }
+    "description": "Emit a shuddering shockwave of negative psychic energy that induces terrible lethargy.",
+    "type": "special", "power": 85, "accuracy": 95, "energyCost": 35,
+    "statusEffect": { "effect": "slow", "chance": 0.5, "duration": 3 }
   },
   {
     "id": "hex-shield",
     "name": "Hex Shield",
-    "description": "Weave a barrier of hexes and dark matter around yourself. Exceptional defense boost.",
+    "description": "Erect a dark magical ward that defiles incoming strikes and fortifies overall defense.",
     "type": "self", "accuracy": 100, "energyCost": 30,
     "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.65, "duration": 4 }
   },
   {
     "id": "forbidden-art",
     "name": "Forbidden Art",
-    "description": "Mira's ultimate — a technique banned from all known schools of magic. Costs nearly everything. The most dangerous spell in existence.",
+    "description": "Mira's ultimate — a technique banned from all known schools of magic. The most dangerous spell in existence.",
     "type": "special", "power": 158, "accuracy": 73, "energyCost": 72
   },
   {
@@ -211,5 +217,321 @@
     "name": "Wild Storm",
     "description": "Unleash a tempest of wild, uncontrolled energy. Heavy special damage that bypasses careful defense.",
     "type": "special", "power": 102, "accuracy": 85, "energyCost": 42
+  },
+  {
+    "id": "rasengan",
+    "name": "Rasengan",
+    "description": "A spinning orb of concentrated wind chakra held in the palm. Grinds into the opponent with high physical impact.",
+    "type": "physical", "power": 85, "accuracy": 100, "energyCost": 30
+  },
+  {
+    "id": "shadow-clones",
+    "name": "Shadow Clone Jutsu",
+    "description": "Summon solid combat decoys to overwhelm the battlefield and drastically boost speed and evasion.",
+    "type": "self", "accuracy": 100, "energyCost": 25,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.6, "duration": 3 }
+  },
+  {
+    "id": "rasen-shuriken",
+    "name": "Wind Release: Rasenshuriken",
+    "description": "A lethal shuriken of high-frequency wind needles that shreds cellular structure, inflicting heavy damage and slow.",
+    "type": "special", "power": 120, "accuracy": 90, "energyCost": 50,
+    "statusEffect": { "effect": "slow", "chance": 0.6, "duration": 3 }
+  },
+  {
+    "id": "kurama-mode",
+    "name": "Kurama Chakra Mode",
+    "description": "Ignite the golden beast chakra of the Nine-Tails, massively empowering all physical attack statistics.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.7, "duration": 3 }
+  },
+  {
+    "id": "chidori",
+    "name": "Chidori",
+    "description": "Concentrate high-voltage lightning into the hand until it screeches like a thousand birds. Pierce defense instantly.",
+    "type": "physical", "power": 90, "accuracy": 95, "energyCost": 30,
+    "statusEffect": { "effect": "stun", "chance": 0.25, "duration": 1 }
+  },
+  {
+    "id": "fireball-jutsu",
+    "name": "Great Fireball Jutsu",
+    "description": "Exhale a massive sphere of incinerating flame capable of scorching the terrain and burning foes.",
+    "type": "special", "power": 80, "accuracy": 95, "energyCost": 25,
+    "statusEffect": { "effect": "burn", "chance": 0.4, "duration": 3 }
+  },
+  {
+    "id": "sharingan",
+    "name": "Mangekyo Sharingan",
+    "description": "Awaken the ocular visual prowess to predict incoming strikes and amplify combat agility and accuracy.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.5, "duration": 3 }
+  },
+  {
+    "id": "susanoo-arrow",
+    "name": "Indra's Arrow",
+    "description": "Sasuke's ultimate technique — absorb ambient storm chakra to fire an unstoppable bolt of black destruction.",
+    "type": "special", "power": 140, "accuracy": 85, "energyCost": 60
+  },
+  {
+    "id": "raikiri",
+    "name": "Raikiri (Lightning Blade)",
+    "description": "An evolved, hyper-refined variant of Chidori capable of cleanly shearing through natural lightning bolts.",
+    "type": "physical", "power": 90, "accuracy": 100, "energyCost": 30
+  },
+  {
+    "id": "kamui",
+    "name": "Kamui Warp",
+    "description": "Use dimensional ocular physics to tear away a section of target coordinates into an isolated void.",
+    "type": "special", "power": 110, "accuracy": 88, "energyCost": 45,
+    "statusEffect": { "effect": "stun", "chance": 0.3, "duration": 1 }
+  },
+  {
+    "id": "mud-wall",
+    "name": "Earth Release: Mud Wall",
+    "description": "Erect a solid earthen fortified rampart inscribed with defensive seals to resist incoming enemy assaults.",
+    "type": "self", "accuracy": 100, "energyCost": 25,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.5, "duration": 3 }
+  },
+  {
+    "id": "lightning-hound",
+    "name": "Lightning Hound",
+    "description": "Form an autonomous wolf of crackling lightning that stubbornly chases down evasive targets.",
+    "type": "special", "power": 75, "accuracy": 100, "energyCost": 25
+  },
+  {
+    "id": "majestic-flame",
+    "name": "Majestic Destroyer Flame",
+    "description": "An overwhelming sea of fire that dwarves normal fireball techniques, turning entire landscapes to ash.",
+    "type": "special", "power": 105, "accuracy": 92, "energyCost": 40,
+    "statusEffect": { "effect": "burn", "chance": 0.5, "duration": 3 }
+  },
+  {
+    "id": "susanoo-cleave",
+    "name": "Perfect Susanoo Cleave",
+    "description": "Draw the twin titanic chakra swords of the towering Susanoo, splitting mountains with a single swing.",
+    "type": "physical", "power": 125, "accuracy": 90, "energyCost": 50
+  },
+  {
+    "id": "tengai-shinsei",
+    "name": "Tengai Shinsei (Meteor)",
+    "description": "Madara's ultimate — summon an orbital celestial asteroid directly down onto the entire combat arena.",
+    "type": "special", "power": 155, "accuracy": 80, "energyCost": 70
+  },
+  {
+    "id": "limbo",
+    "name": "Limbo: Border Jail",
+    "description": "Project invisible spatial shadow clones into an adjacent dimension to shield against damage.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.7, "duration": 4 }
+  },
+  {
+    "id": "gum-gum-gatling",
+    "name": "Gum-Gum Gatling",
+    "description": "Unleash a breathless barrage of stretching rubber punches that blur into a wall of flying fists.",
+    "type": "physical", "power": 85, "accuracy": 95, "energyCost": 25
+  },
+  {
+    "id": "gear-second",
+    "name": "Gear Second",
+    "description": "Pump blood through rubber vessels to dramatically accelerate metabolic combat speed and power.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.7, "duration": 3 }
+  },
+  {
+    "id": "red-hawk",
+    "name": "Gum-Gum Red Hawk",
+    "description": "Ignite a vulcanized haki punch in tribute to Ace, igniting the target upon supersonic impact.",
+    "type": "physical", "power": 100, "accuracy": 92, "energyCost": 40,
+    "statusEffect": { "effect": "burn", "chance": 0.45, "duration": 3 }
+  },
+  {
+    "id": "bajrang-gun",
+    "name": "Gear 5: Bajrang Gun",
+    "description": "Luffy's ultimate Sun God awakening — inflate a fist the size of an island wrapped in Supreme King Haki.",
+    "type": "physical", "power": 150, "accuracy": 85, "energyCost": 65,
+    "statusEffect": { "effect": "stun", "chance": 0.4, "duration": 1 }
+  },
+  {
+    "id": "oni-giri",
+    "name": "Oni Giri (Demon Slash)",
+    "description": "Cross two swords across the chest with a third in the mouth, cutting across the foe in a high-speed pass.",
+    "type": "physical", "power": 85, "accuracy": 95, "energyCost": 25
+  },
+  {
+    "id": "tori-gari",
+    "name": "Tori Gari (Bird Hunt)",
+    "description": "A rising multi-hit aerial slash designed to strike airborne or evasive opponents with surgical precision.",
+    "type": "physical", "power": 75, "accuracy": 100, "energyCost": 20
+  },
+  {
+    "id": "ashura",
+    "name": "九刀流 Nine-Sword Style: Ashura",
+    "description": "Project a terrifying spiritual illusion of a six-armed demon god, tripling slashing attack power.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.75, "duration": 3 }
+  },
+  {
+    "id": "billion-world",
+    "name": "Three-Thousand Worlds",
+    "description": "Zoro's legendary secret technique — rotate two blades like saw blades before rushing through the target.",
+    "type": "physical", "power": 135, "accuracy": 88, "energyCost": 55
+  },
+  {
+    "id": "mouton-shot",
+    "name": "Mouton Shot",
+    "description": "A lightning-fast acrobatic combination of devastating martial arts kicks targeting critical vitals.",
+    "type": "physical", "power": 80, "accuracy": 100, "energyCost": 25
+  },
+  {
+    "id": "diable-jambe",
+    "name": "Diable Jambe",
+    "description": "Spin rapidly until friction causes the leg to glow red with infernal heat, igniting enemies on impact.",
+    "type": "physical", "power": 95, "accuracy": 92, "energyCost": 35,
+    "statusEffect": { "effect": "burn", "chance": 0.5, "duration": 3 }
+  },
+  {
+    "id": "sky-walk",
+    "name": "Sky Walk",
+    "description": "Kick the ambient air itself to maneuver in mid-air, avoiding terrain hazards and boosting speed.",
+    "type": "self", "accuracy": 100, "energyCost": 25,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.5, "duration": 3 }
+  },
+  {
+    "id": "ifrit-jambe",
+    "name": "Ifrit Jambe: Boeuf Burst",
+    "description": "Sanji's ultimate — awaken superhuman exosomatic durability to wrap kicks in super-heated blue plasma flames.",
+    "type": "physical", "power": 138, "accuracy": 88, "energyCost": 58,
+    "statusEffect": { "effect": "burn", "chance": 0.6, "duration": 3 }
+  },
+  {
+    "id": "thunder-bagua",
+    "name": "Thunder Bagua",
+    "description": "Swung with crushing Conqueror's Haki, this studded spiked war club knocks out emperors instantly.",
+    "type": "physical", "power": 115, "accuracy": 90, "energyCost": 45,
+    "statusEffect": { "effect": "stun", "chance": 0.35, "duration": 1 }
+  },
+  {
+    "id": "bolo-breath",
+    "name": "Bolo Breath",
+    "description": "Transform into an Azure Dragon and spit a miles-long thermal laser blast capable of vaporizing fortresses.",
+    "type": "special", "power": 125, "accuracy": 88, "energyCost": 50,
+    "statusEffect": { "effect": "burn", "chance": 0.5, "duration": 3 }
+  },
+  {
+    "id": "dragon-scales",
+    "name": "Azure Dragon Scales",
+    "description": "Manifest impenetrable draconic armor scales that turn conventional weaponry and attacks to splinters.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.8, "duration": 4 }
+  },
+  {
+    "id": "ragnaraku",
+    "name": "Conqueror's Ragnaraku",
+    "description": "Kaido's ultimate overhead club slam — imbued with black lightning that ruptures the ground.",
+    "type": "physical", "power": 148, "accuracy": 82, "energyCost": 65
+  },
+  {
+    "id": "getsuga-tensho",
+    "name": "Getsuga Tensho",
+    "description": "Absorb spiritual pressure into the zanpakuto blade and discharge it as a high-density crescent energy slash.",
+    "type": "special", "power": 90, "accuracy": 95, "energyCost": 30
+  },
+  {
+    "id": "bankai-speed",
+    "name": "Bankai: Tensa Zangetsu",
+    "description": "Condense entire spiritual power into a sleek black katana and coat to achieve impossible hypersonic combat speed.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.7, "duration": 3 }
+  },
+  {
+    "id": "hollowfication",
+    "name": "Hollow Mask Awakening",
+    "description": "Don the sinister horned hollow mask to fuse soul reaper powers with immense brute strength.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.65, "duration": 3 }
+  },
+  {
+    "id": "mugetsu",
+    "name": "Saigo no Getsuga: Mugetsu",
+    "description": "Ichigo's ultimate — transform into pure black spiritual darkness itself to deliver an all-consuming slash.",
+    "type": "special", "power": 155, "accuracy": 85, "energyCost": 70
+  },
+  {
+    "id": "kyoka-suigetsu",
+    "name": "Kyoka Suigetsu (Hypnosis)",
+    "description": "Subject the enemy to complete hypnosis of all five senses, turning their strikes into harmless illusions.",
+    "type": "self", "accuracy": 100, "energyCost": 30,
+    "statModifier": { "target": "self", "stat": "defense", "multiplier": 1.75, "duration": 4 }
+  },
+  {
+    "id": "kurohitsugi",
+    "name": "Hado #90: Kurohitsugi",
+    "description": "Summon a towering black obelisk of gravimetric torrents to crush the opponent without recitation.",
+    "type": "special", "power": 120, "accuracy": 90, "energyCost": 50,
+    "statusEffect": { "effect": "stun", "chance": 0.3, "duration": 1 }
+  },
+  {
+    "id": "hogyoku",
+    "name": "Hogyoku Evolution",
+    "description": "Invoke the miraculous wishing sphere embedded in the chest to regenerate wounds and elevate special power.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "special", "multiplier": 1.7, "duration": 3 }
+  },
+  {
+    "id": "fragor",
+    "name": "Fragor",
+    "description": "Aizen's ultimate — discharge a highly concentrated purple sphere of destructive divine reiatsu from the wings.",
+    "type": "special", "power": 145, "accuracy": 88, "energyCost": 65
+  },
+  {
+    "id": "senbonzakura",
+    "name": "Senbonzakura (Scatter)",
+    "description": "The katana blade dissolves into a thousand microscopic glowing pink blades that shred enemies like rose petals.",
+    "type": "special", "power": 85, "accuracy": 100, "energyCost": 30,
+    "statusEffect": { "effect": "poison", "chance": 0.45, "duration": 3 }
+  },
+  {
+    "id": "senka",
+    "name": "Senka (Flash Blossom)",
+    "description": "A rapid flash step directly behind the foe followed by two swift blade thrusts sealing their soul chain.",
+    "type": "physical", "power": 80, "accuracy": 95, "energyCost": 25
+  },
+  {
+    "id": "flash-step",
+    "name": "Shunpo (Flash Step)",
+    "description": "High-speed footwork that traverses vast battlefield distances in a mere blink, raising agility.",
+    "type": "self", "accuracy": 100, "energyCost": 20,
+    "statModifier": { "target": "self", "stat": "speed", "multiplier": 1.5, "duration": 3 }
+  },
+  {
+    "id": "gokei",
+    "name": "Bankai: Senkei Gokei",
+    "description": "Byakuya's ultimate — unite millions of flying swords into an omnidirectional floating sphere that collapses inward.",
+    "type": "special", "power": 140, "accuracy": 88, "energyCost": 60
+  },
+  {
+    "id": "kendo-cleave",
+    "name": "Two-Handed Kendo Cleave",
+    "description": "Welling up basic martial disciplines, gripping the hilt with both hands multiplies slashing power tenfold.",
+    "type": "physical", "power": 110, "accuracy": 90, "energyCost": 40
+  },
+  {
+    "id": "eyepatch-off",
+    "name": "Reiatsu Seal Release",
+    "description": "Remove the soul-consuming eyepatch, unleashing a titanic golden pillar of unchained killing intent.",
+    "type": "self", "accuracy": 100, "energyCost": 35,
+    "statModifier": { "target": "self", "stat": "attack", "multiplier": 1.85, "duration": 3 }
+  },
+  {
+    "id": "nozarashi",
+    "name": "Shikai: Drink, Nozarashi",
+    "description": "Transform the blade into a colossal war cleaver capable of effortlessly slicing through meteorites and space.",
+    "type": "physical", "power": 135, "accuracy": 85, "energyCost": 55
+  },
+  {
+    "id": "bloodlust-roar",
+    "name": "Bankai Demon Roar",
+    "description": "Zaraki's ultimate — transform into a crimson berserk oni whose cutting reach shears reality itself.",
+    "type": "physical", "power": 158, "accuracy": 78, "energyCost": 70
   }
 ]

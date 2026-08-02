@@ -215,7 +215,7 @@ export const Battle: React.FC<BattlePageProps> = ({ token }) => {
                       </div>
                       <div className="char-move-stats">
                         {move.power && <span>PWR {move.power}</span>}
-                        <span style={{ color: 'var(--energy-color)' }}>⚡{move.energyCost}</span>
+                        <span style={{ color: 'var(--energy-color)', display: 'inline-flex', alignItems: 'center', gap: 4 }}><FighterLogo id="energy" size={13} color="currentColor" />{move.energyCost}</span>
                       </div>
                     </div>
                   ))}

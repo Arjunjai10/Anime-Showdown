@@ -17,23 +17,34 @@ type AppSocket = Socket<ClientToServerEvents, ServerToClientEvents, InterServerE
 const onlineUsers = new Map<string, LobbyUser>();
 
 function broadcastLobbyUsers(io: AppIO): void {
-  const users = Array.from(onlineUsers.values());
+  const uniqueUsers = new Map<string, LobbyUser>();
+  for (const user of onlineUsers.values()) {
+    if (user.username && !user.username.startsWith('AnimeDuelist_') && user.username !== 'undefined' && user.username !== 'null') {
+      uniqueUsers.set(user.username, user);
+    }
+  }
+  const users = Array.from(uniqueUsers.values());
   io.to('lobby').emit('lobby:users', { users });
 }
 
 export function registerSocketHandlers(io: AppIO): void {
   io.on('connection', (socket: AppSocket) => {
-    console.log(`[Socket] Connected: ${socket.id}`);
+    const rawUsername = socket.handshake.query?.username;
+    if (!rawUsername || typeof rawUsername !== 'string' || rawUsername === 'undefined' || rawUsername === 'null' || rawUsername.startsWith('AnimeDuelist_')) {
+      console.log(`[Socket] Rejected unauthenticated/guest connection attempt: ${socket.id}`);
+      socket.disconnect(true);
+      return;
+    }
 
-    // Default username if not logged in
-    const username = socket.handshake.query?.username || `AnimeDuelist_${socket.id.slice(0, 4)}`;
-    socket.data.username = typeof username === 'string' ? username : 'Duelist';
+    console.log(`[Socket] Connected authenticated duelist: ${rawUsername} (${socket.id})`);
+    socket.data.username = rawUsername;
 
     onlineUsers.set(socket.id, {
       id: socket.id,
-      username: socket.data.username,
+      username: rawUsername,
       status: 'in-lobby',
     });
+    broadcastLobbyUsers(io);
 
     // ── lobby:join ────────────────────────────────────────────────────────────
     socket.on('lobby:join', () => {
@@ -70,7 +81,7 @@ export function registerSocketHandlers(io: AppIO): void {
     // ── queue:join ────────────────────────────────────────────────────────────
     socket.on('queue:join', (payload) => {
       try {
-        const { format = 'ou_6v6', team, characterId } = payload || {};
+        const { format = 'ou_6v6', mode = 'pvp_ai', team, characterId } = payload || {};
         if (!team && !characterId) {
           socket.emit('matchmaking:error', { message: 'A team or character is required to battle' });
           return;
@@ -81,6 +92,37 @@ export function registerSocketHandlers(io: AppIO): void {
         socket.data.format = format;
 
         const user = onlineUsers.get(socket.id);
+
+        if (mode === 'ai_only') {
+          if (user) {
+            user.status = 'in-battle';
+            broadcastLobbyUsers(io);
+          }
+          const battleId = uuidv4();
+          const botSocketId = `BOT_${battleId}`;
+
+          socket.join(battleId);
+          socket.data.battleId = battleId;
+          socket.data.playerKey = 'playerA';
+
+          const session = new BattleSession(
+            battleId,
+            socket.id,
+            team,
+            characterId,
+            botSocketId,
+            undefined,
+            undefined,
+            format,
+            io,
+            socket.data.username || 'Duelist',
+            '🤖 Showdown AI (CPU)',
+          );
+          activeSessions.set(battleId, session);
+          session.start();
+          return;
+        }
+
         if (user) {
           user.status = 'in-queue';
           broadcastLobbyUsers(io);
@@ -121,6 +163,39 @@ export function registerSocketHandlers(io: AppIO): void {
           );
           activeSessions.set(battleId, session);
           session.start();
+        } else if (mode === 'pvp_ai') {
+          // If no human opponent found immediately and fallback is allowed, launch battle against Showdown AI CPU after 1 second
+          setTimeout(() => {
+            if (!socket.connected) return;
+            const activeUser = onlineUsers.get(socket.id);
+            if (!activeUser || activeUser.status !== 'in-queue') return;
+
+            dequeueSocket(socket.id);
+            const battleId = uuidv4();
+            const botSocketId = `BOT_${battleId}`;
+
+            socket.join(battleId);
+            socket.data.battleId = battleId;
+            socket.data.playerKey = 'playerA';
+            activeUser.status = 'in-battle';
+            broadcastLobbyUsers(io);
+
+            const session = new BattleSession(
+              battleId,
+              socket.id,
+              socket.data.team,
+              socket.data.characterId,
+              botSocketId,
+              undefined,
+              undefined,
+              socket.data.format || 'ou_6v6',
+              io,
+              socket.data.username || 'Duelist',
+              '🤖 Showdown AI (CPU)',
+            );
+            activeSessions.set(battleId, session);
+            session.start();
+          }, 1000);
         }
       } catch (err) {
         console.error(`[Socket] queue:join error for ${socket.id}:`, err);

@@ -58,6 +58,81 @@ export const FIGHTER_GIFS: Record<string, FighterGifMeta> = {
     gif: 'https://media.giphy.com/media/wMqi2Gg3WbS5G/giphy.gif',
     color: 'var(--text-secondary)',
   },
+  // ── Naruto (The Hidden Ninja Universe) ──────────────────────────────────
+  naruto: {
+    name: 'Naruto Uzumaki',
+    title: 'Nine-Tails Jinchuriki',
+    gif: 'https://media.giphy.com/media/12wsnVFIjCneO4/giphy.gif',
+    color: 'var(--text-primary)',
+  },
+  sasuke: {
+    name: 'Sasuke Uchiha',
+    title: 'The Avenger',
+    gif: 'https://media.giphy.com/media/2yLNN4wTy7SpqqkNjm/giphy.gif',
+    color: 'var(--text-secondary)',
+  },
+  kakashi: {
+    name: 'Kakashi Hatake',
+    title: 'The Copy Ninja',
+    gif: 'https://media.giphy.com/media/13Z5kTWwdR4PNK/giphy.gif',
+    color: 'var(--text-primary)',
+  },
+  madara: {
+    name: 'Madara Uchiha',
+    title: 'Ghost of the Uchiha',
+    gif: 'https://media.giphy.com/media/8XboI2yM8Bv68/giphy.gif',
+    color: 'var(--text-secondary)',
+  },
+  // ── One Piece (The Great Pirate Era) ────────────────────────────────────
+  luffy: {
+    name: 'Monkey D. Luffy',
+    title: 'Straw Hat Emperor',
+    gif: 'https://media.giphy.com/media/11U85hTghz9TfG/giphy.gif',
+    color: 'var(--text-primary)',
+  },
+  zoro: {
+    name: 'Roronoa Zoro',
+    title: 'King of Hell',
+    gif: 'https://media.giphy.com/media/13c712F2H9A2b6/giphy.gif',
+    color: 'var(--text-secondary)',
+  },
+  sanji: {
+    name: 'Vinsmoke Sanji',
+    title: 'Black Leg',
+    gif: 'https://media.giphy.com/media/c285wL6KL2Hvi/giphy.gif',
+    color: 'var(--text-primary)',
+  },
+  kaido: {
+    name: 'Kaido of the Beasts',
+    title: 'Strongest Creature Alive',
+    gif: 'https://media.giphy.com/media/wMqi2Gg3WbS5G/giphy.gif',
+    color: 'var(--text-secondary)',
+  },
+  // ── Bleach (The Soul Society) ───────────────────────────────────────────
+  ichigo: {
+    name: 'Ichigo Kurosaki',
+    title: 'Substitute Soul Reaper',
+    gif: 'https://media.giphy.com/media/cTk3X2v2hF5dG/giphy.gif',
+    color: 'var(--text-primary)',
+  },
+  aizen: {
+    name: 'Sosuke Aizen',
+    title: 'Ruler of Illusions',
+    gif: 'https://media.giphy.com/media/8qsq9Vgh3mYvR830iB/giphy.gif',
+    color: 'var(--text-secondary)',
+  },
+  byakuya: {
+    name: 'Byakuya Kuchiki',
+    title: 'Captain of the 6th Division',
+    gif: 'https://media.giphy.com/media/25hfBwL0fG7C0/giphy.gif',
+    color: 'var(--text-primary)',
+  },
+  zaraki: {
+    name: 'Kenpachi Zaraki',
+    title: 'The Bloodthirsty Captain',
+    gif: 'https://media.giphy.com/media/ul1omlrGG6kpO/giphy.gif',
+    color: 'var(--text-secondary)',
+  },
 };
 
 interface FighterSpriteProps {

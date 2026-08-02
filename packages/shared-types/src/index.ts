@@ -220,7 +220,7 @@ export interface AuthResponse {
 // ─── Socket.io event map ───────────────────────────────────────────────────────
 
 export interface ClientToServerEvents {
-  'queue:join': (payload: { format?: string; team?: TeamDoc; characterId?: string }) => void;
+  'queue:join': (payload: { format?: string; mode?: string; team?: TeamDoc; characterId?: string }) => void;
   'queue:leave': () => void;
   'battle:action': (payload: { type?: ActionType; moveId?: string; switchIndex?: number }) => void;
   'chat:send': (payload: { room: string; text: string }) => void;

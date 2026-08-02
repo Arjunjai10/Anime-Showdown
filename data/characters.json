@@ -78,5 +78,125 @@
     "baseStats": { "maxHp": 1050, "maxEnergy": 100, "attack": 118, "defense": 72, "special": 88, "speed": 95 },
     "moveIds": ["reckless-charge", "cyclone-spin", "berserk-mode", "wild-storm"],
     "colorScheme": { "primary": "#92400E", "secondary": "#F59E0B" }
+  },
+  {
+    "id": "naruto",
+    "name": "Naruto Uzumaki",
+    "title": "Nine-Tails Jinchuriki",
+    "archetype": "Chakra Brawler / Wind",
+    "description": "The unpredictable hyper-active ninja of the Leaf Village. Harnesses limitless reserves of Kurama tail-beast chakra to overwhelm foes with shadow clones and devastating Rasengans.",
+    "baseStats": { "maxHp": 1200, "maxEnergy": 100, "attack": 110, "defense": 90, "special": 115, "speed": 110 },
+    "moveIds": ["rasengan", "shadow-clones", "rasen-shuriken", "kurama-mode"],
+    "colorScheme": { "primary": "#F97316", "secondary": "#FDE047" }
+  },
+  {
+    "id": "sasuke",
+    "name": "Sasuke Uchiha",
+    "title": "The Avenger",
+    "archetype": "Lightning Ninja / Fire",
+    "description": "The sole surviving prodigy of the legendary Uchiha clan. Wields the analytical power of the Mangekyo Sharingan and high-voltage Chidori strikes to dissect battlefields.",
+    "baseStats": { "maxHp": 980, "maxEnergy": 100, "attack": 118, "defense": 75, "special": 125, "speed": 128 },
+    "moveIds": ["chidori", "fireball-jutsu", "sharingan", "susanoo-arrow"],
+    "colorScheme": { "primary": "#6366F1", "secondary": "#A855F7" }
+  },
+  {
+    "id": "kakashi",
+    "name": "Kakashi Hatake",
+    "title": "The Copy Ninja",
+    "archetype": "Tactician / Lightning",
+    "description": "A famous tactical veteran who has copied over a thousand jutsus. Uses precise spacing, defensive earth ramparts, and dimensional Kamui warps to outwit stronger opponents.",
+    "baseStats": { "maxHp": 950, "maxEnergy": 100, "attack": 105, "defense": 85, "special": 115, "speed": 115 },
+    "moveIds": ["raikiri", "kamui", "mud-wall", "lightning-hound"],
+    "colorScheme": { "primary": "#64748B", "secondary": "#94A3B8" }
+  },
+  {
+    "id": "madara",
+    "name": "Madara Uchiha",
+    "title": "Ghost of the Uchiha",
+    "archetype": "Destroyer / Fire & Meteor",
+    "description": "An epoch-shattering deity of shinobi warfare. Commands colossal fire storms, invisible Limbo clones, and literal orbital asteroids that annihilate entire squads at once.",
+    "baseStats": { "maxHp": 1350, "maxEnergy": 100, "attack": 130, "defense": 115, "special": 135, "speed": 90 },
+    "moveIds": ["majestic-flame", "susanoo-cleave", "limbo", "tengai-shinsei"],
+    "colorScheme": { "primary": "#DC2626", "secondary": "#991B1B" }
+  },
+  {
+    "id": "luffy",
+    "name": "Monkey D. Luffy",
+    "title": "Straw Hat Emperor",
+    "archetype": "Rubber Brawler / Haki",
+    "description": "The captain of the Straw Hats and future King of the Pirates. Combines elastic rubber anatomy with Supreme King Haki to shatter physical limitations and turn imaginaton into reality.",
+    "baseStats": { "maxHp": 1250, "maxEnergy": 100, "attack": 128, "defense": 95, "special": 85, "speed": 118 },
+    "moveIds": ["gum-gum-gatling", "gear-second", "red-hawk", "bajrang-gun"],
+    "colorScheme": { "primary": "#EF4444", "secondary": "#F59E0B" }
+  },
+  {
+    "id": "zoro",
+    "name": "Roronoa Zoro",
+    "title": "King of Hell",
+    "archetype": "Three-Sword Master / Power",
+    "description": "The world-renowned swordsman who wields three cursed blades simultaneously. Unleashes cutting torrents that shear through iron, dragons, and spatial barriers with demon-god willpower.",
+    "baseStats": { "maxHp": 1150, "maxEnergy": 100, "attack": 135, "defense": 105, "special": 70, "speed": 98 },
+    "moveIds": ["oni-giri", "tori-gari", "ashura", "billion-world"],
+    "colorScheme": { "primary": "#10B981", "secondary": "#047857" }
+  },
+  {
+    "id": "sanji",
+    "name": "Vinsmoke Sanji",
+    "title": "Black Leg",
+    "archetype": "Speed Kicker / Flame",
+    "description": "The chivalrous combat chef whose kicking agility surpasses natural human reflexes. Ignites his legs into infernal blue flames to serve up explosive aerial combos.",
+    "baseStats": { "maxHp": 1050, "maxEnergy": 100, "attack": 120, "defense": 85, "special": 95, "speed": 132 },
+    "moveIds": ["mouton-shot", "diable-jambe", "sky-walk", "ifrit-jambe"],
+    "colorScheme": { "primary": "#F59E0B", "secondary": "#3B82F6" }
+  },
+  {
+    "id": "kaido",
+    "name": "Kaido of the Beasts",
+    "title": "Strongest Creature Alive",
+    "archetype": "Dragon Juggernaut / Tank",
+    "description": "The undying Emperor of the Sea and leader of the Beast Pirates. Transforms into a mythic Azure Dragon capable of absorbing lethal punishment before firing city-razing thermal lasers.",
+    "baseStats": { "maxHp": 1500, "maxEnergy": 100, "attack": 140, "defense": 140, "special": 110, "speed": 65 },
+    "moveIds": ["thunder-bagua", "bolo-breath", "dragon-scales", "ragnaraku"],
+    "colorScheme": { "primary": "#374151", "secondary": "#4338CA" }
+  },
+  {
+    "id": "ichigo",
+    "name": "Ichigo Kurosaki",
+    "title": "Substitute Soul Reaper",
+    "archetype": "Getsuga Hybrid / Speed",
+    "description": "A combat hybrid uniting Soul Reaper, Hollow, Quincy, and Fullbring heritages. Enters Bankai to achieve impossible hypersonic speed and unleash sweeping black crescent Getsuga slashes.",
+    "baseStats": { "maxHp": 1120, "maxEnergy": 100, "attack": 125, "defense": 88, "special": 115, "speed": 125 },
+    "moveIds": ["getsuga-tensho", "bankai-speed", "hollowfication", "mugetsu"],
+    "colorScheme": { "primary": "#1E293B", "secondary": "#EF4444" }
+  },
+  {
+    "id": "aizen",
+    "name": "Sosuke Aizen",
+    "title": "Ruler of Illusions",
+    "archetype": "Illusionist / Reiatsu Mage",
+    "description": "The immortal former captain who stood atop the heavens. Wields complete hypnosis over all five human senses with Kyoka Suigetsu alongside unfathomably destructive Kido spells.",
+    "baseStats": { "maxHp": 1280, "maxEnergy": 100, "attack": 105, "defense": 115, "special": 145, "speed": 105 },
+    "moveIds": ["kyoka-suigetsu", "kurohitsugi", "hogyoku", "fragor"],
+    "colorScheme": { "primary": "#6366F1", "secondary": "#312E81" }
+  },
+  {
+    "id": "byakuya",
+    "name": "Byakuya Kuchiki",
+    "title": "Captain of the 6th Division",
+    "archetype": "Senkaimon Tactician / Blade",
+    "description": "The aristocratic noble master of Soul Society martial graces. Dissolves his blade into billions of glowing sakura cherry blossoms that shred enemies from every direction simultaneously.",
+    "baseStats": { "maxHp": 1000, "maxEnergy": 100, "attack": 108, "defense": 95, "special": 128, "speed": 120 },
+    "moveIds": ["senbonzakura", "senka", "flash-step", "gokei"],
+    "colorScheme": { "primary": "#F472B6", "secondary": "#EC4899" }
+  },
+  {
+    "id": "zaraki",
+    "name": "Kenpachi Zaraki",
+    "title": "The Bloodthirsty Captain",
+    "archetype": "Berserker / Cutting Force",
+    "description": "A monstrous battle maniac who wears an energy-devouring eyepatch just to give opponents a chance. Revels in sheer cutting force, tearing through dimensional fabric when serious.",
+    "baseStats": { "maxHp": 1420, "maxEnergy": 100, "attack": 148, "defense": 110, "special": 60, "speed": 85 },
+    "moveIds": ["kendo-cleave", "eyepatch-off", "nozarashi", "bloodlust-roar"],
+    "colorScheme": { "primary": "#F59E0B", "secondary": "#78350F" }
   }
 ]

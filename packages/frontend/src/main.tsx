@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, useOutletContext, useLocation } from 'react-router-dom';
 import App from './App';
 import { ShowdownWorkspace } from './components/ShowdownWorkspace';
+import { LandingPage } from './components/LandingPage';
 import { useWorkspaceStore } from './stores/workspaceStore';
 import type { AuthResponse } from './types';
 import './index.css';
@@ -12,6 +13,7 @@ interface OutletCtx {
   username: string | null;
   onLogin: (resp: AuthResponse) => void;
   onLogout: () => void;
+  onOpenAuth: (mode: 'login' | 'register') => void;
 }
 
 function MainWorkspaceRoute({ initialTab }: { initialTab?: 'lobby' | 'teambuilder' }) {
@@ -24,6 +26,10 @@ function MainWorkspaceRoute({ initialTab }: { initialTab?: 'lobby' | 'teambuilde
       setActiveTab(initialTab);
     }
   }, [initialTab, setActiveTab, location]);
+
+  if (!ctx.token || !ctx.username) {
+    return <LandingPage onOpenAuth={ctx.onOpenAuth} />;
+  }
 
   return <ShowdownWorkspace token={ctx.token} username={ctx.username} onLogin={ctx.onLogin} />;
 }

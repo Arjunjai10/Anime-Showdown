@@ -29,9 +29,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
   };
 
   switch (id) {
-    // ── Kaze (Phantom Blade / Ninja) ──────────────────────────────────────────
+    // ── Kaze, Naruto (Shuriken / Wind) ─────────────────────────────────────────
     case 'kaze':
+    case 'naruto':
     case 'Ninja / Speed':
+    case 'Chakra Brawler / Wind':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Shuriken Star with wind aura */}
@@ -42,9 +44,15 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Ryuu (Eternal Flame / Fighter) ────────────────────────────────────────
+    // ── Ryuu, Madara, Sanji, Kaido (Blazing Flame / Dragon Crest) ─────────────
     case 'ryuu':
+    case 'madara':
+    case 'sanji':
+    case 'kaido':
     case 'Fighter / Power':
+    case 'Destroyer / Fire & Meteor':
+    case 'Speed Kicker / Flame':
+    case 'Dragon Juggernaut / Tank':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Blazing Flame / Dragon Claw Crest */}
@@ -66,9 +74,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Tsubaki (Iron Lotus / Tank) ──────────────────────────────────────────
+    // ── Tsubaki, Byakuya (Lotus / Flower Petals) ─────────────────────────────
     case 'tsubaki':
+    case 'byakuya':
     case 'Warrior / Tank':
+    case 'Senkaimon Tactician / Blade':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Fortress Shield & Lotus Blossom */}
@@ -80,9 +90,13 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Sora (Stormcaller / Mage) ──────────────────────────────────────────────
+    // ── Sora, Sasuke, Kakashi (Lightning / Storm) ────────────────────────────
     case 'sora':
+    case 'sasuke':
+    case 'kakashi':
     case 'Mage / Elemental':
+    case 'Lightning Ninja / Fire':
+    case 'Tactician / Lightning':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Elemental Thunderstorm Vortex */}
@@ -94,9 +108,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Ren (Thunder Fist / Brawler) ──────────────────────────────────────────
+    // ── Ren, Luffy (Gauntlet / Impact Fist) ──────────────────────────────────
     case 'ren':
+    case 'luffy':
     case 'Brawler / Electric':
+    case 'Rubber Brawler / Haki':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Spiked Impact Shockwave & Gauntlet */}
@@ -109,7 +125,7 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Hana (Void Walker / Assassin) ─────────────────────────────────────────
+    // ── Hana (Void Walker / Shadow Assassin) ──────────────────────────────────
     case 'hana':
     case 'Assassin / Shadow':
       return (
@@ -123,9 +139,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Mira (Cursed Sage / Dark Mage) ────────────────────────────────────────
+    // ── Mira, Aizen (Curse Hexagram & All-Seeing Eye) ─────────────────────────
     case 'mira':
+    case 'aizen':
     case 'Dark Mage / Curse':
+    case 'Illusionist / Reiatsu Mage':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Runic Hexagram & All-Seeing Demonic Eye */}
@@ -138,9 +156,11 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Gale (Wild Tempest / Berserker) ────────────────────────────────────────
+    // ── Gale, Zaraki (Twin Berserker Axes) ───────────────────────────────────
     case 'gale':
+    case 'zaraki':
     case 'Berserker / Wild':
+    case 'Berserker / Cutting Force':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Twin Berserker Axes over Tornado Vortex */}
@@ -151,9 +171,13 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
         </svg>
       );
 
-    // ── Game Brand Logo (Crossed Plasma Blades & Burst) ───────────────────────
+    // ── Crossed Blades (Zoro, Ichigo, Game Brand) ──────────────────────────────
     case 'game-logo':
     case 'swords':
+    case 'zoro':
+    case 'ichigo':
+    case 'Three-Sword Master / Power':
+    case 'Getsuga Hybrid / Speed':
       return (
         <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="2" opacity="0.25" />
@@ -224,6 +248,92 @@ export const FighterLogo: React.FC<FighterLogoProps> = ({
           <circle cx="64" cy="52" r="8" fill="var(--bg-surface, #0B0E14)" />
           <path d="M46 66 L50 58 L54 66 Z" fill="var(--bg-surface, #0B0E14)" />
           <path d="M38 82 V88 M46 82 V88 M54 82 V88 M62 82 V88" stroke="var(--bg-surface, #0B0E14)" strokeWidth="3" />
+        </svg>
+      );
+
+    // ── Lock / Security Padlock ───────────────────────────────────────────────
+    case 'lock':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="22" y="42" width="56" height="46" rx="8" fill="currentColor" opacity="0.9" />
+          <path d="M34 42 V28 C34 18 40 14 50 14 C60 14 66 18 66 28 V42" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
+          <circle cx="50" cy="62" r="6" fill="var(--bg-surface, #0B0E14)" />
+          <path d="M50 66 V76" stroke="var(--bg-surface, #0B0E14)" strokeWidth="5" strokeLinecap="round" />
+        </svg>
+      );
+
+    // ── AI CPU / Cybernetic Neural Chip ──────────────────────────────────────
+    case 'ai':
+    case 'cpu':
+    case 'bot':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="24" width="52" height="52" rx="10" stroke="currentColor" strokeWidth="6" fill="currentColor" fillOpacity="0.2" />
+          <rect x="36" y="36" width="28" height="28" rx="6" fill="currentColor" />
+          <path d="M50 8 V24 M50 76 V92 M8 50 H24 M76 50 H92 M32 8 V24 M32 76 V92 M68 8 V24 M68 76 V92 M8 32 H24 M76 32 H92 M8 68 H24 M76 68 H92" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+        </svg>
+      );
+
+    // ── Energy Bolt / Lightning ───────────────────────────────────────────────
+    case 'energy':
+    case 'lightning':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M58 8 L22 54 H48 L42 92 L78 46 H52 L58 8 Z" fill="currentColor" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+        </svg>
+      );
+
+    // ── Star / Honor ──────────────────────────────────────────────────────────
+    case 'star':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,8 63,35 92,39 71,60 76,88 50,74 24,88 29,60 8,39 37,35" fill="currentColor" />
+        </svg>
+      );
+
+    // ── Crescent Moon (Dark Theme / Night) ────────────────────────────────────
+    case 'moon':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M68 18 C52 14 34 24 28 40 C22 56 32 74 48 80 C36 78 24 64 26 48 C28 32 42 20 68 18 Z" fill="currentColor" />
+        </svg>
+      );
+
+    // ── Solar Sun (Light Theme / Day) ─────────────────────────────────────────
+    case 'sun':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="22" fill="currentColor" />
+          <path d="M50 8 V20 M50 80 V92 M8 50 H20 M80 50 H92 M20 20 L29 29 M71 71 L80 80 M20 80 L29 71 M71 29 L80 20" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+        </svg>
+      );
+
+    // ── Heal / Medical Cross / HP Boost ───────────────────────────────────────
+    case 'heal':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M36 20 H64 V36 H80 V64 H64 V80 H36 V64 H20 V36 H36 V20 Z" fill="currentColor" opacity="0.9" />
+          <circle cx="50" cy="50" r="12" fill="var(--bg-surface, #0B0E14)" opacity="0.3" />
+        </svg>
+      );
+
+    // ── Clash / Impact Damage ─────────────────────────────────────────────────
+    case 'clash':
+    case 'explosion':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,10 60,32 85,25 68,45 90,60 65,68 60,90 45,72 20,85 35,62 10,48 32,38 25,15 42,30" fill="currentColor" />
+          <circle cx="50" cy="50" r="8" fill="var(--bg-surface, #0B0E14)" />
+        </svg>
+      );
+
+    // ── User / Duelist Avatar ────────────────────────────────────────────────
+    case 'user':
+    case 'duelist':
+      return (
+        <svg viewBox="0 0 100 100" style={style} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="34" r="18" fill="currentColor" />
+          <path d="M20 86 C20 68 32 58 50 58 C68 58 80 68 80 86 V90 H20 V86 Z" fill="currentColor" opacity="0.85" />
         </svg>
       );
 

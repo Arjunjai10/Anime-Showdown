@@ -101,7 +101,7 @@ export const UserSettingsModal: React.FC<UserSettingsModalProps> = ({ onClose })
                 boxShadow: theme === 'dark' ? '0 0 16px rgba(255, 255, 255, 0.2)' : 'none',
               }}
             >
-              <div style={{ fontSize: '1.6rem' }}>🌙</div>
+              <div><FighterLogo id="moon" size={32} color="currentColor" /></div>
               <div style={{ fontWeight: 900, fontSize: '0.95rem', color: theme === 'dark' ? '#FFFFFF' : 'var(--text-primary)' }}>
                 Dark Theme
               </div>
@@ -128,7 +128,7 @@ export const UserSettingsModal: React.FC<UserSettingsModalProps> = ({ onClose })
                 boxShadow: theme === 'light' ? '0 0 16px rgba(0, 0, 0, 0.25)' : 'none',
               }}
             >
-              <div style={{ fontSize: '1.6rem' }}>☀️</div>
+              <div><FighterLogo id="sun" size={32} color="currentColor" /></div>
               <div style={{ fontWeight: 900, fontSize: '0.95rem', color: theme === 'light' ? '#000000' : 'var(--text-primary)' }}>
                 White Theme
               </div>

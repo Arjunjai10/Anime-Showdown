@@ -161,6 +161,25 @@ export function resolveTurn(
       continue;
     }
 
+    if (action.moveId === 'recharge' || action.moveId === 'regain_energy') {
+      const regained = 50;
+      const newEng = Math.min(actor.maxEnergy, actor.currentEnergy + regained);
+      const actualGain = newEng - actor.currentEnergy;
+      const updatedActor: BattleFighterState = {
+        ...actor,
+        currentEnergy: newEng,
+      };
+      newLog.push({
+        turn,
+        actorId: actor.characterId,
+        actorName: actor.name,
+        action: `focused internal energy and spirit to regain +${actualGain} Energy! ⚡`,
+      });
+      if (actorKey === 'playerA') playerA = syncPlayerFromActive(playerA, updatedActor);
+      else playerB = syncPlayerFromActive(playerB, updatedActor);
+      continue;
+    }
+
     const move = moveLookup(action.moveId!);
     if (!move) {
       newLog.push({

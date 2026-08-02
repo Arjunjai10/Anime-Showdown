@@ -142,13 +142,13 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         <div key={`log-entry-${idx}`} style={{ padding: '2px 4px', fontSize: '0.82rem', lineHeight: 1.35, color: 'var(--text-primary)' }}>
           <span style={{ fontWeight: 800 }}>{entry.actorName}</span> used <strong style={{ textDecoration: 'underline' }}>{entry.action}</strong>!
           {entry.damage && (
-            <span style={{ display: 'block', paddingLeft: 12, color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.8rem' }}>
-              💥 Dealt <strong>{entry.damage} DMG!</strong>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, paddingLeft: 12, color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.8rem' }}>
+              <FighterLogo id="clash" size={14} color="currentColor" /> <span>Dealt <strong>{entry.damage} DMG!</strong></span>
             </span>
           )}
           {entry.healing && (
-            <span style={{ display: 'block', paddingLeft: 12, color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.8rem' }}>
-              ✨ Restored <strong>{entry.healing} HP!</strong>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4, paddingLeft: 12, color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.8rem' }}>
+              <FighterLogo id="heal" size={14} color="currentColor" /> <span>Restored <strong>{entry.healing} HP!</strong></span>
             </span>
           )}
           {entry.isCrit && <span style={{ marginLeft: 6, fontWeight: 900, color: 'var(--text-primary)', textTransform: 'uppercase', fontSize: '0.72rem', padding: '1px 4px', border: '1px solid var(--text-primary)', borderRadius: 4 }}>Critical Hit!</span>}
@@ -392,11 +392,56 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                     );
                   })}
                 </div>
+
+                {/* Dedicated Energy Regain Command */}
+                <div style={{ marginTop: 8 }}>
+                  <button
+                    onClick={() => handleCommitMove('recharge')}
+                    disabled={myState.mustSwitch}
+                    style={{
+                      width: '100%',
+                      height: 38,
+                      padding: '0 14px',
+                      borderRadius: 6,
+                      background: 'linear-gradient(to right, var(--panel-header), var(--card-bg))',
+                      border: '2px solid var(--border-strong)',
+                      color: 'var(--text-primary)',
+                      cursor: myState.mustSwitch ? 'not-allowed' : 'pointer',
+                      opacity: myState.mustSwitch ? 0.4 : 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      fontWeight: 900,
+                      fontSize: '0.8rem',
+                      letterSpacing: '0.03em',
+                      textTransform: 'uppercase',
+                      boxShadow: !myState.mustSwitch ? '0 2px 8px var(--shadow-color)' : 'none',
+                      transition: 'all 0.15s ease',
+                    }}
+                    onMouseOver={(e) => {
+                      if (!myState.mustSwitch) e.currentTarget.style.borderColor = 'var(--text-primary)';
+                    }}
+                    onMouseOut={(e) => {
+                      if (!myState.mustSwitch) e.currentTarget.style.borderColor = 'var(--border-strong)';
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <FighterLogo id="energy" size={18} color="currentColor" />
+                      <span>Focus &amp; Regain Energy</span>
+                    </div>
+                    <div style={{ fontSize: '0.72rem', background: 'var(--bg-base)', padding: '2px 8px', borderRadius: 4, border: '1px solid var(--border)', fontWeight: 800 }}>
+                      +50 ENG RECOVER (0 ENG)
+                    </div>
+                  </button>
+                </div>
               </div>
 
               {/* Terastallize / Relic Option Banner */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--panel-header)', border: '1px solid var(--border)', borderRadius: 4, padding: '4px 10px', marginBottom: 8, fontSize: '0.78rem' }}>
-                <span style={{ fontWeight: 800, color: 'var(--text-primary)', marginRight: 6, textTransform: 'uppercase' }}>🛡️ Equipped Relic:</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontWeight: 800, color: 'var(--text-primary)', marginRight: 6, textTransform: 'uppercase' }}>
+                  <FighterLogo id="shield" size={15} color="currentColor" />
+                  <span>Equipped Relic:</span>
+                </span>
                 <span style={{ fontWeight: 700, color: 'var(--text-secondary)' }}>{formatRelicName(myActiveFighter?.relicId)}</span>
                 <span style={{ marginLeft: 'auto', fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-primary)', padding: '1px 6px', border: '1px solid var(--border-strong)', borderRadius: 3, textTransform: 'uppercase' }}>
                   {myActiveFighter?.relicUsed ? 'Triggered' : 'Active Passively'}

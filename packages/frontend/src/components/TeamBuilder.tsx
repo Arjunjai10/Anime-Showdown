@@ -37,7 +37,11 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
         setRoster(chars);
         setAllMoves(movesData);
         setAllRelics(relicsData || []);
-        setTeams(userTeams || []);
+        const localTeamsRaw = localStorage.getItem('anime_showdown_custom_teams');
+        const localTeams: TeamDoc[] = localTeamsRaw ? JSON.parse(localTeamsRaw) : [];
+        const mergedTeams = [...(userTeams || []), ...localTeams];
+        const uniqueTeams = Array.from(new Map(mergedTeams.map(t => [t.id, t])).values());
+        setTeams(uniqueTeams);
       })
       .catch((e) => {
         console.error('Failed to load teambuilder data:', e);
@@ -160,22 +164,42 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
   }
 
   async function handleSaveTeam() {
-    if (slots.length === 0 || !teamName.trim() || !token) return;
+    if (slots.length === 0 || !teamName.trim()) return;
     setSaving(true);
     setError(null);
     try {
-      const res = await fetch('/api/teams', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({
+      let team: TeamDoc;
+      if (token) {
+        const res = await fetch('/api/teams', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({
+            name: teamName.trim(),
+            format: teamFormat,
+            slots,
+            characterIds: slots.map(s => s.characterId),
+          }),
+        });
+        if (!res.ok) throw new Error((await res.json()).error);
+        team = await res.json();
+      } else {
+        team = {
+          id: `local_${Date.now()}`,
           name: teamName.trim(),
           format: teamFormat,
           slots,
           characterIds: slots.map(s => s.characterId),
-        }),
-      });
-      if (!res.ok) throw new Error((await res.json()).error);
-      const team: TeamDoc = await res.json();
+          userId: 'local_user',
+          createdAt: new Date().toISOString(),
+        };
+      }
+
+      // Always save/update in localStorage so custom teams persist offline & across tabs
+      const localTeamsRaw = localStorage.getItem('anime_showdown_custom_teams');
+      const localTeams: TeamDoc[] = localTeamsRaw ? JSON.parse(localTeamsRaw) : [];
+      const updatedLocal = [team, ...localTeams.filter(t => t.id !== team.id)];
+      localStorage.setItem('anime_showdown_custom_teams', JSON.stringify(updatedLocal));
+
       setTeams(prev => [team, ...prev.filter(t => t.id !== team.id)]);
       setSuccess(`Team "${team.name}" saved!`);
       setTimeout(() => setSuccess(null), 3000);
@@ -187,8 +211,15 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
   }
 
   async function handleDeleteTeam(id: string) {
-    if (!token) return;
-    await fetch(`/api/teams/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
+    if (token && !id.startsWith('local_')) {
+      await fetch(`/api/teams/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
+    }
+    const localTeamsRaw = localStorage.getItem('anime_showdown_custom_teams');
+    if (localTeamsRaw) {
+      const localTeams: TeamDoc[] = JSON.parse(localTeamsRaw);
+      const remaining = localTeams.filter(t => t.id !== id);
+      localStorage.setItem('anime_showdown_custom_teams', JSON.stringify(remaining));
+    }
     setTeams(prev => prev.filter(t => t.id !== id));
   }
 

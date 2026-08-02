@@ -5,6 +5,7 @@ import { FighterLogo } from './components/FighterLogo';
 import { useWorkspaceStore } from './stores/workspaceStore';
 import { useSettingsStore } from './stores/settingsStore';
 import { UserSettingsModal } from './components/UserSettingsModal';
+import { resetSocketAuth } from './hooks/useSocket';
 
 interface AppState {
   token: string | null;
@@ -47,11 +48,13 @@ export default function App() {
     const next = { token: resp.token, userId: resp.userId, username: resp.username };
     setAuth(next);
     saveAuth(next);
+    resetSocketAuth();
   }
 
   function handleLogout() {
     setAuth({ token: null, userId: null, username: null });
     localStorage.removeItem(STORAGE_KEY);
+    resetSocketAuth();
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -97,31 +100,35 @@ export default function App() {
         </Link>
         
         <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <button
-            id="nav-teambuilder-btn"
-            className="btn btn-ghost"
-            style={{ padding: '6px 14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700 }}
-            onClick={() => {
-              navigate('/');
-              setActiveTab('teambuilder');
-            }}
-          >
-            <FighterLogo id="shield" size={16} color="currentColor" />
-            <span>Teambuilder</span>
-          </button>
-          
-          <button
-            id="nav-battle-btn"
-            className="btn btn-primary"
-            style={{ padding: '6px 16px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6 }}
-            onClick={() => {
-              navigate('/');
-              setActiveTab('lobby');
-            }}
-          >
-            <FighterLogo id="swords" size={16} color="currentColor" />
-            <span>Battle Lobby</span>
-          </button>
+          {auth.token && (
+            <>
+              <button
+                id="nav-teambuilder-btn"
+                className="btn btn-ghost"
+                style={{ padding: '6px 14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700 }}
+                onClick={() => {
+                  navigate('/');
+                  setActiveTab('teambuilder');
+                }}
+              >
+                <FighterLogo id="shield" size={16} color="currentColor" />
+                <span>Teambuilder</span>
+              </button>
+              
+              <button
+                id="nav-battle-btn"
+                className="btn btn-primary"
+                style={{ padding: '6px 16px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6 }}
+                onClick={() => {
+                  navigate('/');
+                  setActiveTab('lobby');
+                }}
+              >
+                <FighterLogo id="swords" size={16} color="currentColor" />
+                <span>Battle Lobby</span>
+              </button>
+            </>
+          )}
 
           {/* User Settings Button */}
           <button
@@ -131,7 +138,7 @@ export default function App() {
             style={{ padding: '6px 14px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 800, textTransform: 'uppercase' }}
             title="Open User Settings & Theme Toggle"
           >
-            <span>{theme === 'dark' ? '🌙' : '☀️'}</span>
+            <FighterLogo id={theme === 'dark' ? 'moon' : 'sun'} size={16} color="currentColor" />
             <span>Settings</span>
           </button>
 
@@ -251,7 +258,7 @@ export default function App() {
       )}
 
       {/* ── Page Content ──────────────────────────────────────────── */}
-      <Outlet context={{ token: auth.token, username: auth.username, onLogin: handleLogin, onLogout: handleLogout }} />
+      <Outlet context={{ token: auth.token, username: auth.username, onLogin: handleLogin, onLogout: handleLogout, onOpenAuth: (m: 'login' | 'register') => { setMode(m); setShowModal(true); } }} />
     </>
   );
 }

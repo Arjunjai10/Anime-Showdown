@@ -16,6 +16,7 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
   const [teams, setTeams] = useState<TeamDoc[]>([]);
   const [selectedTeamId, setSelectedTeamId] = useState<string>('starter:kaze');
   const [format, setFormat] = useState<string>('ou_6v6');
+  const [battleMode, setBattleMode] = useState<string>('pvp_ai');
   const [chatInput, setChatInput] = useState('');
 
   const { socket, connect } = useSocket();
@@ -33,17 +34,24 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
   const { showLobbyChat } = useSettingsStore();
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const loadTeamsAndRoster = () => {
     Promise.all([
       fetch('/api/roster').then(r => r.json()),
       token ? fetch('/api/teams', { headers: { Authorization: `Bearer ${token}` } }).then(r => r.json()) : Promise.resolve([]),
     ]).then(([chars, userTeams]) => {
       setRoster(chars || []);
-      setTeams(userTeams || []);
-      if (userTeams && userTeams.length > 0) {
-        setSelectedTeamId(`team:${userTeams[0].id}`);
-      }
-    });
+      const localTeamsRaw = localStorage.getItem('anime_showdown_custom_teams');
+      const localTeams: TeamDoc[] = localTeamsRaw ? JSON.parse(localTeamsRaw) : [];
+      const mergedTeams = [...(userTeams || []), ...localTeams];
+      const uniqueTeams = Array.from(new Map(mergedTeams.map(t => [t.id, t])).values());
+      setTeams(uniqueTeams);
+    }).catch(e => console.error(e));
+  };
+
+  useEffect(() => {
+    loadTeamsAndRoster();
+    const interval = setInterval(loadTeamsAndRoster, 2000);
+    return () => clearInterval(interval);
   }, [token]);
 
   useEffect(() => {
@@ -72,13 +80,17 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
 
   function handleJoinQueue() {
     setQueuing(true, format);
+    const localTeamsRaw = localStorage.getItem('anime_showdown_custom_teams');
+    const localTeams: TeamDoc[] = localTeamsRaw ? JSON.parse(localTeamsRaw) : [];
+    const allAvailableTeams = [...teams, ...localTeams];
+
     if (selectedTeamId.startsWith('team:')) {
       const tid = selectedTeamId.replace('team:', '');
-      const selectedTeam = teams.find(t => t.id === tid);
-      socket.emit('queue:join', { format, team: selectedTeam });
+      const selectedTeam = allAvailableTeams.find(t => t.id === tid);
+      socket.emit('queue:join', { format, mode: battleMode, team: selectedTeam });
     } else {
       const cid = selectedTeamId.replace('starter:', '');
-      socket.emit('queue:join', { format, characterId: cid });
+      socket.emit('queue:join', { format, mode: battleMode, characterId: cid });
     }
   }
 
@@ -138,6 +150,21 @@ export const LobbyRoom: React.FC<LobbyRoomProps> = ({ token, username }) => {
               <option value="ou_6v6">[OU] 6v6 Standard Roster</option>
               <option value="blitz_3v3">[Blitz] 3v3 Fast Tactical</option>
               <option value="quick_1v1">[Quick] 1v1 Solo Duel</option>
+            </select>
+          </div>
+
+          <div>
+            <span style={{ display: 'block', fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 700, marginBottom: 4, textTransform: 'uppercase' }}>Battle Mode</span>
+            <select
+              className="input"
+              value={battleMode}
+              onChange={(e) => setBattleMode(e.target.value)}
+              disabled={isQueuing}
+              style={{ width: 230, height: 38, fontSize: '0.82rem', padding: '0 10px', background: 'var(--input-bg)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
+            >
+              <option value="pvp_ai">[Standard] PVP & AI Bot Fallback</option>
+              <option value="ai_only">[Solo] vs AI CPU (Instant Duel)</option>
+              <option value="pvp_only">[PVP Only] Strict Human Matchmaking</option>
             </select>
           </div>
 

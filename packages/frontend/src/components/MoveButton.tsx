@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Move } from '../types';
+import { FighterLogo } from './FighterLogo';
 
 interface MoveButtonProps {
   move: Move;
@@ -64,9 +65,9 @@ export const MoveButton: React.FC<MoveButtonProps> = ({
         )}
         <span
           className="energy-cost"
-          style={{ marginLeft: 'auto', opacity: canAfford ? 1 : 0.4 }}
+          style={{ marginLeft: 'auto', opacity: canAfford ? 1 : 0.4, display: 'inline-flex', alignItems: 'center', gap: 4 }}
         >
-          ⚡ {move.energyCost}
+          <FighterLogo id="energy" size={14} color="currentColor" /> {move.energyCost}
         </span>
       </div>
 
