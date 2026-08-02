@@ -1,40 +1,40 @@
-/* ─── Design System ────────────────────────────────────────────────────────── */
+/* ─── Design System (Black & White Monochromatic Minimalist) ───────────────── */
 :root {
-  /* Surface colors - Executive Deep Slate & Obsidian */
-  --bg-base:        #07090F;
-  --bg-surface:     #0E131F;
-  --bg-surface-2:   #131A28;
-  --bg-surface-3:   #1A2234;
-  --border:         rgba(255, 255, 255, 0.08);
-  --border-subtle:  rgba(255, 255, 255, 0.05);
+  /* Surface colors - Editorial Pure Black & Charcoal Slate */
+  --bg-base:        #000000;
+  --bg-surface:     #0A0A0A;
+  --bg-surface-2:   #121212;
+  --bg-surface-3:   #1D1D1D;
+  --border:         rgba(255, 255, 255, 0.16);
+  --border-subtle:  rgba(255, 255, 255, 0.08);
 
-  /* Brand / accent */
-  --accent:         #6366F1;
-  --accent-glow:    rgba(99, 102, 241, 0.25);
-  --accent-dim:     rgba(99, 102, 241, 0.12);
-  --accent-2:       #F43F5E;
-  --accent-2-glow:  rgba(244, 63, 94, 0.25);
+  /* Brand / accent - Crisp White & Silver */
+  --accent:         #FFFFFF;
+  --accent-glow:    rgba(255, 255, 255, 0.35);
+  --accent-dim:     rgba(255, 255, 255, 0.12);
+  --accent-2:       #D4D4D4;
+  --accent-2-glow:  rgba(212, 212, 212, 0.3);
 
-  /* Status colors */
-  --hp-high:        #10B981;
-  --hp-mid:         #F59E0B;
-  --hp-low:         #EF4444;
-  --hp-glow-high:   rgba(16, 185, 129, 0.3);
-  --hp-glow-mid:    rgba(245, 158, 11, 0.3);
-  --hp-glow-low:    rgba(239, 68, 68, 0.3);
-  --energy-color:   #38BDF8;
-  --energy-glow:    rgba(56, 189, 248, 0.3);
+  /* Status colors - Monochrome Contrast Levels */
+  --hp-high:        #FFFFFF;
+  --hp-mid:         #AAAAAA;
+  --hp-low:         #555555;
+  --hp-glow-high:   rgba(255, 255, 255, 0.4);
+  --hp-glow-mid:    rgba(170, 170, 170, 0.3);
+  --hp-glow-low:    rgba(85, 85, 85, 0.3);
+  --energy-color:   #E5E5E5;
+  --energy-glow:    rgba(229, 229, 229, 0.3);
 
-  /* Status effects */
-  --color-poison:   #8B5CF6;
-  --color-burn:     #F97316;
-  --color-stun:     #EAB308;
-  --color-slow:     #3B82F6;
+  /* Status effects - Monochrome Badges */
+  --color-poison:   #D1D5DB;
+  --color-burn:     #9CA3AF;
+  --color-stun:     #E5E7EB;
+  --color-slow:     #6B7280;
 
   /* Text */
-  --text-primary:   #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-muted:     #475569;
+  --text-primary:   #FFFFFF;
+  --text-secondary: #9E9E9E;
+  --text-muted:     #575757;
 
   /* Typography */
   --font-body:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -43,8 +43,8 @@
   /* Spacing */
   --radius-sm:  4px;
   --radius-md:  6px;
-  --radius-lg:  10px;
-  --radius-xl:  14px;
+  --radius-lg:  8px;
+  --radius-xl:  12px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -70,15 +70,12 @@ body {
 
 #root { min-height: 100vh; display: flex; flex-direction: column; }
 
-/* ─── Animated background ────────────────────────────────────────────────────── */
+/* ─── Minimalist background ───────────────────────────────────────────────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(108, 99, 255, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255, 107, 107, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(56, 189, 248, 0.04) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -138,22 +135,26 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%);
-  color: #fff;
-  box-shadow: 0 4px 20px var(--accent-glow);
+  background: #FFFFFF;
+  color: #000000;
+  font-weight: 800;
+  box-shadow: 0 2px 14px rgba(255, 255, 255, 0.2);
 }
 .btn-primary:hover:not(:disabled) {
-  box-shadow: 0 6px 28px rgba(108, 99, 255, 0.6);
+  background: #E0E0E0;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
 .btn-danger {
-  background: linear-gradient(135deg, var(--accent-2) 0%, #DC2626 100%);
-  color: #fff;
-  box-shadow: 0 4px 20px var(--accent-2-glow);
+  background: #1F1F1F;
+  color: #FFFFFF;
+  border: 1px solid #777777;
+  box-shadow: none;
 }
 .btn-danger:hover:not(:disabled) {
-  box-shadow: 0 6px 28px rgba(255, 107, 107, 0.6);
+  background: #333333;
+  border-color: #FFFFFF;
   transform: translateY(-1px);
 }
 
@@ -163,9 +164,9 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   border: 1px solid var(--border);
 }
 .btn-ghost:hover:not(:disabled) {
-  color: var(--text-primary);
-  border-color: var(--accent);
-  box-shadow: 0 0 12px var(--accent-dim);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
 }
 
 .btn-lg { padding: 14px 32px; font-size: 1rem; border-radius: var(--radius-md); }
@@ -237,23 +238,24 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-.move-type-physical { background: rgba(249, 115, 22, 0.2); color: #F97316; }
-.move-type-special   { background: rgba(56, 189, 248, 0.2); color: #38BDF8; }
-.move-type-status    { background: rgba(168, 85, 247, 0.2); color: #A855F7; }
-.move-type-self      { background: rgba(63, 185, 80, 0.2);  color: #3FB950; }
+.move-type-physical { background: #222222; color: #E5E5E5; border: 1px solid rgba(255,255,255,0.15); }
+.move-type-special   { background: #2E2E2E; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.25); }
+.move-type-status    { background: #161616; color: #B0B0B0; border: 1px solid rgba(255,255,255,0.12); }
+.move-type-self      { background: #1F1F1F; color: #D1D1D1; border: 1px solid rgba(255,255,255,0.18); }
 
 .energy-cost {
   display: flex;
   align-items: center;
   gap: 4px;
-  color: var(--energy-color);
+  color: #FFFFFF;
+  font-weight: 700;
 }
 
-/* ─── HP / Energy bars ──────────────────────────────────────────────────────── */
+/* ─── HP / Energy bars (Monochroid Style) ──────────────────────────────────── */
 .bar-track {
   width: 100%;
   height: 8px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.08);
   border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
@@ -273,27 +275,27 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   right: 0;
   width: 6px;
   height: 100%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.6);
   border-radius: var(--radius-full);
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 .bar-fill-hp-high {
-  background: linear-gradient(90deg, var(--hp-high), #4ade80);
-  box-shadow: 0 0 12px var(--hp-glow-high);
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 .bar-fill-hp-mid {
-  background: linear-gradient(90deg, var(--hp-mid), #EAB308);
-  box-shadow: 0 0 12px var(--hp-glow-mid);
+  background: #AAAAAA;
+  box-shadow: 0 0 8px rgba(170, 170, 170, 0.3);
 }
 .bar-fill-hp-low {
-  background: linear-gradient(90deg, var(--hp-low), #FB923C);
-  box-shadow: 0 0 12px var(--hp-glow-low);
+  background: #555555;
+  box-shadow: 0 0 8px rgba(85, 85, 85, 0.3);
   animation: hp-pulse 1.5s ease-in-out infinite;
 }
 .bar-fill-energy {
-  background: linear-gradient(90deg, var(--energy-color), #818CF8);
-  box-shadow: 0 0 8px var(--energy-glow);
+  background: #D4D4D4;
+  box-shadow: 0 0 6px rgba(212, 212, 212, 0.3);
 }
 
 @keyframes hp-pulse {
@@ -1262,19 +1264,19 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 }
 
 .workspace-tab.active-tab {
-  color: var(--accent);
-  background: rgba(30, 41, 59, 0.8);
-  border-color: var(--glass-border);
-  box-shadow: 0 -2px 10px rgba(56, 189, 248, 0.1);
+  color: #FFFFFF;
+  background: #1C1C1C;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.15);
 }
 
 .unread-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #F97316;
+  background-color: #FFFFFF;
   display: inline-block;
-  box-shadow: 0 0 6px #F97316;
+  box-shadow: 0 0 8px #FFFFFF;
   animation: pulse 1.5s infinite;
 }
 
@@ -1289,7 +1291,7 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 }
 
 .tab-close-btn:hover {
-  color: #EF4444;
+  color: #FFFFFF;
 }
 
 /* ── Refined Fighter Sprite & Executive Card Hover Effects ────────────── */
@@ -1305,8 +1307,8 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 
 .roster-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.25) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  border-color: #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
 }
 
 /* Slick scrollbars */
@@ -1315,13 +1317,13 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #090D15;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
 }
 

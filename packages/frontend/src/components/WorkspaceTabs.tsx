@@ -17,8 +17,8 @@ export const WorkspaceTabs: React.FC = () => {
           onClick={() => setActiveTab('lobby')}
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
-          <FighterLogo id="swords" size={16} color={activeTabId === 'lobby' ? '#38BDF8' : 'currentColor'} />
-          <span>Lobby & Roster</span>
+          <FighterLogo id="swords" size={16} color={activeTabId === 'lobby' ? '#FFFFFF' : '#888888'} />
+          <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Lobby & Roster</span>
         </button>
 
         {/* Teambuilder Tab */}
@@ -28,8 +28,8 @@ export const WorkspaceTabs: React.FC = () => {
           onClick={() => setActiveTab('teambuilder')}
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
-          <FighterLogo id="shield" size={16} color={activeTabId === 'teambuilder' ? '#34D399' : 'currentColor'} />
-          <span>Teambuilder</span>
+          <FighterLogo id="shield" size={16} color={activeTabId === 'teambuilder' ? '#FFFFFF' : '#888888'} />
+          <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Teambuilder</span>
         </button>
 
         {/* Open Battle Rooms */}
@@ -43,8 +43,8 @@ export const WorkspaceTabs: React.FC = () => {
               onClick={() => setActiveTab(bid)}
               style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}
             >
-              <FighterLogo id="fire" size={16} color={isActive ? '#F97316' : '#DC2626'} />
-              <span>{tab.title || 'Battle Room'}</span>
+              <FighterLogo id="fire" size={16} color={isActive ? '#FFFFFF' : '#888888'} />
+              <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.03em' }}>{tab.title || 'Battle Room'}</span>
               {tab.hasUnread && <span className="unread-dot" title="New messages!" />}
               <button
                 className="tab-close-btn"

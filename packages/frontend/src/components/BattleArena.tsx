@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import type { BattleState, Move, PlayerKey, ChatMessage } from '../types';
 import { HPBar } from './HPBar';
 import { MoveButton } from './MoveButton';
-import { FighterLogo } from './FighterLogo';
 import { FighterSprite } from './FighterSprite';
 
 interface BattleArenaProps {
@@ -70,7 +69,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
 
   const renderTeamBeads = (team: typeof you.team, isYou: boolean) => (
     <div style={{ display: 'flex', gap: 6, marginBottom: 6, alignItems: 'center', justifyContent: isYou ? 'flex-start' : 'flex-end' }}>
-      <span style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase', marginRight: 4 }}>
+      <span style={{ fontSize: '0.72rem', color: '#AAAAAA', fontWeight: 700, textTransform: 'uppercase', marginRight: 4 }}>
         {isYou ? 'Your Squad:' : 'Opponent Squad:'}
       </span>
       {(team || []).map((member, i) => (
@@ -81,10 +80,11 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
             width: 12,
             height: 12,
             borderRadius: '50%',
-            backgroundColor: member.isAlive ? '#10B981' : '#EF4444',
-            border: i === (isYou ? you.activeIdx : opponent.activeIdx) ? '2px solid #FFF' : '1px solid rgba(0,0,0,0.4)',
+            backgroundColor: member.isAlive ? '#FFFFFF' : '#333333',
+            border: i === (isYou ? you.activeIdx : opponent.activeIdx) ? '2px solid #FFF' : '1px solid #000',
+            boxShadow: member.isAlive ? '0 0 6px rgba(255,255,255,0.5)' : 'none',
             display: 'inline-block',
-            opacity: member.isAlive ? 1 : 0.35,
+            opacity: member.isAlive ? 1 : 0.4,
           }}
         />
       ))}
@@ -100,57 +100,57 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         <HPBar fighter={opponent} flip />
       </div>
 
-      {/* ── Cinematic Widescreen Stage ────────────────────────────────── */}
+      {/* ── Cinematic Monocrom Widescreen Stage ───────────────────────── */}
       <div
         style={{
           gridArea: 'battle-stage',
           minHeight: 280,
           padding: '24px 40px',
-          background: '#090D15',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: 12,
+          background: '#050505',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          borderRadius: 8,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           position: 'relative',
           overflow: 'hidden',
-          boxShadow: 'inset 0 0 40px rgba(0, 0, 0, 0.8)',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.9)',
         }}
       >
-        {/* Ambient Stage Lighting */}
-        <div style={{ position: 'absolute', bottom: 0, left: '10%', right: '10%', height: 1, background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)', zIndex: 0 }} />
+        {/* Ambient Monochrome Stage Lighting */}
+        <div style={{ position: 'absolute', bottom: 0, left: '10%', right: '10%', height: 1, background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)', zIndex: 0 }} />
 
-        {/* Opponent Sprite (Left Side, facing Right) */}
+        {/* Opponent Sprite */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1 }}>
           <FighterSprite id={opponent.characterId} size="battle" flip={true} />
-          <span style={{ marginTop: 10, fontWeight: 800, fontSize: '1.05rem', color: '#FFF', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>
+          <span style={{ marginTop: 10, fontWeight: 800, fontSize: '1.05rem', color: '#FFF', letterSpacing: '0.02em' }}>
             {opponent.name}
           </span>
-          {opponent.username && <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{opponent.username}</span>}
+          {opponent.username && <span style={{ fontSize: '0.75rem', color: '#AAAAAA' }}>{opponent.username}</span>}
         </div>
 
         {/* Center VS Indicator */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, zIndex: 1 }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 900, color: 'var(--accent, #6366F1)', letterSpacing: '0.1em', lineHeight: 1 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', fontWeight: 900, color: '#FFFFFF', letterSpacing: '0.12em', lineHeight: 1, textShadow: '0 2px 10px rgba(255,255,255,0.3)' }}>
             VS
           </div>
-          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-primary)', background: 'rgba(255, 255, 255, 0.06)', padding: '3px 10px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.08)' }}>
+          <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#FFF', background: '#181818', padding: '3px 12px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             TURN {battleState.turn}
           </span>
           {battleState.format && (
-            <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+            <span style={{ fontSize: '0.68rem', color: '#888888', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
               {battleState.format.replace('_', ' ')}
             </span>
           )}
         </div>
 
-        {/* Player Sprite (Right Side, facing Left) */}
+        {/* Player Sprite */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 1 }}>
           <FighterSprite id={you.characterId} size="battle" flip={false} />
-          <span style={{ marginTop: 10, fontWeight: 800, fontSize: '1.05rem', color: '#FFF', textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>
-            {you.name} <span style={{ color: '#10B981', fontSize: '0.78rem', fontWeight: 700 }}>(YOU)</span>
+          <span style={{ marginTop: 10, fontWeight: 800, fontSize: '1.05rem', color: '#FFF', letterSpacing: '0.02em' }}>
+            {you.name} <span style={{ color: '#FFFFFF', fontSize: '0.78rem', fontWeight: 900, textDecoration: 'underline' }}>(YOU)</span>
           </span>
-          {you.username && <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{you.username}</span>}
+          {you.username && <span style={{ fontSize: '0.75rem', color: '#AAAAAA' }}>{you.username}</span>}
         </div>
       </div>
 
@@ -160,13 +160,13 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         <HPBar fighter={you} />
       </div>
 
-      {/* ── Combat Action Dashboard ───────────────────────────────────── */}
+      {/* ── Combat Action Dashboard (Monochrome) ──────────────────────── */}
       <div style={{ gridArea: 'moves', display: 'flex', flexDirection: 'column', gap: 14 }}>
         
         {/* Forced Switch KO Replacement */}
         {battleState.phase === 'switching' && you.mustSwitch ? (
-          <div style={{ padding: 16, background: '#171413', border: '1px solid #F59E0B', borderRadius: 10 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#FCD34D', fontWeight: 700, fontSize: '0.95rem', marginBottom: 12 }}>
+          <div style={{ padding: 16, background: '#141414', border: '1px solid #FFFFFF', borderRadius: 8, boxShadow: '0 0 20px rgba(255,255,255,0.1)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#FFF', fontWeight: 800, fontSize: '0.95rem', marginBottom: 12, textTransform: 'uppercase' }}>
               <span>⚠️ {you.name} has fallen in combat. Select a surviving teammate to deploy:</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
@@ -175,12 +175,12 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                   key={bench.idx}
                   onClick={() => handleSwitchSelect(bench.idx)}
                   disabled={isWaiting}
-                  style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px', background: '#1E2332', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, cursor: 'pointer', color: '#FFF', textAlign: 'left' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px', background: '#1F1F1F', border: '1px solid rgba(255,255,255,0.25)', borderRadius: 6, cursor: 'pointer', color: '#FFF', textAlign: 'left' }}
                 >
                   <FighterSprite id={bench.characterId} size="sm" />
                   <div>
-                    <div style={{ fontSize: '0.88rem', fontWeight: 700 }}>{bench.name}</div>
-                    <div style={{ fontSize: '0.75rem', color: '#10B981' }}>HP: {bench.currentHp}/{bench.maxHp}</div>
+                    <div style={{ fontSize: '0.88rem', fontWeight: 800 }}>{bench.name}</div>
+                    <div style={{ fontSize: '0.75rem', color: '#CCCCCC', fontWeight: 700 }}>HP: {bench.currentHp}/{bench.maxHp}</div>
                   </div>
                 </button>
               ))}
@@ -189,10 +189,10 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         ) : (
           <>
             {/* Move Commands */}
-            <div style={{ padding: 16, background: '#0E131E', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: 10 }}>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span>{isWaiting ? <strong style={{ color: '#F59E0B' }}>Waiting for opponent...</strong> : battleState.phase === 'ended' ? 'Battle Complete' : 'Select Attack Command'}</span>
-                {isWaiting && <div className="queue-spinner" style={{ width: 14, height: 14, borderWidth: 2 }} />}
+            <div style={{ padding: 16, background: '#090909', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: 8 }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#AAAAAA', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span>{isWaiting ? <strong style={{ color: '#FFF', textDecoration: 'underline' }}>Waiting for opponent...</strong> : battleState.phase === 'ended' ? 'Battle Complete' : 'Select Attack Command'}</span>
+                {isWaiting && <div className="queue-spinner" style={{ width: 14, height: 14, borderWidth: 2, borderColor: '#FFF', borderTopColor: 'transparent' }} />}
               </div>
               
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 10 }}>
@@ -211,8 +211,8 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
 
             {/* Tactical Switch Bench */}
             {benchedTeammates.length > 0 && battleState.phase !== 'ended' && (
-              <div style={{ padding: 14, background: '#0D111A', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: 10 }}>
-                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8 }}>
+              <div style={{ padding: 14, background: '#070707', border: '1px solid rgba(255, 255, 255, 0.12)', borderRadius: 8 }}>
+                <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 800, color: '#888888', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 8 }}>
                   Switch Active Fighter (Higher Priority Than Attacks)
                 </span>
                 <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -223,12 +223,12 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
                         key={bench.idx}
                         onClick={() => handleSwitchSelect(bench.idx)}
                         disabled={isWaiting || battleState.phase === 'switching'}
-                        style={{ padding: '6px 12px', background: isSel ? '#38BDF8' : '#131A28', border: isSel ? '1px solid #38BDF8' : '1px solid rgba(255,255,255,0.08)', borderRadius: 6, display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', color: '#FFF' }}
+                        style={{ padding: '6px 12px', background: isSel ? '#FFFFFF' : '#161616', border: isSel ? '1px solid #FFFFFF' : '1px solid rgba(255,255,255,0.15)', borderRadius: 6, display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', color: isSel ? '#000' : '#FFF' }}
                       >
-                        <FighterSprite id={bench.characterId} size="sm" />
+                        <FighterSprite id={bench.characterId} size="sm" active={isSel} />
                         <div style={{ textAlign: 'left' }}>
-                          <div style={{ fontSize: '0.82rem', fontWeight: 700, color: isSel ? '#0B0F19' : '#FFF' }}>{bench.name}</div>
-                          <div style={{ fontSize: '0.7rem', color: isSel ? '#0B0F19' : '#10B981', fontWeight: 600 }}>HP: {Math.round((bench.currentHp / bench.maxHp) * 100)}%</div>
+                          <div style={{ fontSize: '0.82rem', fontWeight: 800, color: isSel ? '#000000' : '#FFF' }}>{bench.name}</div>
+                          <div style={{ fontSize: '0.7rem', color: isSel ? '#222222' : '#CCCCCC', fontWeight: 700 }}>HP: {Math.round((bench.currentHp / bench.maxHp) * 100)}%</div>
                         </div>
                       </button>
                     );
@@ -240,13 +240,13 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         )}
       </div>
 
-      {/* ── Combat Log & Chat Panel ───────────────────────────────────── */}
+      {/* ── Combat Log & Chat Panel (Monochrome) ──────────────────────── */}
       <div
         style={{
           gridArea: 'battle-log',
-          background: '#0E131E',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: 10,
+          background: '#090909',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          borderRadius: 8,
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
@@ -254,15 +254,15 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
           overflow: 'hidden',
         }}
       >
-        <div style={{ display: 'flex', background: '#131926', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+        <div style={{ display: 'flex', background: '#141414', borderBottom: '1px solid rgba(255, 255, 255, 0.12)' }}>
           <button
-            style={{ flex: 1, padding: '10px', fontSize: '0.82rem', fontWeight: 700, background: 'none', border: 'none', borderBottom: activeTab === 'log' ? '2px solid var(--accent)' : 'none', color: activeTab === 'log' ? '#FFF' : 'var(--text-muted)', cursor: 'pointer' }}
+            style={{ flex: 1, padding: '10px', fontSize: '0.82rem', fontWeight: 800, background: 'none', border: 'none', borderBottom: activeTab === 'log' ? '2px solid #FFFFFF' : 'none', color: activeTab === 'log' ? '#FFF' : '#777777', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.04em' }}
             onClick={() => setActiveTab('log')}
           >
             Combat Log ({battleState.log.length})
           </button>
           <button
-            style={{ flex: 1, padding: '10px', fontSize: '0.82rem', fontWeight: 700, background: 'none', border: 'none', borderBottom: activeTab === 'chat' ? '2px solid var(--accent)' : 'none', color: activeTab === 'chat' ? '#FFF' : 'var(--text-muted)', cursor: 'pointer' }}
+            style={{ flex: 1, padding: '10px', fontSize: '0.82rem', fontWeight: 800, background: 'none', border: 'none', borderBottom: activeTab === 'chat' ? '2px solid #FFFFFF' : 'none', color: activeTab === 'chat' ? '#FFF' : '#777777', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.04em' }}
             onClick={() => setActiveTab('chat')}
           >
             Live Chat ({chatMessages.length})
@@ -272,23 +272,23 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         <div style={{ flex: 1, overflowY: 'auto', padding: 14, display: 'flex', flexDirection: 'column', gap: 6, fontSize: '0.82rem' }}>
           {activeTab === 'log' ? (
             battleState.log.slice(-40).map((entry, i) => (
-              <div key={i} style={{ padding: '4px 6px', borderLeft: '2px solid var(--accent)', background: 'rgba(255,255,255,0.01)', lineHeight: 1.4 }}>
-                <span style={{ fontWeight: 700, color: 'var(--accent)', marginRight: 6 }}>{entry.actorName}</span>
-                <span style={{ color: 'var(--text-primary)' }}>{entry.action}</span>
-                {entry.damage ? <strong style={{ color: '#F87171', marginLeft: 6 }}>−{entry.damage} HP</strong> : null}
-                {entry.isCrit ? <strong style={{ color: '#F59E0B', marginLeft: 6 }}>CRIT!</strong> : null}
+              <div key={i} style={{ padding: '4px 8px', borderLeft: '2px solid #FFFFFF', background: 'rgba(255,255,255,0.02)', lineHeight: 1.4 }}>
+                <span style={{ fontWeight: 800, color: '#FFF', marginRight: 6, textTransform: 'uppercase' }}>{entry.actorName}</span>
+                <span style={{ color: '#CCCCCC' }}>{entry.action}</span>
+                {entry.damage ? <strong style={{ color: '#FFFFFF', marginLeft: 6, background: '#222222', padding: '1px 6px', borderRadius: 4 }}>−{entry.damage} HP</strong> : null}
+                {entry.isCrit ? <strong style={{ color: '#FFFFFF', marginLeft: 6, textDecoration: 'underline', fontWeight: 900 }}>CRIT!</strong> : null}
               </div>
             ))
           ) : (
             chatMessages.length === 0 ? (
-              <div style={{ margin: 'auto', color: 'var(--text-muted)', textAlign: 'center' }}>No chat messages yet in this duel.</div>
+              <div style={{ margin: 'auto', color: '#777777', textAlign: 'center' }}>No chat messages yet in this duel.</div>
             ) : (
               chatMessages.map((msg, i) => {
                 const isMe = msg.sender === you.username;
                 return (
-                  <div key={i} style={{ padding: '6px 10px', background: isMe ? '#1E293B' : '#171D2D', borderRadius: 6, alignSelf: isMe ? 'flex-end' : 'flex-start', maxWidth: '85%' }}>
-                    <span style={{ fontWeight: 700, color: isMe ? '#38BDF8' : '#F59E0B', marginRight: 6 }}>{msg.sender}:</span>
-                    <span>{msg.text}</span>
+                  <div key={i} style={{ padding: '6px 10px', background: isMe ? '#222222' : '#141414', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, alignSelf: isMe ? 'flex-end' : 'flex-start', maxWidth: '85%' }}>
+                    <span style={{ fontWeight: 800, color: isMe ? '#FFFFFF' : '#CCCCCC', marginRight: 6 }}>{msg.sender}:</span>
+                    <span style={{ color: '#FFFFFF' }}>{msg.text}</span>
                   </div>
                 );
               })
@@ -298,16 +298,16 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
         </div>
 
         {activeTab === 'chat' && (
-          <form onSubmit={handleChatSubmit} style={{ display: 'flex', gap: 8, padding: '8px 12px', background: '#131926', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <form onSubmit={handleChatSubmit} style={{ display: 'flex', gap: 8, padding: '8px 12px', background: '#141414', borderTop: '1px solid rgba(255, 255, 255, 0.12)' }}>
             <input
               type="text"
               className="input"
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               placeholder="Message opponent..."
-              style={{ flex: 1, height: 32, fontSize: '0.82rem', padding: '0 10px', background: '#090D14' }}
+              style={{ flex: 1, height: 32, fontSize: '0.82rem', padding: '0 10px', background: '#030303', color: '#FFF', border: '1px solid rgba(255,255,255,0.2)' }}
             />
-            <button type="submit" style={{ height: 32, padding: '0 14px', background: '#232C40', border: '1px solid rgba(255,255,255,0.12)', color: '#FFF', borderRadius: 6, fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer' }}>Send</button>
+            <button type="submit" style={{ height: 32, padding: '0 16px', background: '#FFFFFF', border: 'none', color: '#000000', borderRadius: 6, fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', textTransform: 'uppercase' }}>Send</button>
           </form>
         )}
       </div>
