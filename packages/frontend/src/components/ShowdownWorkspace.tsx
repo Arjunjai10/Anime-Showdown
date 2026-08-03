@@ -119,7 +119,7 @@ export const ShowdownWorkspace: React.FC<ShowdownWorkspaceProps> = ({ token, use
         )}
 
         {activeBattleTab && (
-          <div style={{ flex: 1, minHeight: 0, width: '100%', overflow: 'hidden', padding: '8px 16px', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ flex: 1, minHeight: 0, width: '100%', overflow: 'hidden', padding: '4px 10px', display: 'flex', flexDirection: 'column' }}>
             {activeBattleTab.error && (
               <div className="p-3 mb-2" style={{ background: 'var(--panel-bg)', border: '1px solid var(--text-muted)', borderRadius: 8, color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 700 }}>
                 ⚠️ {activeBattleTab.error}
