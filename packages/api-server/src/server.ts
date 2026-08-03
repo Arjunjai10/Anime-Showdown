@@ -2,7 +2,7 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import { createApp } from './app.js';
 
-const PORT = parseInt(process.env.API_PORT ?? '3001', 10);
+const PORT = parseInt(process.env.PORT ?? process.env.API_PORT ?? '3001', 10);
 const MONGODB_URI = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/anime-showdown';
 
 async function main() {

@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: anime-showdown-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "npm install && npm run build --workspace=packages/api-server"
+    startCommand: "npm run start --workspace=packages/api-server"
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: FRONTEND_URL
+        value: https://anime-showdown.vercel.app
+
+  - type: web
+    name: anime-showdown-realtime
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "npm install && npm run build --workspace=packages/realtime-server"
+    startCommand: "npm run start --workspace=packages/realtime-server"
+    envVars:
+      - key: FRONTEND_URL
+        value: https://anime-showdown.vercel.app

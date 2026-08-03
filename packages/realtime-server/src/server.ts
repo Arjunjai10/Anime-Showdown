@@ -9,7 +9,7 @@ import type {
   SocketData,
 } from '@anime-showdown/shared-types';
 
-const PORT = parseInt(process.env.REALTIME_PORT ?? '3002', 10);
+const PORT = parseInt(process.env.PORT ?? process.env.REALTIME_PORT ?? '3002', 10);
 const FRONTEND_URL = process.env.FRONTEND_URL ?? 'http://localhost:5173';
 
 const httpServer = createServer();
