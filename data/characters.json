@@ -5,9 +5,24 @@
     "title": "The Phantom Blade",
     "archetype": "Ninja / Speed",
     "description": "A shadow-step master who strikes before the enemy can react. Wins through attrition and precision.",
-    "baseStats": { "maxHp": 900, "maxEnergy": 100, "attack": 85, "defense": 70, "special": 80, "speed": 120 },
-    "moveIds": ["shadow-strike", "poison-shuriken", "smoke-veil", "wind-slash"],
-    "colorScheme": { "primary": "#4F46E5", "secondary": "#818CF8" }
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 85,
+      "defense": 70,
+      "special": 80,
+      "speed": 120
+    },
+    "moveIds": [
+      "shadow-strike",
+      "poison-shuriken",
+      "smoke-veil",
+      "wind-slash"
+    ],
+    "colorScheme": {
+      "primary": "#4F46E5",
+      "secondary": "#818CF8"
+    }
   },
   {
     "id": "ryuu",
@@ -15,9 +30,24 @@
     "title": "The Eternal Flame",
     "archetype": "Fighter / Power",
     "description": "A warrior of legendary power who channels primal fire through every blow. Ends fights fast.",
-    "baseStats": { "maxHp": 1100, "maxEnergy": 100, "attack": 120, "defense": 80, "special": 110, "speed": 70 },
-    "moveIds": ["dragon-fist", "flame-burst", "power-surge", "supernova"],
-    "colorScheme": { "primary": "#DC2626", "secondary": "#F97316" }
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 120,
+      "defense": 80,
+      "special": 110,
+      "speed": 70
+    },
+    "moveIds": [
+      "dragon-fist",
+      "flame-burst",
+      "power-surge",
+      "supernova"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#F97316"
+    }
   },
   {
     "id": "tsubaki",
@@ -25,9 +55,24 @@
     "title": "The Iron Lotus",
     "archetype": "Warrior / Tank",
     "description": "An iron-willed warrior who outlasts everything thrown at her. Wins by still standing when everyone else falls.",
-    "baseStats": { "maxHp": 1300, "maxEnergy": 100, "attack": 90, "defense": 130, "special": 70, "speed": 60 },
-    "moveIds": ["iron-guard", "petal-storm", "thorn-barrier", "earth-slam"],
-    "colorScheme": { "primary": "#059669", "secondary": "#34D399" }
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 90,
+      "defense": 130,
+      "special": 70,
+      "speed": 60
+    },
+    "moveIds": [
+      "iron-guard",
+      "petal-storm",
+      "thorn-barrier",
+      "earth-slam"
+    ],
+    "colorScheme": {
+      "primary": "#059669",
+      "secondary": "#34D399"
+    }
   },
   {
     "id": "sora",
@@ -35,9 +80,24 @@
     "title": "The Stormcaller",
     "archetype": "Mage / Elemental",
     "description": "A conduit for elemental chaos who bends lightning, ice, and storm to her will. Unmatched special power.",
-    "baseStats": { "maxHp": 850, "maxEnergy": 100, "attack": 75, "defense": 65, "special": 130, "speed": 95 },
-    "moveIds": ["thunder-lance", "blizzard", "arcane-surge", "storms-eye"],
-    "colorScheme": { "primary": "#0EA5E9", "secondary": "#38BDF8" }
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 75,
+      "defense": 65,
+      "special": 130,
+      "speed": 95
+    },
+    "moveIds": [
+      "thunder-lance",
+      "blizzard",
+      "arcane-surge",
+      "storms-eye"
+    ],
+    "colorScheme": {
+      "primary": "#0EA5E9",
+      "secondary": "#38BDF8"
+    }
   },
   {
     "id": "ren",
@@ -45,9 +105,24 @@
     "title": "The Thunder Fist",
     "archetype": "Brawler / Electric",
     "description": "A martial artist who channels raw electricity through every punch. Built like a tank but moves like lightning — unpredictable and relentless in close range.",
-    "baseStats": { "maxHp": 1000, "maxEnergy": 100, "attack": 105, "defense": 85, "special": 95, "speed": 90 },
-    "moveIds": ["lightning-jab", "thunder-clap", "static-charge", "thunderstrike"],
-    "colorScheme": { "primary": "#D97706", "secondary": "#FCD34D" }
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 105,
+      "defense": 85,
+      "special": 95,
+      "speed": 90
+    },
+    "moveIds": [
+      "lightning-jab",
+      "thunder-clap",
+      "static-charge",
+      "thunderstrike"
+    ],
+    "colorScheme": {
+      "primary": "#D97706",
+      "secondary": "#FCD34D"
+    }
   },
   {
     "id": "hana",
@@ -55,9 +130,24 @@
     "title": "The Void Walker",
     "archetype": "Assassin / Shadow",
     "description": "She steps through the void between moments, striking from positions that should be impossible. The fastest fighter alive — if you see her move, it's already too late.",
-    "baseStats": { "maxHp": 820, "maxEnergy": 100, "attack": 115, "defense": 58, "special": 90, "speed": 135 },
-    "moveIds": ["shadow-step", "void-strike", "phantom-form", "dimension-slash"],
-    "colorScheme": { "primary": "#7C3AED", "secondary": "#A78BFA" }
+    "baseStats": {
+      "maxHp": 820,
+      "maxEnergy": 100,
+      "attack": 115,
+      "defense": 58,
+      "special": 90,
+      "speed": 135
+    },
+    "moveIds": [
+      "shadow-step",
+      "void-strike",
+      "phantom-form",
+      "dimension-slash"
+    ],
+    "colorScheme": {
+      "primary": "#7C3AED",
+      "secondary": "#A78BFA"
+    }
   },
   {
     "id": "mira",
@@ -65,9 +155,24 @@
     "title": "The Cursed Sage",
     "archetype": "Dark Mage / Curse",
     "description": "A forbidden arts practitioner whose curses rot through any defense over time. Fragile up front, catastrophic given enough turns — never let her reach the late game.",
-    "baseStats": { "maxHp": 875, "maxEnergy": 100, "attack": 72, "defense": 72, "special": 128, "speed": 85 },
-    "moveIds": ["curse-seal", "dark-pulse", "hex-shield", "forbidden-art"],
-    "colorScheme": { "primary": "#BE123C", "secondary": "#FB7185" }
+    "baseStats": {
+      "maxHp": 875,
+      "maxEnergy": 100,
+      "attack": 72,
+      "defense": 72,
+      "special": 128,
+      "speed": 85
+    },
+    "moveIds": [
+      "curse-seal",
+      "dark-pulse",
+      "hex-shield",
+      "forbidden-art"
+    ],
+    "colorScheme": {
+      "primary": "#BE123C",
+      "secondary": "#FB7185"
+    }
   },
   {
     "id": "gale",
@@ -75,9 +180,24 @@
     "title": "The Wild Tempest",
     "archetype": "Berserker / Wild",
     "description": "Fights like a force of nature — chaotic, relentless, and terrifyingly strong. Gale gets stronger the longer a fight goes, rewarding those willing to take hits to deal them.",
-    "baseStats": { "maxHp": 1050, "maxEnergy": 100, "attack": 118, "defense": 72, "special": 88, "speed": 95 },
-    "moveIds": ["reckless-charge", "cyclone-spin", "berserk-mode", "wild-storm"],
-    "colorScheme": { "primary": "#92400E", "secondary": "#F59E0B" }
+    "baseStats": {
+      "maxHp": 1050,
+      "maxEnergy": 100,
+      "attack": 118,
+      "defense": 72,
+      "special": 88,
+      "speed": 95
+    },
+    "moveIds": [
+      "reckless-charge",
+      "cyclone-spin",
+      "berserk-mode",
+      "wild-storm"
+    ],
+    "colorScheme": {
+      "primary": "#92400E",
+      "secondary": "#F59E0B"
+    }
   },
   {
     "id": "naruto",
@@ -85,9 +205,24 @@
     "title": "Nine-Tails Jinchuriki",
     "archetype": "Chakra Brawler / Wind",
     "description": "The unpredictable hyper-active ninja of the Leaf Village. Harnesses limitless reserves of Kurama tail-beast chakra to overwhelm foes with shadow clones and devastating Rasengans.",
-    "baseStats": { "maxHp": 1200, "maxEnergy": 100, "attack": 110, "defense": 90, "special": 115, "speed": 110 },
-    "moveIds": ["rasengan", "shadow-clones", "rasen-shuriken", "kurama-mode"],
-    "colorScheme": { "primary": "#F97316", "secondary": "#FDE047" }
+    "baseStats": {
+      "maxHp": 1200,
+      "maxEnergy": 100,
+      "attack": 110,
+      "defense": 90,
+      "special": 115,
+      "speed": 110
+    },
+    "moveIds": [
+      "rasengan",
+      "shadow-clones",
+      "rasen-shuriken",
+      "kurama-mode"
+    ],
+    "colorScheme": {
+      "primary": "#F97316",
+      "secondary": "#FDE047"
+    }
   },
   {
     "id": "sasuke",
@@ -95,9 +230,24 @@
     "title": "The Avenger",
     "archetype": "Lightning Ninja / Fire",
     "description": "The sole surviving prodigy of the legendary Uchiha clan. Wields the analytical power of the Mangekyo Sharingan and high-voltage Chidori strikes to dissect battlefields.",
-    "baseStats": { "maxHp": 980, "maxEnergy": 100, "attack": 118, "defense": 75, "special": 125, "speed": 128 },
-    "moveIds": ["chidori", "fireball-jutsu", "sharingan", "susanoo-arrow"],
-    "colorScheme": { "primary": "#6366F1", "secondary": "#A855F7" }
+    "baseStats": {
+      "maxHp": 980,
+      "maxEnergy": 100,
+      "attack": 118,
+      "defense": 75,
+      "special": 125,
+      "speed": 128
+    },
+    "moveIds": [
+      "chidori",
+      "fireball-jutsu",
+      "sharingan",
+      "susanoo-arrow"
+    ],
+    "colorScheme": {
+      "primary": "#6366F1",
+      "secondary": "#A855F7"
+    }
   },
   {
     "id": "kakashi",
@@ -105,9 +255,24 @@
     "title": "The Copy Ninja",
     "archetype": "Tactician / Lightning",
     "description": "A famous tactical veteran who has copied over a thousand jutsus. Uses precise spacing, defensive earth ramparts, and dimensional Kamui warps to outwit stronger opponents.",
-    "baseStats": { "maxHp": 950, "maxEnergy": 100, "attack": 105, "defense": 85, "special": 115, "speed": 115 },
-    "moveIds": ["raikiri", "kamui", "mud-wall", "lightning-hound"],
-    "colorScheme": { "primary": "#64748B", "secondary": "#94A3B8" }
+    "baseStats": {
+      "maxHp": 950,
+      "maxEnergy": 100,
+      "attack": 105,
+      "defense": 85,
+      "special": 115,
+      "speed": 115
+    },
+    "moveIds": [
+      "raikiri",
+      "kamui",
+      "mud-wall",
+      "lightning-hound"
+    ],
+    "colorScheme": {
+      "primary": "#64748B",
+      "secondary": "#94A3B8"
+    }
   },
   {
     "id": "madara",
@@ -115,9 +280,24 @@
     "title": "Ghost of the Uchiha",
     "archetype": "Destroyer / Fire & Meteor",
     "description": "An epoch-shattering deity of shinobi warfare. Commands colossal fire storms, invisible Limbo clones, and literal orbital asteroids that annihilate entire squads at once.",
-    "baseStats": { "maxHp": 1350, "maxEnergy": 100, "attack": 130, "defense": 115, "special": 135, "speed": 90 },
-    "moveIds": ["majestic-flame", "susanoo-cleave", "limbo", "tengai-shinsei"],
-    "colorScheme": { "primary": "#DC2626", "secondary": "#991B1B" }
+    "baseStats": {
+      "maxHp": 1350,
+      "maxEnergy": 100,
+      "attack": 130,
+      "defense": 115,
+      "special": 135,
+      "speed": 90
+    },
+    "moveIds": [
+      "majestic-flame",
+      "susanoo-cleave",
+      "limbo",
+      "tengai-shinsei"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#991B1B"
+    }
   },
   {
     "id": "luffy",
@@ -125,9 +305,24 @@
     "title": "Straw Hat Emperor",
     "archetype": "Rubber Brawler / Haki",
     "description": "The captain of the Straw Hats and future King of the Pirates. Combines elastic rubber anatomy with Supreme King Haki to shatter physical limitations and turn imaginaton into reality.",
-    "baseStats": { "maxHp": 1250, "maxEnergy": 100, "attack": 128, "defense": 95, "special": 85, "speed": 118 },
-    "moveIds": ["gum-gum-gatling", "gear-second", "red-hawk", "bajrang-gun"],
-    "colorScheme": { "primary": "#EF4444", "secondary": "#F59E0B" }
+    "baseStats": {
+      "maxHp": 1250,
+      "maxEnergy": 100,
+      "attack": 128,
+      "defense": 95,
+      "special": 85,
+      "speed": 118
+    },
+    "moveIds": [
+      "gum-gum-gatling",
+      "gear-second",
+      "red-hawk",
+      "bajrang-gun"
+    ],
+    "colorScheme": {
+      "primary": "#EF4444",
+      "secondary": "#F59E0B"
+    }
   },
   {
     "id": "zoro",
@@ -135,9 +330,24 @@
     "title": "King of Hell",
     "archetype": "Three-Sword Master / Power",
     "description": "The world-renowned swordsman who wields three cursed blades simultaneously. Unleashes cutting torrents that shear through iron, dragons, and spatial barriers with demon-god willpower.",
-    "baseStats": { "maxHp": 1150, "maxEnergy": 100, "attack": 135, "defense": 105, "special": 70, "speed": 98 },
-    "moveIds": ["oni-giri", "tori-gari", "ashura", "billion-world"],
-    "colorScheme": { "primary": "#10B981", "secondary": "#047857" }
+    "baseStats": {
+      "maxHp": 1150,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 105,
+      "special": 70,
+      "speed": 98
+    },
+    "moveIds": [
+      "oni-giri",
+      "tori-gari",
+      "ashura",
+      "billion-world"
+    ],
+    "colorScheme": {
+      "primary": "#10B981",
+      "secondary": "#047857"
+    }
   },
   {
     "id": "sanji",
@@ -145,9 +355,24 @@
     "title": "Black Leg",
     "archetype": "Speed Kicker / Flame",
     "description": "The chivalrous combat chef whose kicking agility surpasses natural human reflexes. Ignites his legs into infernal blue flames to serve up explosive aerial combos.",
-    "baseStats": { "maxHp": 1050, "maxEnergy": 100, "attack": 120, "defense": 85, "special": 95, "speed": 132 },
-    "moveIds": ["mouton-shot", "diable-jambe", "sky-walk", "ifrit-jambe"],
-    "colorScheme": { "primary": "#F59E0B", "secondary": "#3B82F6" }
+    "baseStats": {
+      "maxHp": 1050,
+      "maxEnergy": 100,
+      "attack": 120,
+      "defense": 85,
+      "special": 95,
+      "speed": 132
+    },
+    "moveIds": [
+      "mouton-shot",
+      "diable-jambe",
+      "sky-walk",
+      "ifrit-jambe"
+    ],
+    "colorScheme": {
+      "primary": "#F59E0B",
+      "secondary": "#3B82F6"
+    }
   },
   {
     "id": "kaido",
@@ -155,9 +380,24 @@
     "title": "Strongest Creature Alive",
     "archetype": "Dragon Juggernaut / Tank",
     "description": "The undying Emperor of the Sea and leader of the Beast Pirates. Transforms into a mythic Azure Dragon capable of absorbing lethal punishment before firing city-razing thermal lasers.",
-    "baseStats": { "maxHp": 1500, "maxEnergy": 100, "attack": 140, "defense": 140, "special": 110, "speed": 65 },
-    "moveIds": ["thunder-bagua", "bolo-breath", "dragon-scales", "ragnaraku"],
-    "colorScheme": { "primary": "#374151", "secondary": "#4338CA" }
+    "baseStats": {
+      "maxHp": 1500,
+      "maxEnergy": 100,
+      "attack": 140,
+      "defense": 140,
+      "special": 110,
+      "speed": 65
+    },
+    "moveIds": [
+      "thunder-bagua",
+      "bolo-breath",
+      "dragon-scales",
+      "ragnaraku"
+    ],
+    "colorScheme": {
+      "primary": "#374151",
+      "secondary": "#4338CA"
+    }
   },
   {
     "id": "ichigo",
@@ -165,9 +405,24 @@
     "title": "Substitute Soul Reaper",
     "archetype": "Getsuga Hybrid / Speed",
     "description": "A combat hybrid uniting Soul Reaper, Hollow, Quincy, and Fullbring heritages. Enters Bankai to achieve impossible hypersonic speed and unleash sweeping black crescent Getsuga slashes.",
-    "baseStats": { "maxHp": 1120, "maxEnergy": 100, "attack": 125, "defense": 88, "special": 115, "speed": 125 },
-    "moveIds": ["getsuga-tensho", "bankai-speed", "hollowfication", "mugetsu"],
-    "colorScheme": { "primary": "#1E293B", "secondary": "#EF4444" }
+    "baseStats": {
+      "maxHp": 1120,
+      "maxEnergy": 100,
+      "attack": 125,
+      "defense": 88,
+      "special": 115,
+      "speed": 125
+    },
+    "moveIds": [
+      "getsuga-tensho",
+      "bankai-speed",
+      "hollowfication",
+      "mugetsu"
+    ],
+    "colorScheme": {
+      "primary": "#1E293B",
+      "secondary": "#EF4444"
+    }
   },
   {
     "id": "aizen",
@@ -175,9 +430,24 @@
     "title": "Ruler of Illusions",
     "archetype": "Illusionist / Reiatsu Mage",
     "description": "The immortal former captain who stood atop the heavens. Wields complete hypnosis over all five human senses with Kyoka Suigetsu alongside unfathomably destructive Kido spells.",
-    "baseStats": { "maxHp": 1280, "maxEnergy": 100, "attack": 105, "defense": 115, "special": 145, "speed": 105 },
-    "moveIds": ["kyoka-suigetsu", "kurohitsugi", "hogyoku", "fragor"],
-    "colorScheme": { "primary": "#6366F1", "secondary": "#312E81" }
+    "baseStats": {
+      "maxHp": 1280,
+      "maxEnergy": 100,
+      "attack": 105,
+      "defense": 115,
+      "special": 145,
+      "speed": 105
+    },
+    "moveIds": [
+      "kyoka-suigetsu",
+      "kurohitsugi",
+      "hogyoku",
+      "fragor"
+    ],
+    "colorScheme": {
+      "primary": "#6366F1",
+      "secondary": "#312E81"
+    }
   },
   {
     "id": "byakuya",
@@ -185,9 +455,24 @@
     "title": "Captain of the 6th Division",
     "archetype": "Senkaimon Tactician / Blade",
     "description": "The aristocratic noble master of Soul Society martial graces. Dissolves his blade into billions of glowing sakura cherry blossoms that shred enemies from every direction simultaneously.",
-    "baseStats": { "maxHp": 1000, "maxEnergy": 100, "attack": 108, "defense": 95, "special": 128, "speed": 120 },
-    "moveIds": ["senbonzakura", "senka", "flash-step", "gokei"],
-    "colorScheme": { "primary": "#F472B6", "secondary": "#EC4899" }
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 108,
+      "defense": 95,
+      "special": 128,
+      "speed": 120
+    },
+    "moveIds": [
+      "senbonzakura",
+      "senka",
+      "flash-step",
+      "gokei"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#EC4899"
+    }
   },
   {
     "id": "zaraki",
@@ -195,9 +480,24 @@
     "title": "The Bloodthirsty Captain",
     "archetype": "Berserker / Cutting Force",
     "description": "A monstrous battle maniac who wears an energy-devouring eyepatch just to give opponents a chance. Revels in sheer cutting force, tearing through dimensional fabric when serious.",
-    "baseStats": { "maxHp": 1420, "maxEnergy": 100, "attack": 148, "defense": 110, "special": 60, "speed": 85 },
-    "moveIds": ["kendo-cleave", "eyepatch-off", "nozarashi", "bloodlust-roar"],
-    "colorScheme": { "primary": "#F59E0B", "secondary": "#78350F" }
+    "baseStats": {
+      "maxHp": 1420,
+      "maxEnergy": 100,
+      "attack": 148,
+      "defense": 110,
+      "special": 60,
+      "speed": 85
+    },
+    "moveIds": [
+      "kendo-cleave",
+      "eyepatch-off",
+      "nozarashi",
+      "bloodlust-roar"
+    ],
+    "colorScheme": {
+      "primary": "#F59E0B",
+      "secondary": "#78350F"
+    }
   },
   {
     "id": "goku",
@@ -205,9 +505,24 @@
     "title": "Saiyan Emperor of Martial Arts",
     "archetype": "Saiyan Brawler / Instinct",
     "description": "A pure-hearted Saiyan warrior raised on Earth whose combat evolution breaks through planetary and godly boundaries. Harnesses Ultra Instinct and towering Kamehameha energy blasts.",
-    "baseStats": { "maxHp": 1350, "maxEnergy": 100, "attack": 145, "defense": 100, "special": 135, "speed": 130 },
-    "moveIds": ["kamehameha", "spirit-bomb", "ultra-instinct", "dragon-smash"],
-    "colorScheme": { "primary": "#F97316", "secondary": "#3B82F6" }
+    "baseStats": {
+      "maxHp": 1350,
+      "maxEnergy": 100,
+      "attack": 145,
+      "defense": 100,
+      "special": 135,
+      "speed": 130
+    },
+    "moveIds": [
+      "kamehameha",
+      "spirit-bomb",
+      "ultra-instinct",
+      "dragon-smash"
+    ],
+    "colorScheme": {
+      "primary": "#F97316",
+      "secondary": "#3B82F6"
+    }
   },
   {
     "id": "vegeta",
@@ -215,9 +530,24 @@
     "title": "Proud Prince of Saiyans",
     "archetype": "Saiyan Destroyer / Power",
     "description": "The relentless royal Saiyan prince driven by pride and indomitable grit. Unleashes cataclysmic Galick Gun torrents, Final Flash devastations, and pure destructive Ego.",
-    "baseStats": { "maxHp": 1280, "maxEnergy": 100, "attack": 148, "defense": 95, "special": 140, "speed": 120 },
-    "moveIds": ["final-flash", "galick-gun", "big-bang-attack", "saiyan-pride"],
-    "colorScheme": { "primary": "#1E3A8A", "secondary": "#F59E0B" }
+    "baseStats": {
+      "maxHp": 1280,
+      "maxEnergy": 100,
+      "attack": 148,
+      "defense": 95,
+      "special": 140,
+      "speed": 120
+    },
+    "moveIds": [
+      "final-flash",
+      "galick-gun",
+      "big-bang-attack",
+      "saiyan-pride"
+    ],
+    "colorScheme": {
+      "primary": "#1E3A8A",
+      "secondary": "#F59E0B"
+    }
   },
   {
     "id": "frieza",
@@ -225,9 +555,24 @@
     "title": "Galactic Tyrant",
     "archetype": "Cosmic Destroyer / Beam",
     "description": "The ruthless ruler of the cosmos who destroys entire planets with a single finger flick. Transforms into blinding Golden radiance to terrorize the arena.",
-    "baseStats": { "maxHp": 1300, "maxEnergy": 100, "attack": 135, "defense": 110, "special": 148, "speed": 115 },
-    "moveIds": ["death-beam", "supernova-destroyer", "golden-transformation", "emperor-tail-whip"],
-    "colorScheme": { "primary": "#9333EA", "secondary": "#EAB308" }
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 110,
+      "special": 148,
+      "speed": 115
+    },
+    "moveIds": [
+      "death-beam",
+      "supernova-destroyer",
+      "golden-transformation",
+      "emperor-tail-whip"
+    ],
+    "colorScheme": {
+      "primary": "#9333EA",
+      "secondary": "#EAB308"
+    }
   },
   {
     "id": "gojo",
@@ -235,9 +580,24 @@
     "title": "The Strongest Sorcerer Alive",
     "archetype": "Limitless Sorcerer / Infinity",
     "description": "Wields the hereditary Limitless technique and Six Eyes with divine confidence. Wraps himself in impassable spatial Infinity before obliterating targets with Hollow Purple and Infinite Void.",
-    "baseStats": { "maxHp": 1450, "maxEnergy": 100, "attack": 135, "defense": 150, "special": 155, "speed": 135 },
-    "moveIds": ["hollow-purple", "infinity-shield", "red-reversal", "unlimited-void"],
-    "colorScheme": { "primary": "#3B82F6", "secondary": "#A855F7" }
+    "baseStats": {
+      "maxHp": 1450,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 150,
+      "special": 155,
+      "speed": 135
+    },
+    "moveIds": [
+      "hollow-purple",
+      "infinity-shield",
+      "red-reversal",
+      "unlimited-void"
+    ],
+    "colorScheme": {
+      "primary": "#3B82F6",
+      "secondary": "#A855F7"
+    }
   },
   {
     "id": "sukuna",
@@ -245,9 +605,24 @@
     "title": "King of Curses",
     "archetype": "Cursed Deity / Slashing Dismantle",
     "description": "The ancient, multi-armed calamity incarnated into modern times. Deploys invisible Cleave and Dismantle slashes alongside his terrifying divine domain expansion, Malevolent Shrine.",
-    "baseStats": { "maxHp": 1500, "maxEnergy": 100, "attack": 155, "defense": 120, "special": 145, "speed": 125 },
-    "moveIds": ["dismantle", "cleave-slash", "flame-arrow", "malevolent-shrine"],
-    "colorScheme": { "primary": "#DC2626", "secondary": "#1E293B" }
+    "baseStats": {
+      "maxHp": 1500,
+      "maxEnergy": 100,
+      "attack": 155,
+      "defense": 120,
+      "special": 145,
+      "speed": 125
+    },
+    "moveIds": [
+      "dismantle",
+      "cleave-slash",
+      "flame-arrow",
+      "malevolent-shrine"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#1E293B"
+    }
   },
   {
     "id": "yuji",
@@ -255,9 +630,24 @@
     "title": "The Cursed Vessel",
     "archetype": "Superhuman Brawler / Strike",
     "description": "A gifted martial athlete wielding superhuman density and unrelenting guts. Chains explosive Black Flash impacts that shatter spiritual defenses with terrifying physical force.",
-    "baseStats": { "maxHp": 1180, "maxEnergy": 100, "attack": 132, "defense": 95, "special": 90, "speed": 120 },
-    "moveIds": ["divergence-fist", "black-flash", "tiger-knee", "unbreakable-will"],
-    "colorScheme": { "primary": "#EF4444", "secondary": "#0284C7" }
+    "baseStats": {
+      "maxHp": 1180,
+      "maxEnergy": 100,
+      "attack": 132,
+      "defense": 95,
+      "special": 90,
+      "speed": 120
+    },
+    "moveIds": [
+      "divergence-fist",
+      "black-flash",
+      "tiger-knee",
+      "unbreakable-will"
+    ],
+    "colorScheme": {
+      "primary": "#EF4444",
+      "secondary": "#0284C7"
+    }
   },
   {
     "id": "tanjiro",
@@ -265,9 +655,24 @@
     "title": "Sun Breath Demon Slayer",
     "archetype": "Water & Sun Swordsman / Blade",
     "description": "A passionate swordsman with superhuman scent analysis and unwavering resolve. Fluidly transitions between defensive Water Breathing techniques and explosive fiery Hinokami Kagura solar dances.",
-    "baseStats": { "maxHp": 1100, "maxEnergy": 100, "attack": 122, "defense": 92, "special": 105, "speed": 118 },
-    "moveIds": ["hinokami-kagura", "water-wheel", "constant-flux", "sun-breathing"],
-    "colorScheme": { "primary": "#10B981", "secondary": "#DC2626" }
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 122,
+      "defense": 92,
+      "special": 105,
+      "speed": 118
+    },
+    "moveIds": [
+      "hinokami-kagura",
+      "water-wheel",
+      "constant-flux",
+      "sun-breathing"
+    ],
+    "colorScheme": {
+      "primary": "#10B981",
+      "secondary": "#DC2626"
+    }
   },
   {
     "id": "levi",
@@ -275,9 +680,24 @@
     "title": "Humanity's Strongest Soldier",
     "archetype": "Omni-Directional Scout / Speed",
     "description": "An aerial spinning tornado of dual ultra-hard steel blades and maneuvering gear mastery. Carves through colossal targets at blinding speeds before they can even perceive his positioning.",
-    "baseStats": { "maxHp": 1000, "maxEnergy": 100, "attack": 138, "defense": 78, "special": 65, "speed": 145 },
-    "moveIds": ["spinning-slash", "odm-assault", "dual-blade-slice", "ackerman-fury"],
-    "colorScheme": { "primary": "#3F6212", "secondary": "#64748B" }
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 138,
+      "defense": 78,
+      "special": 65,
+      "speed": 145
+    },
+    "moveIds": [
+      "spinning-slash",
+      "odm-assault",
+      "dual-blade-slice",
+      "ackerman-fury"
+    ],
+    "colorScheme": {
+      "primary": "#3F6212",
+      "secondary": "#64748B"
+    }
   },
   {
     "id": "saitama",
@@ -285,8 +705,2773 @@
     "title": "Hero for Fun",
     "archetype": "Overwhelming Strength / Caped Baldy",
     "description": "A caped hero who trained so hard his hair fell out. Possesses immeasurable, terrifyingly absolute strength that ends apocalyptic cosmic threats with a single casual punch.",
-    "baseStats": { "maxHp": 1600, "maxEnergy": 100, "attack": 180, "defense": 160, "special": 80, "speed": 140 },
-    "moveIds": ["normal-punch", "consecutive-normal-punches", "serious-punch", "impenetrable-baldness"],
-    "colorScheme": { "primary": "#EAB308", "secondary": "#DC2626" }
+    "baseStats": {
+      "maxHp": 1600,
+      "maxEnergy": 100,
+      "attack": 180,
+      "defense": 160,
+      "special": 80,
+      "speed": 140
+    },
+    "moveIds": [
+      "normal-punch",
+      "consecutive-normal-punches",
+      "serious-punch",
+      "impenetrable-baldness"
+    ],
+    "colorScheme": {
+      "primary": "#EAB308",
+      "secondary": "#DC2626"
+    }
+  },
+  {
+    "id": "minato",
+    "name": "Minato Namikaze",
+    "title": "Yellow Flash",
+    "archetype": "Speed / Teleport",
+    "description": "A formidable fighter hailing from the Speed / Teleport discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "sun-breathing",
+      "sky-walk",
+      "shadow-clones",
+      "flash-step"
+    ],
+    "colorScheme": {
+      "primary": "#FDE047",
+      "secondary": "#F59E0B"
+    }
+  },
+  {
+    "id": "itachi",
+    "name": "Itachi Uchiha",
+    "title": "Genjutsu Prodigy",
+    "archetype": "Illusion / Fire",
+    "description": "A formidable fighter hailing from the Illusion / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "majestic-flame",
+      "susanoo-arrow",
+      "flame-arrow",
+      "kyoka-suigetsu"
+    ],
+    "colorScheme": {
+      "primary": "#991B1B",
+      "secondary": "#1F2937"
+    }
+  },
+  {
+    "id": "jiraiya",
+    "name": "Jiraiya",
+    "title": "Toad Sage",
+    "archetype": "Sage / Fire",
+    "description": "A formidable fighter hailing from the Sage / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "death-beam",
+      "flame-arrow",
+      "majestic-flame",
+      "flame-burst"
+    ],
+    "colorScheme": {
+      "primary": "#B91C1C",
+      "secondary": "#FACC15"
+    }
+  },
+  {
+    "id": "tsunade",
+    "name": "Tsunade",
+    "title": "Legendary Sannin",
+    "archetype": "Brawler / Healer",
+    "description": "A formidable fighter hailing from the Brawler / Healer discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "iron-guard",
+      "diable-jambe",
+      "recharge",
+      "shadow-clones"
+    ],
+    "colorScheme": {
+      "primary": "#10B981",
+      "secondary": "#059669"
+    }
+  },
+  {
+    "id": "orochimaru",
+    "name": "Orochimaru",
+    "title": "Snake Sannin",
+    "archetype": "Poison / Serpent",
+    "description": "A formidable fighter hailing from the Poison / Serpent discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "poison-shuriken",
+      "hinokami-kagura",
+      "consecutive-normal-punches",
+      "rasen-shuriken"
+    ],
+    "colorScheme": {
+      "primary": "#4C1D95",
+      "secondary": "#A78BFA"
+    }
+  },
+  {
+    "id": "shikamaru",
+    "name": "Shikamaru Nara",
+    "title": "Shadow Strategist",
+    "archetype": "Tactician / Shadow",
+    "description": "A formidable fighter hailing from the Tactician / Shadow discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-strike",
+      "limbo",
+      "shadow-clones",
+      "shadow-step"
+    ],
+    "colorScheme": {
+      "primary": "#374151",
+      "secondary": "#9CA3AF"
+    }
+  },
+  {
+    "id": "neji",
+    "name": "Neji Hyuga",
+    "title": "Byakugan Genius",
+    "archetype": "Physical / Block",
+    "description": "A formidable fighter hailing from the Physical / Block discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "rasengan",
+      "flame-arrow",
+      "dragon-smash",
+      "shadow-strike"
+    ],
+    "colorScheme": {
+      "primary": "#E5E7EB",
+      "secondary": "#6B7280"
+    }
+  },
+  {
+    "id": "rock-lee",
+    "name": "Rock Lee",
+    "title": "Handsome Devil",
+    "archetype": "Brawler / Speed",
+    "description": "A formidable fighter hailing from the Brawler / Speed discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 950,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 70,
+      "special": 70,
+      "speed": 140
+    },
+    "moveIds": [
+      "shadow-clones",
+      "oni-giri",
+      "sun-breathing",
+      "gear-second"
+    ],
+    "colorScheme": {
+      "primary": "#166534",
+      "secondary": "#4ADE80"
+    }
+  },
+  {
+    "id": "gaara",
+    "name": "Gaara",
+    "title": "Kazekage",
+    "archetype": "Defense / Sand",
+    "description": "A formidable fighter hailing from the Defense / Sand discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 120,
+      "special": 100,
+      "speed": 70
+    },
+    "moveIds": [
+      "smoke-veil",
+      "cleave-slash",
+      "phantom-form",
+      "wild-storm"
+    ],
+    "colorScheme": {
+      "primary": "#B91C1C",
+      "secondary": "#D97706"
+    }
+  },
+  {
+    "id": "killer-bee",
+    "name": "Killer Bee",
+    "title": "Eight-Tails Jinchuriki",
+    "archetype": "Brawler / Lightning",
+    "description": "A formidable fighter hailing from the Brawler / Lightning discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 950,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 70,
+      "special": 70,
+      "speed": 140
+    },
+    "moveIds": [
+      "mouton-shot",
+      "thunder-lance",
+      "lightning-jab",
+      "ragnaraku"
+    ],
+    "colorScheme": {
+      "primary": "#F59E0B",
+      "secondary": "#CA8A04"
+    }
+  },
+  {
+    "id": "rukia",
+    "name": "Rukia Kuchiki",
+    "title": "Ice Reaper",
+    "archetype": "Ice / Magic",
+    "description": "A formidable fighter hailing from the Ice / Magic discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "arcane-surge",
+      "hex-shield",
+      "forbidden-art",
+      "flame-burst"
+    ],
+    "colorScheme": {
+      "primary": "#93C5FD",
+      "secondary": "#EFF6FF"
+    }
+  },
+  {
+    "id": "renji",
+    "name": "Renji Abarai",
+    "title": "Zabimaru's Wielder",
+    "archetype": "Physical / Whip",
+    "description": "A formidable fighter hailing from the Physical / Whip discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-strike",
+      "rasengan",
+      "black-flash",
+      "thunderstrike"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#B91C1C"
+    }
+  },
+  {
+    "id": "toshiro",
+    "name": "Toshiro Hitsugaya",
+    "title": "Ice Dragon",
+    "archetype": "Ice / Dragon",
+    "description": "A formidable fighter hailing from the Ice / Dragon discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "hinokami-kagura",
+      "dragon-smash",
+      "dragon-fist",
+      "dragon-scales"
+    ],
+    "colorScheme": {
+      "primary": "#60A5FA",
+      "secondary": "#E0F2FE"
+    }
+  },
+  {
+    "id": "shunsui",
+    "name": "Shunsui Kyoraku",
+    "title": "Captain Commander",
+    "archetype": "Shadow / Illusion",
+    "description": "A formidable fighter hailing from the Shadow / Illusion discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-clones",
+      "kyoka-suigetsu",
+      "ashura",
+      "shadow-step"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#9D174D"
+    }
+  },
+  {
+    "id": "urahara",
+    "name": "Kisuke Urahara",
+    "title": "Exile Shopkeeper",
+    "archetype": "Tactician / Magic",
+    "description": "A formidable fighter hailing from the Tactician / Magic discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "forbidden-art",
+      "hex-shield",
+      "arcane-surge",
+      "galick-gun"
+    ],
+    "colorScheme": {
+      "primary": "#166534",
+      "secondary": "#FCD34D"
+    }
+  },
+  {
+    "id": "yoruichi",
+    "name": "Yoruichi Shihoin",
+    "title": "Flash Goddess",
+    "archetype": "Speed / Lightning",
+    "description": "A formidable fighter hailing from the Speed / Lightning discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "chidori",
+      "sky-walk",
+      "raikiri",
+      "bankai-speed"
+    ],
+    "colorScheme": {
+      "primary": "#F59E0B",
+      "secondary": "#6B21A8"
+    }
+  },
+  {
+    "id": "ulquiorra",
+    "name": "Ulquiorra Cifer",
+    "title": "Espada 4",
+    "archetype": "Destruction / Speed",
+    "description": "A formidable fighter hailing from the Destruction / Speed discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "susanoo-arrow",
+      "supernova-destroyer",
+      "gear-second",
+      "shadow-clones"
+    ],
+    "colorScheme": {
+      "primary": "#059669",
+      "secondary": "#1F2937"
+    }
+  },
+  {
+    "id": "grimmjow",
+    "name": "Grimmjow",
+    "title": "Panthera",
+    "archetype": "Brawler / Wild",
+    "description": "A formidable fighter hailing from the Brawler / Wild discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "wild-storm",
+      "cleave-slash",
+      "dragon-smash",
+      "normal-punch"
+    ],
+    "colorScheme": {
+      "primary": "#3B82F6",
+      "secondary": "#E0F2FE"
+    }
+  },
+  {
+    "id": "uryu",
+    "name": "Uryu Ishida",
+    "title": "Quincy Survivor",
+    "archetype": "Archer / Holy",
+    "description": "A formidable fighter hailing from the Archer / Holy discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "smoke-veil",
+      "forbidden-art",
+      "gum-gum-gatling",
+      "flash-step"
+    ],
+    "colorScheme": {
+      "primary": "#60A5FA",
+      "secondary": "#FFFFFF"
+    }
+  },
+  {
+    "id": "kenpachi_true",
+    "name": "Kenpachi (Bankai)",
+    "title": "Berserker Demon",
+    "archetype": "Berserker / Power",
+    "description": "A formidable fighter hailing from the Berserker / Power discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "ashura",
+      "kurama-mode",
+      "gear-second",
+      "hollowfication"
+    ],
+    "colorScheme": {
+      "primary": "#EA580C",
+      "secondary": "#7C2D12"
+    }
+  },
+  {
+    "id": "gohan",
+    "name": "Gohan",
+    "title": "Ultimate Warrior",
+    "archetype": "Saiyan / Potential",
+    "description": "A formidable fighter hailing from the Saiyan / Potential discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "saiyan-pride",
+      "phantom-form",
+      "dual-blade-slice",
+      "oni-giri"
+    ],
+    "colorScheme": {
+      "primary": "#7C3AED",
+      "secondary": "#C084FC"
+    }
+  },
+  {
+    "id": "piccolo",
+    "name": "Piccolo",
+    "title": "Namekian Warrior",
+    "archetype": "Tactician / Regen",
+    "description": "A formidable fighter hailing from the Tactician / Regen discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "hogyoku",
+      "saiyan-pride",
+      "phantom-form",
+      "blizzard"
+    ],
+    "colorScheme": {
+      "primary": "#15803D",
+      "secondary": "#86EFAC"
+    }
+  },
+  {
+    "id": "trunks",
+    "name": "Future Trunks",
+    "title": "Time Traveler",
+    "archetype": "Swordsman / Saiyan",
+    "description": "A formidable fighter hailing from the Swordsman / Saiyan discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "saiyan-pride",
+      "big-bang-attack",
+      "spinning-slash",
+      "static-charge"
+    ],
+    "colorScheme": {
+      "primary": "#818CF8",
+      "secondary": "#312E81"
+    }
+  },
+  {
+    "id": "gotenks",
+    "name": "Gotenks",
+    "title": "Fused Fighter",
+    "archetype": "Saiyan / Wild",
+    "description": "A formidable fighter hailing from the Saiyan / Wild discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "saiyan-pride",
+      "wild-storm",
+      "normal-punch",
+      "thunder-clap"
+    ],
+    "colorScheme": {
+      "primary": "#FCD34D",
+      "secondary": "#1E3A8A"
+    }
+  },
+  {
+    "id": "broly",
+    "name": "Broly",
+    "title": "Legendary Super Saiyan",
+    "archetype": "Berserker / Tank",
+    "description": "A formidable fighter hailing from the Berserker / Tank discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1400,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 130,
+      "special": 70,
+      "speed": 70
+    },
+    "moveIds": [
+      "iron-guard",
+      "dark-pulse",
+      "mugetsu",
+      "dragon-scales"
+    ],
+    "colorScheme": {
+      "primary": "#22C55E",
+      "secondary": "#166534"
+    }
+  },
+  {
+    "id": "cell",
+    "name": "Perfect Cell",
+    "title": "Ultimate Android",
+    "archetype": "Bio-Android / Perfect",
+    "description": "A formidable fighter hailing from the Bio-Android / Perfect discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1200,
+      "maxEnergy": 100,
+      "attack": 120,
+      "defense": 100,
+      "special": 120,
+      "speed": 110
+    },
+    "moveIds": [
+      "reckless-charge",
+      "susanoo-cleave",
+      "ragnaraku",
+      "eyepatch-off"
+    ],
+    "colorScheme": {
+      "primary": "#65A30D",
+      "secondary": "#1E293B"
+    }
+  },
+  {
+    "id": "buu",
+    "name": "Majin Buu",
+    "title": "Pink Terror",
+    "archetype": "Magic / Regen",
+    "description": "A formidable fighter hailing from the Magic / Regen discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "forbidden-art",
+      "arcane-surge",
+      "hogyoku",
+      "hex-shield"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#FDA4AF"
+    }
+  },
+  {
+    "id": "beerus",
+    "name": "Beerus",
+    "title": "God of Destruction",
+    "archetype": "Destruction / God",
+    "description": "A formidable fighter hailing from the Destruction / God discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1200,
+      "maxEnergy": 100,
+      "attack": 120,
+      "defense": 100,
+      "special": 120,
+      "speed": 110
+    },
+    "moveIds": [
+      "susanoo-arrow",
+      "supernova-destroyer",
+      "berserk-mode",
+      "golden-transformation"
+    ],
+    "colorScheme": {
+      "primary": "#9333EA",
+      "secondary": "#4C1D95"
+    }
+  },
+  {
+    "id": "jiren",
+    "name": "Jiren",
+    "title": "Pride Trooper",
+    "archetype": "Power / Tank",
+    "description": "A formidable fighter hailing from the Power / Tank discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 120,
+      "special": 100,
+      "speed": 70
+    },
+    "moveIds": [
+      "hogyoku",
+      "power-surge",
+      "kendo-cleave",
+      "bankai-speed"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#7F1D1D"
+    }
+  },
+  {
+    "id": "whis",
+    "name": "Whis",
+    "title": "Angel Attendant",
+    "archetype": "God / Speed",
+    "description": "A formidable fighter hailing from the God / Speed discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1050,
+      "maxEnergy": 100,
+      "attack": 120,
+      "defense": 80,
+      "special": 120,
+      "speed": 150
+    },
+    "moveIds": [
+      "flash-step",
+      "static-charge",
+      "bankai-speed",
+      "sky-walk"
+    ],
+    "colorScheme": {
+      "primary": "#38BDF8",
+      "secondary": "#E0F2FE"
+    }
+  },
+  {
+    "id": "nami",
+    "name": "Nami",
+    "title": "Cat Burglar",
+    "archetype": "Tactician / Weather",
+    "description": "A formidable fighter hailing from the Tactician / Weather discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "kyoka-suigetsu",
+      "cyclone-spin",
+      "water-wheel",
+      "mouton-shot"
+    ],
+    "colorScheme": {
+      "primary": "#F97316",
+      "secondary": "#38BDF8"
+    }
+  },
+  {
+    "id": "usopp",
+    "name": "Usopp",
+    "title": "Sniper King",
+    "archetype": "Sniper / Trickster",
+    "description": "A formidable fighter hailing from the Sniper / Trickster discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "raikiri",
+      "poison-shuriken",
+      "shadow-strike",
+      "billion-world"
+    ],
+    "colorScheme": {
+      "primary": "#CA8A04",
+      "secondary": "#A16207"
+    }
+  },
+  {
+    "id": "chopper",
+    "name": "Chopper",
+    "title": "Cotton Candy Lover",
+    "archetype": "Healer / Brawler",
+    "description": "A formidable fighter hailing from the Healer / Brawler discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "supernova-destroyer",
+      "bolo-breath",
+      "hollow-purple",
+      "odm-assault"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#6B7280"
+    }
+  },
+  {
+    "id": "robin",
+    "name": "Nico Robin",
+    "title": "Demon Child",
+    "archetype": "Assassin / Clutch",
+    "description": "A formidable fighter hailing from the Assassin / Clutch discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "void-strike",
+      "flame-burst",
+      "kendo-cleave",
+      "limbo"
+    ],
+    "colorScheme": {
+      "primary": "#7C3AED",
+      "secondary": "#4C1D95"
+    }
+  },
+  {
+    "id": "franky",
+    "name": "Franky",
+    "title": "Cyborg",
+    "archetype": "Tank / Ranged",
+    "description": "A formidable fighter hailing from the Tank / Ranged discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 120,
+      "special": 100,
+      "speed": 70
+    },
+    "moveIds": [
+      "mouton-shot",
+      "shadow-clones",
+      "recharge",
+      "divergence-fist"
+    ],
+    "colorScheme": {
+      "primary": "#0EA5E9",
+      "secondary": "#EF4444"
+    }
+  },
+  {
+    "id": "brook",
+    "name": "Brook",
+    "title": "Soul King",
+    "archetype": "Swordsman / Ice",
+    "description": "A formidable fighter hailing from the Swordsman / Ice discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "supernova-destroyer",
+      "thunder-bagua",
+      "kyoka-suigetsu",
+      "berserk-mode"
+    ],
+    "colorScheme": {
+      "primary": "#E5E7EB",
+      "secondary": "#0F172A"
+    }
+  },
+  {
+    "id": "jinbe",
+    "name": "Jinbe",
+    "title": "Knight of the Sea",
+    "archetype": "Brawler / Water",
+    "description": "A formidable fighter hailing from the Brawler / Water discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "water-wheel",
+      "constant-flux",
+      "oni-giri",
+      "thunderstrike"
+    ],
+    "colorScheme": {
+      "primary": "#0369A1",
+      "secondary": "#FCD34D"
+    }
+  },
+  {
+    "id": "law",
+    "name": "Trafalgar Law",
+    "title": "Surgeon of Death",
+    "archetype": "Tactician / Space",
+    "description": "A formidable fighter hailing from the Tactician / Space discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "nozarashi",
+      "final-flash",
+      "dimension-slash",
+      "power-surge"
+    ],
+    "colorScheme": {
+      "primary": "#1E293B",
+      "secondary": "#FACC15"
+    }
+  },
+  {
+    "id": "doflamingo",
+    "name": "Doflamingo",
+    "title": "Heavenly Yaksha",
+    "archetype": "Puppeteer / String",
+    "description": "A formidable fighter hailing from the Puppeteer / String discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "spinning-slash",
+      "impenetrable-baldness",
+      "cyclone-spin",
+      "rasengan"
+    ],
+    "colorScheme": {
+      "primary": "#EC4899",
+      "secondary": "#BE185D"
+    }
+  },
+  {
+    "id": "kid",
+    "name": "Eustass Kid",
+    "title": "Captain",
+    "archetype": "Brawler / Magnet",
+    "description": "A formidable fighter hailing from the Brawler / Magnet discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "susanoo-arrow",
+      "tengai-shinsei",
+      "flame-arrow",
+      "void-strike"
+    ],
+    "colorScheme": {
+      "primary": "#B91C1C",
+      "secondary": "#DC2626"
+    }
+  },
+  {
+    "id": "asta",
+    "name": "Asta",
+    "title": "Anti-Magic Boy",
+    "archetype": "Brawler / Anti-Magic",
+    "description": "A formidable fighter hailing from the Brawler / Anti-Magic discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 105,
+      "defense": 90,
+      "special": 110,
+      "speed": 100
+    },
+    "moveIds": [
+      "odm-assault",
+      "final-flash",
+      "billion-world",
+      "iron-guard"
+    ],
+    "colorScheme": {
+      "primary": "#111827",
+      "secondary": "#6B7280"
+    }
+  },
+  {
+    "id": "yuno",
+    "name": "Yuno",
+    "title": "Wind Prodigy",
+    "archetype": "Mage / Wind",
+    "description": "A formidable fighter hailing from the Mage / Wind discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 750,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 60,
+      "special": 140,
+      "speed": 140
+    },
+    "moveIds": [
+      "wind-slash",
+      "dragon-fist",
+      "cyclone-spin",
+      "thorn-barrier"
+    ],
+    "colorScheme": {
+      "primary": "#10B981",
+      "secondary": "#34D399"
+    }
+  },
+  {
+    "id": "noelle",
+    "name": "Noelle Silva",
+    "title": "Sea Dragon",
+    "archetype": "Mage / Water",
+    "description": "A formidable fighter hailing from the Mage / Water discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "saiyan-pride",
+      "rasen-shuriken",
+      "dragon-fist",
+      "shadow-strike"
+    ],
+    "colorScheme": {
+      "primary": "#3B82F6",
+      "secondary": "#93C5FD"
+    }
+  },
+  {
+    "id": "yami",
+    "name": "Yami Sukehiro",
+    "title": "Black Bull Captain",
+    "archetype": "Swordsman / Dark",
+    "description": "A formidable fighter hailing from the Swordsman / Dark discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "dark-pulse",
+      "hex-shield",
+      "mugetsu",
+      "gokei"
+    ],
+    "colorScheme": {
+      "primary": "#1F2937",
+      "secondary": "#374151"
+    }
+  },
+  {
+    "id": "mereoleona",
+    "name": "Mereoleona",
+    "title": "Uncrowned Lioness",
+    "archetype": "Brawler / Fire",
+    "description": "A formidable fighter hailing from the Brawler / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "susanoo-arrow",
+      "flame-arrow",
+      "fireball-jutsu",
+      "majestic-flame"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#F97316"
+    }
+  },
+  {
+    "id": "julius",
+    "name": "Julius Novachrono",
+    "title": "Wizard King",
+    "archetype": "Mage / Time",
+    "description": "A formidable fighter hailing from the Mage / Time discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-strike",
+      "reckless-charge",
+      "poison-shuriken",
+      "limbo"
+    ],
+    "colorScheme": {
+      "primary": "#F59E0B",
+      "secondary": "#FDE047"
+    }
+  },
+  {
+    "id": "licht",
+    "name": "Licht",
+    "title": "Elf Leader",
+    "archetype": "Swordsman / Light",
+    "description": "A formidable fighter hailing from the Swordsman / Light discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "storms-eye",
+      "mouton-shot",
+      "lightning-jab",
+      "serious-punch"
+    ],
+    "colorScheme": {
+      "primary": "#FFFFFF",
+      "secondary": "#FCD34D"
+    }
+  },
+  {
+    "id": "luck",
+    "name": "Luck Voltia",
+    "title": "Smiling Battle Fiend",
+    "archetype": "Brawler / Lightning",
+    "description": "A formidable fighter hailing from the Brawler / Lightning discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 950,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 70,
+      "special": 70,
+      "speed": 140
+    },
+    "moveIds": [
+      "lightning-hound",
+      "mouton-shot",
+      "ragnaraku",
+      "raikiri"
+    ],
+    "colorScheme": {
+      "primary": "#60A5FA",
+      "secondary": "#FACC15"
+    }
+  },
+  {
+    "id": "finral",
+    "name": "Finral",
+    "title": "Space Mage",
+    "archetype": "Support / Space",
+    "description": "A formidable fighter hailing from the Support / Space discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "final-flash",
+      "nozarashi",
+      "dimension-slash",
+      "mud-wall"
+    ],
+    "colorScheme": {
+      "primary": "#4ADE80",
+      "secondary": "#86EFAC"
+    }
+  },
+  {
+    "id": "zagred",
+    "name": "Zagred",
+    "title": "Word Magic Devil",
+    "archetype": "Demon / Magic",
+    "description": "A formidable fighter hailing from the Demon / Magic discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "forbidden-art",
+      "hex-shield",
+      "hinokami-kagura",
+      "oni-giri"
+    ],
+    "colorScheme": {
+      "primary": "#7F1D1D",
+      "secondary": "#111827"
+    }
+  },
+  {
+    "id": "deku",
+    "name": "Izuku Midoriya",
+    "title": "One For All",
+    "archetype": "Brawler / Speed",
+    "description": "A formidable fighter hailing from the Brawler / Speed discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 950,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 70,
+      "special": 70,
+      "speed": 140
+    },
+    "moveIds": [
+      "bankai-speed",
+      "flash-step",
+      "oni-giri",
+      "shadow-clones"
+    ],
+    "colorScheme": {
+      "primary": "#166534",
+      "secondary": "#4ADE80"
+    }
+  },
+  {
+    "id": "bakugo",
+    "name": "Katsuki Bakugo",
+    "title": "Explosion Murder",
+    "archetype": "Brawler / Explosion",
+    "description": "A formidable fighter hailing from the Brawler / Explosion discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "flame-burst",
+      "golden-transformation",
+      "getsuga-tensho",
+      "flash-step"
+    ],
+    "colorScheme": {
+      "primary": "#EA580C",
+      "secondary": "#F97316"
+    }
+  },
+  {
+    "id": "todoroki",
+    "name": "Shoto Todoroki",
+    "title": "Half-Cold Half-Hot",
+    "archetype": "Mage / Fire & Ice",
+    "description": "A formidable fighter hailing from the Mage / Fire & Ice discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "fireball-jutsu",
+      "death-beam",
+      "reckless-charge",
+      "rasen-shuriken"
+    ],
+    "colorScheme": {
+      "primary": "#EF4444",
+      "secondary": "#38BDF8"
+    }
+  },
+  {
+    "id": "uraraka",
+    "name": "Ochaco Uraraka",
+    "title": "Uravity",
+    "archetype": "Support / Gravity",
+    "description": "A formidable fighter hailing from the Support / Gravity discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "impenetrable-baldness",
+      "power-surge",
+      "mugetsu",
+      "oni-giri"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#FDA4AF"
+    }
+  },
+  {
+    "id": "iida",
+    "name": "Tenya Iida",
+    "title": "Ingenium",
+    "archetype": "Speed / Kick",
+    "description": "A formidable fighter hailing from the Speed / Kick discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "sky-walk",
+      "flash-step",
+      "static-charge",
+      "sun-breathing"
+    ],
+    "colorScheme": {
+      "primary": "#1E3A8A",
+      "secondary": "#60A5FA"
+    }
+  },
+  {
+    "id": "all-might",
+    "name": "All Might",
+    "title": "Symbol of Peace",
+    "archetype": "Brawler / Power",
+    "description": "A formidable fighter hailing from the Brawler / Power discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "hollowfication",
+      "kurama-mode",
+      "arcane-surge",
+      "bankai-speed"
+    ],
+    "colorScheme": {
+      "primary": "#B91C1C",
+      "secondary": "#FACC15"
+    }
+  },
+  {
+    "id": "endeavor",
+    "name": "Endeavor",
+    "title": "Hellflame",
+    "archetype": "Brawler / Fire",
+    "description": "A formidable fighter hailing from the Brawler / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "fireball-jutsu",
+      "majestic-flame",
+      "flame-arrow",
+      "death-beam"
+    ],
+    "colorScheme": {
+      "primary": "#991B1B",
+      "secondary": "#EA580C"
+    }
+  },
+  {
+    "id": "shigaraki",
+    "name": "Tomura Shigaraki",
+    "title": "Decay",
+    "archetype": "Destruction / Decay",
+    "description": "A formidable fighter hailing from the Destruction / Decay discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "supernova-destroyer",
+      "susanoo-arrow",
+      "iron-guard",
+      "recharge"
+    ],
+    "colorScheme": {
+      "primary": "#4B5563",
+      "secondary": "#9CA3AF"
+    }
+  },
+  {
+    "id": "dabi",
+    "name": "Dabi",
+    "title": "Blue Flame",
+    "archetype": "Mage / Fire",
+    "description": "A formidable fighter hailing from the Mage / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "death-beam",
+      "shadow-strike",
+      "dragon-fist",
+      "wild-storm"
+    ],
+    "colorScheme": {
+      "primary": "#0369A1",
+      "secondary": "#38BDF8"
+    }
+  },
+  {
+    "id": "toga",
+    "name": "Himiko Toga",
+    "title": "Blood Demon",
+    "archetype": "Assassin / Blood",
+    "description": "A formidable fighter hailing from the Assassin / Blood discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "sun-breathing",
+      "void-strike",
+      "gear-second",
+      "forbidden-art"
+    ],
+    "colorScheme": {
+      "primary": "#FDE047",
+      "secondary": "#EF4444"
+    }
+  },
+  {
+    "id": "jinwoo",
+    "name": "Sung Jin-woo",
+    "title": "Shadow Monarch",
+    "archetype": "Assassin / Shadow",
+    "description": "A formidable fighter hailing from the Assassin / Shadow discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "limbo",
+      "shadow-step",
+      "shadow-clones",
+      "void-strike"
+    ],
+    "colorScheme": {
+      "primary": "#4C1D95",
+      "secondary": "#1E1B4B"
+    }
+  },
+  {
+    "id": "hae-in",
+    "name": "Cha Hae-in",
+    "title": "Dancer",
+    "archetype": "Swordsman / Light",
+    "description": "A formidable fighter hailing from the Swordsman / Light discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "ragnaraku",
+      "lightning-jab",
+      "raikiri",
+      "lightning-hound"
+    ],
+    "colorScheme": {
+      "primary": "#FCD34D",
+      "secondary": "#FFFFFF"
+    }
+  },
+  {
+    "id": "igris",
+    "name": "Igris",
+    "title": "Blood Red Commander",
+    "archetype": "Knight / Shadow",
+    "description": "A formidable fighter hailing from the Knight / Shadow discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-strike",
+      "shadow-clones",
+      "limbo",
+      "shadow-step"
+    ],
+    "colorScheme": {
+      "primary": "#991B1B",
+      "secondary": "#111827"
+    }
+  },
+  {
+    "id": "beru",
+    "name": "Beru",
+    "title": "Ant King",
+    "archetype": "Assassin / Beast",
+    "description": "A formidable fighter hailing from the Assassin / Beast discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "void-strike",
+      "tiger-knee",
+      "kurama-mode",
+      "gum-gum-gatling"
+    ],
+    "colorScheme": {
+      "primary": "#1F2937",
+      "secondary": "#4ADE80"
+    }
+  },
+  {
+    "id": "thomas",
+    "name": "Thomas Andre",
+    "title": "Goliath",
+    "archetype": "Tank / Power",
+    "description": "A formidable fighter hailing from the Tank / Power discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 120,
+      "special": 100,
+      "speed": 70
+    },
+    "moveIds": [
+      "kurama-mode",
+      "bankai-speed",
+      "arcane-surge",
+      "power-surge"
+    ],
+    "colorScheme": {
+      "primary": "#B45309",
+      "secondary": "#FCD34D"
+    }
+  },
+  {
+    "id": "liu",
+    "name": "Liu Zhigang",
+    "title": "Hero of China",
+    "archetype": "Swordsman / Power",
+    "description": "A formidable fighter hailing from the Swordsman / Power discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "hogyoku",
+      "power-surge",
+      "gear-second",
+      "hollowfication"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#F87171"
+    }
+  },
+  {
+    "id": "baek",
+    "name": "Baek Yoonho",
+    "title": "Beast Mode",
+    "archetype": "Brawler / Beast",
+    "description": "A formidable fighter hailing from the Brawler / Beast discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "kurama-mode",
+      "tiger-knee",
+      "lightning-hound",
+      "serious-punch"
+    ],
+    "colorScheme": {
+      "primary": "#EA580C",
+      "secondary": "#FDBA74"
+    }
+  },
+  {
+    "id": "choi",
+    "name": "Choi Jong-In",
+    "title": "Ultimate Hunter",
+    "archetype": "Mage / Fire",
+    "description": "A formidable fighter hailing from the Mage / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "thorn-barrier",
+      "majestic-flame",
+      "dragon-fist",
+      "death-beam"
+    ],
+    "colorScheme": {
+      "primary": "#EF4444",
+      "secondary": "#991B1B"
+    }
+  },
+  {
+    "id": "goto",
+    "name": "Goto Ryuji",
+    "title": "Japan's Strongest",
+    "archetype": "Assassin / Blade",
+    "description": "A formidable fighter hailing from the Assassin / Blade discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "getsuga-tensho",
+      "nozarashi",
+      "void-strike",
+      "senka"
+    ],
+    "colorScheme": {
+      "primary": "#475569",
+      "secondary": "#94A3B8"
+    }
+  },
+  {
+    "id": "bellion",
+    "name": "Bellion",
+    "title": "Grand Marshal",
+    "archetype": "Knight / Shadow",
+    "description": "A formidable fighter hailing from the Knight / Shadow discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-strike",
+      "limbo",
+      "shadow-step",
+      "shadow-clones"
+    ],
+    "colorScheme": {
+      "primary": "#1F2937",
+      "secondary": "#111827"
+    }
+  },
+  {
+    "id": "meliodas",
+    "name": "Meliodas",
+    "title": "Dragon's Sin",
+    "archetype": "Demon / Counter",
+    "description": "A formidable fighter hailing from the Demon / Counter discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "hinokami-kagura",
+      "oni-giri",
+      "ashura",
+      "bloodlust-roar"
+    ],
+    "colorScheme": {
+      "primary": "#166534",
+      "secondary": "#111827"
+    }
+  },
+  {
+    "id": "ban",
+    "name": "Ban",
+    "title": "Fox's Sin",
+    "archetype": "Brawler / Steal",
+    "description": "A formidable fighter hailing from the Brawler / Steal discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "big-bang-attack",
+      "raikiri",
+      "emperor-tail-whip",
+      "power-surge"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#FCA5A5"
+    }
+  },
+  {
+    "id": "king",
+    "name": "King",
+    "title": "Grizzly's Sin",
+    "archetype": "Mage / Fairy",
+    "description": "A formidable fighter hailing from the Mage / Fairy discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "thorn-barrier",
+      "wild-storm",
+      "limbo",
+      "poison-shuriken"
+    ],
+    "colorScheme": {
+      "primary": "#FBBF24",
+      "secondary": "#A3E635"
+    }
+  },
+  {
+    "id": "diane",
+    "name": "Diane",
+    "title": "Serpent's Sin",
+    "archetype": "Tank / Earth",
+    "description": "A formidable fighter hailing from the Tank / Earth discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 120,
+      "special": 100,
+      "speed": 70
+    },
+    "moveIds": [
+      "earth-slam",
+      "mud-wall",
+      "recharge",
+      "curse-seal"
+    ],
+    "colorScheme": {
+      "primary": "#D97706",
+      "secondary": "#FCD34D"
+    }
+  },
+  {
+    "id": "gowther",
+    "name": "Gowther",
+    "title": "Goat's Sin",
+    "archetype": "Illusion / Mind",
+    "description": "A formidable fighter hailing from the Illusion / Mind discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "kyoka-suigetsu",
+      "ashura",
+      "dark-pulse",
+      "spinning-slash"
+    ],
+    "colorScheme": {
+      "primary": "#EC4899",
+      "secondary": "#F472B6"
+    }
+  },
+  {
+    "id": "merlin",
+    "name": "Merlin",
+    "title": "Boar's Sin",
+    "archetype": "Mage / Infinity",
+    "description": "A formidable fighter hailing from the Mage / Infinity discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "reckless-charge",
+      "thorn-barrier",
+      "wild-storm",
+      "dragon-fist"
+    ],
+    "colorScheme": {
+      "primary": "#4C1D95",
+      "secondary": "#8B5CF6"
+    }
+  },
+  {
+    "id": "escanor",
+    "name": "Escanor",
+    "title": "Lion's Sin",
+    "archetype": "Power / Sun",
+    "description": "A formidable fighter hailing from the Power / Sun discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "hogyoku",
+      "arcane-surge",
+      "bankai-speed",
+      "kendo-cleave"
+    ],
+    "colorScheme": {
+      "primary": "#EA580C",
+      "secondary": "#FDE047"
+    }
+  },
+  {
+    "id": "zeldris",
+    "name": "Zeldris",
+    "title": "Piety",
+    "archetype": "Demon / Speed",
+    "description": "A formidable fighter hailing from the Demon / Speed discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "sky-walk",
+      "bankai-speed",
+      "flash-step",
+      "bloodlust-roar"
+    ],
+    "colorScheme": {
+      "primary": "#7F1D1D",
+      "secondary": "#1E293B"
+    }
+  },
+  {
+    "id": "estarossa",
+    "name": "Estarossa",
+    "title": "Love",
+    "archetype": "Demon / Counter",
+    "description": "A formidable fighter hailing from the Demon / Counter discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "oni-giri",
+      "shadow-step",
+      "hinokami-kagura",
+      "ashura"
+    ],
+    "colorScheme": {
+      "primary": "#6B7280",
+      "secondary": "#D1D5DB"
+    }
+  },
+  {
+    "id": "gilthunder",
+    "name": "Gilthunder",
+    "title": "Holy Knight",
+    "archetype": "Swordsman / Lightning",
+    "description": "A formidable fighter hailing from the Swordsman / Lightning discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "ragnaraku",
+      "thunder-lance",
+      "storms-eye",
+      "raikiri"
+    ],
+    "colorScheme": {
+      "primary": "#3B82F6",
+      "secondary": "#93C5FD"
+    }
+  },
+  {
+    "id": "megumi",
+    "name": "Megumi Fushiguro",
+    "title": "Ten Shadows",
+    "archetype": "Summoner / Shadow",
+    "description": "A formidable fighter hailing from the Summoner / Shadow discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "shadow-step",
+      "limbo",
+      "shadow-strike",
+      "shadow-clones"
+    ],
+    "colorScheme": {
+      "primary": "#111827",
+      "secondary": "#10B981"
+    }
+  },
+  {
+    "id": "nobara",
+    "name": "Nobara Kugisaki",
+    "title": "Straw Doll User",
+    "archetype": "Sniper / Curse",
+    "description": "A formidable fighter hailing from the Sniper / Curse discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "black-flash",
+      "red-reversal",
+      "dismantle",
+      "divergence-fist"
+    ],
+    "colorScheme": {
+      "primary": "#9D174D",
+      "secondary": "#FCA5A5"
+    }
+  },
+  {
+    "id": "maki",
+    "name": "Maki Zenin",
+    "title": "Heavenly Restriction",
+    "archetype": "Brawler / Weapon",
+    "description": "A formidable fighter hailing from the Brawler / Weapon discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "dragon-scales",
+      "thunderstrike",
+      "bajrang-gun",
+      "lightning-jab"
+    ],
+    "colorScheme": {
+      "primary": "#166534",
+      "secondary": "#4ADE80"
+    }
+  },
+  {
+    "id": "toge",
+    "name": "Toge Inumaki",
+    "title": "Cursed Speech",
+    "archetype": "Support / Curse",
+    "description": "A formidable fighter hailing from the Support / Curse discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "dismantle",
+      "unbreakable-will",
+      "divergence-fist",
+      "cleave-slash"
+    ],
+    "colorScheme": {
+      "primary": "#4B5563",
+      "secondary": "#9CA3AF"
+    }
+  },
+  {
+    "id": "panda",
+    "name": "Panda",
+    "title": "Cursed Corpse",
+    "archetype": "Brawler / Tank",
+    "description": "A formidable fighter hailing from the Brawler / Tank discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1400,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 130,
+      "special": 70,
+      "speed": 70
+    },
+    "moveIds": [
+      "thunder-clap",
+      "final-flash",
+      "dragon-scales",
+      "poison-shuriken"
+    ],
+    "colorScheme": {
+      "primary": "#1F2937",
+      "secondary": "#F3F4F6"
+    }
+  },
+  {
+    "id": "yuta",
+    "name": "Yuta Okkotsu",
+    "title": "Special Grade",
+    "archetype": "Swordsman / Curse",
+    "description": "A formidable fighter hailing from the Swordsman / Curse discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "black-flash",
+      "red-reversal",
+      "unbreakable-will",
+      "cleave-slash"
+    ],
+    "colorScheme": {
+      "primary": "#F3F4F6",
+      "secondary": "#1E293B"
+    }
+  },
+  {
+    "id": "todo",
+    "name": "Aoi Todo",
+    "title": "Boogie Woogie",
+    "archetype": "Brawler / Switch",
+    "description": "A formidable fighter hailing from the Brawler / Switch discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "dismantle",
+      "gear-second",
+      "wild-storm",
+      "billion-world"
+    ],
+    "colorScheme": {
+      "primary": "#0F172A",
+      "secondary": "#3B82F6"
+    }
+  },
+  {
+    "id": "mahito",
+    "name": "Mahito",
+    "title": "Idle Transfiguration",
+    "archetype": "Curse / Morph",
+    "description": "A formidable fighter hailing from the Curse / Morph discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "black-flash",
+      "divergence-fist",
+      "cleave-slash",
+      "unbreakable-will"
+    ],
+    "colorScheme": {
+      "primary": "#60A5FA",
+      "secondary": "#9CA3AF"
+    }
+  },
+  {
+    "id": "jogo",
+    "name": "Jogo",
+    "title": "Disaster Flame",
+    "archetype": "Curse / Fire",
+    "description": "A formidable fighter hailing from the Curse / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "death-beam",
+      "curse-seal",
+      "unbreakable-will",
+      "red-reversal"
+    ],
+    "colorScheme": {
+      "primary": "#EA580C",
+      "secondary": "#B91C1C"
+    }
+  },
+  {
+    "id": "toji",
+    "name": "Toji Fushiguro",
+    "title": "Sorcerer Killer",
+    "archetype": "Assassin / Weapon",
+    "description": "A formidable fighter hailing from the Assassin / Weapon discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "void-strike",
+      "dragon-scales",
+      "ultra-instinct",
+      "constant-flux"
+    ],
+    "colorScheme": {
+      "primary": "#475569",
+      "secondary": "#1F2937"
+    }
+  },
+  {
+    "id": "genos",
+    "name": "Genos",
+    "title": "Demon Cyborg",
+    "archetype": "Cyborg / Fire",
+    "description": "A formidable fighter hailing from the Cyborg / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "flame-arrow",
+      "majestic-flame",
+      "death-beam",
+      "flame-burst"
+    ],
+    "colorScheme": {
+      "primary": "#F59E0B",
+      "secondary": "#1F2937"
+    }
+  },
+  {
+    "id": "tatsumaki",
+    "name": "Tatsumaki",
+    "title": "Tornado of Terror",
+    "archetype": "Esper / Magic",
+    "description": "A formidable fighter hailing from the Esper / Magic discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "arcane-surge",
+      "hex-shield",
+      "forbidden-art",
+      "thunder-clap"
+    ],
+    "colorScheme": {
+      "primary": "#10B981",
+      "secondary": "#047857"
+    }
+  },
+  {
+    "id": "bang",
+    "name": "Silver Fang",
+    "title": "Water Stream Rock Smashing",
+    "archetype": "Martial Arts / Deflect",
+    "description": "A formidable fighter hailing from the Martial Arts / Deflect discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "kendo-cleave",
+      "mouton-shot",
+      "wild-storm",
+      "fragor"
+    ],
+    "colorScheme": {
+      "primary": "#64748B",
+      "secondary": "#E2E8F0"
+    }
+  },
+  {
+    "id": "atomic",
+    "name": "Atomic Samurai",
+    "title": "Council of Swordmasters",
+    "archetype": "Swordsman / Speed",
+    "description": "A formidable fighter hailing from the Swordsman / Speed discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "flash-step",
+      "bankai-speed",
+      "cyclone-spin",
+      "oni-giri"
+    ],
+    "colorScheme": {
+      "primary": "#B91C1C",
+      "secondary": "#FCA5A5"
+    }
+  },
+  {
+    "id": "garou",
+    "name": "Garou",
+    "title": "Hero Hunter",
+    "archetype": "Martial Arts / Adaptive",
+    "description": "A formidable fighter hailing from the Martial Arts / Adaptive discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "mouton-shot",
+      "kendo-cleave",
+      "hinokami-kagura",
+      "dimension-slash"
+    ],
+    "colorScheme": {
+      "primary": "#1E293B",
+      "secondary": "#DC2626"
+    }
+  },
+  {
+    "id": "boros",
+    "name": "Lord Boros",
+    "title": "Dominator of the Universe",
+    "archetype": "Alien / Destruction",
+    "description": "A formidable fighter hailing from the Alien / Destruction discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1200,
+      "maxEnergy": 100,
+      "attack": 120,
+      "defense": 100,
+      "special": 120,
+      "speed": 110
+    },
+    "moveIds": [
+      "supernova-destroyer",
+      "susanoo-arrow",
+      "curse-seal",
+      "wild-storm"
+    ],
+    "colorScheme": {
+      "primary": "#3B82F6",
+      "secondary": "#F472B6"
+    }
+  },
+  {
+    "id": "suiryu",
+    "name": "Suiryu",
+    "title": "Void Fist",
+    "archetype": "Martial Arts / Power",
+    "description": "A formidable fighter hailing from the Martial Arts / Power discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "bankai-speed",
+      "kendo-cleave",
+      "ashura",
+      "hollowfication"
+    ],
+    "colorScheme": {
+      "primary": "#111827",
+      "secondary": "#F3F4F6"
+    }
+  },
+  {
+    "id": "metal-bat",
+    "name": "Metal Bat",
+    "title": "Fighting Spirit",
+    "archetype": "Brawler / Tank",
+    "description": "A formidable fighter hailing from the Brawler / Tank discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1400,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 130,
+      "special": 70,
+      "speed": 70
+    },
+    "moveIds": [
+      "cleave-slash",
+      "dragon-smash",
+      "static-charge",
+      "supernova"
+    ],
+    "colorScheme": {
+      "primary": "#991B1B",
+      "secondary": "#111827"
+    }
+  },
+  {
+    "id": "fubuki",
+    "name": "Fubuki",
+    "title": "Blizzard of Hell",
+    "archetype": "Esper / Support",
+    "description": "A formidable fighter hailing from the Esper / Support discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 900,
+      "maxEnergy": 100,
+      "attack": 70,
+      "defense": 80,
+      "special": 140,
+      "speed": 100
+    },
+    "moveIds": [
+      "reckless-charge",
+      "supernova-destroyer",
+      "power-surge",
+      "petal-storm"
+    ],
+    "colorScheme": {
+      "primary": "#14532D",
+      "secondary": "#4ADE80"
+    }
+  },
+  {
+    "id": "deep-sea",
+    "name": "Deep Sea King",
+    "title": "King of the Seas",
+    "archetype": "Monster / Water",
+    "description": "A formidable fighter hailing from the Monster / Water discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "water-wheel",
+      "constant-flux",
+      "lightning-jab",
+      "curse-seal"
+    ],
+    "colorScheme": {
+      "primary": "#0284C7",
+      "secondary": "#047857"
+    }
+  },
+  {
+    "id": "zenitsu",
+    "name": "Zenitsu Agatsuma",
+    "title": "Thunder Breath",
+    "archetype": "Speed / Lightning",
+    "description": "A formidable fighter hailing from the Speed / Lightning discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "gear-second",
+      "chidori",
+      "sky-walk",
+      "sun-breathing"
+    ],
+    "colorScheme": {
+      "primary": "#FACC15",
+      "secondary": "#FEF08A"
+    }
+  },
+  {
+    "id": "inosuke",
+    "name": "Inosuke Hashibira",
+    "title": "Beast Breath",
+    "archetype": "Berserker / Wild",
+    "description": "A formidable fighter hailing from the Berserker / Wild discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1100,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 90,
+      "special": 70,
+      "speed": 100
+    },
+    "moveIds": [
+      "wild-storm",
+      "normal-punch",
+      "eyepatch-off",
+      "hollow-purple"
+    ],
+    "colorScheme": {
+      "primary": "#94A3B8",
+      "secondary": "#3B82F6"
+    }
+  },
+  {
+    "id": "giyu",
+    "name": "Giyu Tomioka",
+    "title": "Water Hashira",
+    "archetype": "Swordsman / Water",
+    "description": "A formidable fighter hailing from the Swordsman / Water discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "constant-flux",
+      "water-wheel",
+      "lightning-jab",
+      "dismantle"
+    ],
+    "colorScheme": {
+      "primary": "#1D4ED8",
+      "secondary": "#93C5FD"
+    }
+  },
+  {
+    "id": "shinobu",
+    "name": "Shinobu Kocho",
+    "title": "Insect Hashira",
+    "archetype": "Assassin / Poison",
+    "description": "A formidable fighter hailing from the Assassin / Poison discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "void-strike",
+      "poison-shuriken",
+      "tori-gari",
+      "shadow-strike"
+    ],
+    "colorScheme": {
+      "primary": "#8B5CF6",
+      "secondary": "#C4B5FD"
+    }
+  },
+  {
+    "id": "rengoku",
+    "name": "Kyojuro Rengoku",
+    "title": "Flame Hashira",
+    "archetype": "Swordsman / Fire",
+    "description": "A formidable fighter hailing from the Swordsman / Fire discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "flame-burst",
+      "majestic-flame",
+      "susanoo-arrow",
+      "flame-arrow"
+    ],
+    "colorScheme": {
+      "primary": "#DC2626",
+      "secondary": "#FDE047"
+    }
+  },
+  {
+    "id": "tengen",
+    "name": "Tengen Uzui",
+    "title": "Sound Hashira",
+    "archetype": "Speed / Explosion",
+    "description": "A formidable fighter hailing from the Speed / Explosion discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 850,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 60,
+      "special": 100,
+      "speed": 140
+    },
+    "moveIds": [
+      "cyclone-spin",
+      "shadow-clones",
+      "sun-breathing",
+      "flash-step"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#FBBF24"
+    }
+  },
+  {
+    "id": "muichiro",
+    "name": "Muichiro Tokito",
+    "title": "Mist Hashira",
+    "archetype": "Swordsman / Mist",
+    "description": "A formidable fighter hailing from the Swordsman / Mist discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "thunder-lance",
+      "phantom-form",
+      "sky-walk",
+      "tiger-knee"
+    ],
+    "colorScheme": {
+      "primary": "#6EE7B7",
+      "secondary": "#0F766E"
+    }
+  },
+  {
+    "id": "mitsuri",
+    "name": "Mitsuri Kanroji",
+    "title": "Love Hashira",
+    "archetype": "Swordsman / Whip",
+    "description": "A formidable fighter hailing from the Swordsman / Whip discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1000,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 80,
+      "special": 100,
+      "speed": 100
+    },
+    "moveIds": [
+      "emperor-tail-whip",
+      "black-flash",
+      "ragnaraku",
+      "dragon-fist"
+    ],
+    "colorScheme": {
+      "primary": "#F472B6",
+      "secondary": "#86EFAC"
+    }
+  },
+  {
+    "id": "sanemi",
+    "name": "Sanemi Shinazugawa",
+    "title": "Wind Hashira",
+    "archetype": "Berserker / Wind",
+    "description": "A formidable fighter hailing from the Berserker / Wind discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 950,
+      "maxEnergy": 100,
+      "attack": 135,
+      "defense": 70,
+      "special": 70,
+      "speed": 140
+    },
+    "moveIds": [
+      "rasen-shuriken",
+      "cyclone-spin",
+      "spinning-slash",
+      "wind-slash"
+    ],
+    "colorScheme": {
+      "primary": "#10B981",
+      "secondary": "#E2E8F0"
+    }
+  },
+  {
+    "id": "gyomei",
+    "name": "Gyomei Himejima",
+    "title": "Stone Hashira",
+    "archetype": "Tank / Earth",
+    "description": "A formidable fighter hailing from the Tank / Earth discipline. Ready to battle in the Anime Showdown arena.",
+    "baseStats": {
+      "maxHp": 1300,
+      "maxEnergy": 100,
+      "attack": 100,
+      "defense": 120,
+      "special": 100,
+      "speed": 70
+    },
+    "moveIds": [
+      "mud-wall",
+      "earth-slam",
+      "dragon-scales",
+      "static-charge"
+    ],
+    "colorScheme": {
+      "primary": "#78350F",
+      "secondary": "#9CA3AF"
+    }
   }
 ]
