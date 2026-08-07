@@ -256,6 +256,9 @@ export const TeamBuilder: React.FC<TeamBuilderProps> = ({ token }) => {
       {/* ── Header (Theme Responsive) ────────────────────────────────── */}
       <div
         style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
           padding: '16px 20px',
           marginBottom: 20,
           background: 'var(--card-bg)',
