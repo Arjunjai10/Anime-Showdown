@@ -169,28 +169,49 @@ export const BattleArena: React.FC<BattleArenaProps> = ({
       <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 15%', zIndex: 1, pointerEvents: 'none' }}>
         
         {/* Player Sprite */}
-        <div style={{ transform: 'scale(1.8) translateY(20px)', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.3))' }}>
-          <FighterSprite id={myActiveFighter.characterId} size="lg" flip />
+        <div style={{ transform: 'scale(1.5) translateY(-30px)', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.3))' }}>
+          <div style={{ width: 150, height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center', transform: 'scaleX(-1)' }}>
+            <img 
+              src={`/characters/${myActiveFighter.characterId.toLowerCase()}.jpg`} 
+              alt={myActiveFighter.characterId}
+              onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.setAttribute('style', 'display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;'); }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} 
+            />
+            <div style={{ display: 'none', transform: 'scaleX(-1)' }}>
+              <FighterLogo id={myActiveFighter.characterId} size={100} color="#38BDF8" />
+            </div>
+          </div>
         </div>
 
         {/* Opponent Sprite */}
-        <div style={{ transform: 'scale(1.8) translateY(20px)', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(244, 63, 94, 0.3))' }}>
-          <FighterSprite id={oppActiveFighter.characterId} size="lg" />
+        <div style={{ transform: 'scale(1.5) translateY(-30px)', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(244, 63, 94, 0.3))' }}>
+          <div style={{ width: 150, height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img 
+              src={`/characters/${oppActiveFighter.characterId.toLowerCase()}.jpg`} 
+              alt={oppActiveFighter.characterId}
+              onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling!.setAttribute('style', 'display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;'); }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)' }} 
+            />
+            <div style={{ display: 'none' }}>
+              <FighterLogo id={oppActiveFighter.characterId} size={100} color="#F43F5E" />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* --- BATTLE FEED (Left edge) --- */}
-      <div className="battle-feed-overlay" style={{ position: 'absolute', left: 24, bottom: 200, top: 180, width: '320px', display: 'flex', flexDirection: 'column', padding: '20px 16px', overflowY: 'auto', zIndex: 5 }}>
+      {/* --- BATTLE FEED (Right edge) --- */}
+      <div style={{ position: 'absolute', right: 24, bottom: 200, top: 180, width: '300px', display: 'flex', flexDirection: 'column', padding: '16px', overflowY: 'auto', zIndex: 5, background: 'rgba(15, 23, 42, 0.7)', backdropFilter: 'blur(8px)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div style={{ fontSize: '0.75rem', fontWeight: 900, color: '#94A3B8', textTransform: 'uppercase', marginBottom: 12, letterSpacing: '0.05em' }}>Battle Log</div>
         <div style={{ flex: '1 1 auto' }} /> {/* pushes to bottom */}
         {battleState.log?.map((entry, idx) => (
-          <div key={idx} style={{ marginBottom: 12, animation: 'modal-slide 0.3s ease out' }}>
-            <div style={{ fontSize: '0.85rem', color: '#E2E8F0', lineHeight: 1.4, textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+          <div key={idx} style={{ marginBottom: 12, animation: 'modal-slide 0.3s ease out', paddingBottom: 12, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ fontSize: '0.8rem', color: '#E2E8F0', lineHeight: 1.4, textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
               <strong style={{ color: '#38BDF8' }}>{entry.actorName}</strong> used <span style={{ color: '#FCD34D', fontWeight: 800 }}>{entry.action}</span>!
             </div>
-            {entry.damage && <div style={{ color: '#F87171', fontSize: '0.8rem', fontWeight: 800, textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>💥 Dealt {entry.damage} DMG!</div>}
-            {entry.healing && <div style={{ color: '#34D399', fontSize: '0.8rem', fontWeight: 800, textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>✨ Recovered {entry.healing} HP!</div>}
-            {entry.isCrit && <div style={{ color: '#FBBF24', fontSize: '0.8rem', fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>Critical Hit!</div>}
-            {entry.missed && <div style={{ color: '#94A3B8', fontSize: '0.8rem', fontStyle: 'italic', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>Missed!</div>}
+            {entry.damage && <div style={{ color: '#F87171', fontSize: '0.75rem', fontWeight: 800, textShadow: '0 1px 2px rgba(0,0,0,0.8)', marginTop: 4 }}>💥 Dealt {entry.damage} DMG!</div>}
+            {entry.healing && <div style={{ color: '#34D399', fontSize: '0.75rem', fontWeight: 800, textShadow: '0 1px 2px rgba(0,0,0,0.8)', marginTop: 4 }}>✨ Recovered {entry.healing} HP!</div>}
+            {entry.isCrit && <div style={{ color: '#FBBF24', fontSize: '0.75rem', fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', textShadow: '0 1px 2px rgba(0,0,0,0.8)', marginTop: 4 }}>Critical Hit!</div>}
+            {entry.missed && <div style={{ color: '#94A3B8', fontSize: '0.75rem', fontStyle: 'italic', textShadow: '0 1px 2px rgba(0,0,0,0.8)', marginTop: 4 }}>Missed!</div>}
           </div>
         ))}
         <div ref={logEndRef} />
